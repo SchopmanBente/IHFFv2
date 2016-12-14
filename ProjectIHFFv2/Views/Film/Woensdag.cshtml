@@ -3,12 +3,28 @@
 @{
     ViewBag.Title = "Woensdag";
 }
-
 <h2>Woensdag</h2>
-@foreach (Film f in Model)
-{
-    @f.naam
-    @f.Event.begin_datumtijd
-    @f.Event.beschrijving
-}
-
+<section>
+    @foreach (Film f in Model)
+    {
+        <section class="filmOverview">
+            <div class="film_image">
+                <img width="100" height="120" src="@f.Event.afbeelding_url" />
+            </div>
+            <div class="film_text">
+                <p class="headergegeven">@f.naam</p>
+                <p class="headergegeven">@f.Event.begin_datumtijd</p>
+                <p class="headergegeven">@f.Event.Locatie.naam @f.Event.Locatie.zaal</p>
+                
+                <p>
+                    @f.Event.beschrijving
+                    @using (Html.BeginForm("someAction", "someController"))
+                    {
+                        <button type="submit">OK</button>
+                    }
+                </p>
+               
+            </div>
+        </section>
+    }
+</section>

@@ -176,6 +176,7 @@
     <Compile Include="Models\Film.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FilmPresentationModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IHFFModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -281,6 +282,10 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Film\Woensdag.cshtml" />
+    <Content Include="Views\Film\Donderdag.cshtml" />
+    <Content Include="Views\Film\Vrijdag.cshtml" />
+    <Content Include="Views\Film\Zaterdag.cshtml" />
+    <Content Include="Views\Film\Zondag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

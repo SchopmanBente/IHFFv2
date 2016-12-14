@@ -15,7 +15,31 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult Woensdag()
         {
-            IEnumerable<Film> films = filmrepository.GetAll();
+            IEnumerable<Film> films = filmrepository.GetAllForWednesday();
+            return View(films);
+        }
+
+        public ActionResult Donderdag()
+        {
+            IEnumerable<Film> films = filmrepository.GetAllForThursday();
+            return View(films);
+        }
+
+        public ActionResult Vrijdag()
+        {
+            IEnumerable<Film> films = filmrepository.GetAllForFriday();
+            return View(films);
+        }
+
+        public ActionResult Zaterdag()
+        {
+            IEnumerable<Film> films = filmrepository.GetAllForSaturday();
+            return View(films);
+        }
+
+        public ActionResult Zondag()
+        {
+            IEnumerable<Film> films = filmrepository.GetAllForSunday();
             return View(films);
         }
 	}
