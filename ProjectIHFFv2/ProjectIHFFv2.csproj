@@ -285,14 +285,11 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Film\Woensdag.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Film\Donderdag.cshtml" />
     <Content Include="Views\Film\Vrijdag.cshtml" />
     <Content Include="Views\Film\Zaterdag.cshtml" />
     <Content Include="Views\Film\Zondag.cshtml" />
-=======
     <Content Include="Views\Restaurant\Bloemendaal.cshtml" />
->>>>>>> 8415c4f1901d8a6cdd027c655d469402df569ca3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
