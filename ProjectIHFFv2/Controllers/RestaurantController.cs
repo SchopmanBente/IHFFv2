@@ -17,5 +17,12 @@ namespace ProjectIHFFv2.Controllers
 
             return View(resb);
         }
+
+        public ActionResult Haarlem()
+        {
+            IEnumerable<Event> resh = resrep.GetRestaurantsHaarlem();
+
+            return View(resh); 
+        }
     }
 }
