@@ -1,0 +1,13 @@
+﻿@using ProjectIHFFv2.Models;
+@model IEnumerable<Film>
+@{
+    ViewBag.Title = "Woensdag";
+}
+
+<h2>Woensdag</h2>
+@foreach (Film f in Model)
+{
+    @f.naam
+    @f.Event.begin_datumtijd
+}
+

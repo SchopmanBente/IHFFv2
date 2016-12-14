@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="11c76f9ef7d14b5588cf441727768508" Name="Diagram1">
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Cultuuritem" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Event" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Film" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Klant" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Klant_reservering" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Locatie" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Reservering" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Special" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="iHFF1617S_A3Model.FK_Event_Locatie" ManuallyRouted="false" />
+        <AssociationConnector Association="iHFF1617S_A3Model.FK_Film_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="iHFF1617S_A3Model.FK_Klant_reservering_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="iHFF1617S_A3Model.FK_Special_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="iHFF1617S_A3Model.FK_Reservering_Klant" ManuallyRouted="false" />
+        <AssociationConnector Association="iHFF1617S_A3Model.FK_Klant_reservering_Reservering" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

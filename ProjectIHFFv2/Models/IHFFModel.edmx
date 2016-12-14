@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="iHFF1617S_A3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cultuuritem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="beschrijving" Type="text" />
+          <Property Name="soort" Type="varchar" MaxLength="250" />
+          <Property Name="naam" Type="varchar" MaxLength="250" />
+          <Property Name="straatnaam" Type="varchar" MaxLength="250" />
+          <Property Name="huisnr" Type="varchar" MaxLength="250" />
+          <Property Name="toevoeging" Type="varchar" MaxLength="250" />
+          <Property Name="postcode" Type="varchar" MaxLength="250" />
+          <Property Name="locatie" Type="varchar" MaxLength="250" />
+          <Property Name="openinsstarttijd" Type="datetime" />
+          <Property Name="openingeindtijd" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="250" />
+          <Property Name="prijs" Type="float" />
+          <Property Name="begin_datumtijd" Type="datetime" />
+          <Property Name="eind_datumtijd" Type="datetime" />
+          <Property Name="locatie_id" Type="int" />
+          <Property Name="beschrijving" Type="nvarchar" MaxLength="2000" />
+          <Property Name="afbeelding_url" Type="nvarchar" MaxLength="500" />
+          <Property Name="rating" Type="float" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="naam" Type="varchar" MaxLength="250" />
+          <Property Name="trailer_url" Type="varchar" MaxLength="250" />
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Klant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="emailadres" Type="varchar" MaxLength="250" />
+          <Property Name="voornaam" Type="varchar" MaxLength="250" />
+          <Property Name="achternaam" Type="varchar" MaxLength="250" />
+          <Property Name="telefoonnummer" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Klant_reservering">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reservering_id" Type="int" />
+          <Property Name="event_id" Type="int" />
+          <Property Name="prijs" Type="float" />
+          <Property Name="aantal_personen" Type="int" />
+        </EntityType>
+        <EntityType Name="Locatie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="capaciteit" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="250" />
+          <Property Name="zaal" Type="varchar" MaxLength="250" />
+          <Property Name="straat" Type="varchar" MaxLength="250" />
+          <Property Name="huisnr" Type="varchar" MaxLength="250" />
+          <Property Name="toevoeging" Type="varchar" MaxLength="250" />
+          <Property Name="postcode" Type="varchar" MaxLength="250" />
+          <Property Name="plaats" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Reservering">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="klantid" Type="int" Nullable="false" />
+          <Property Name="is_betaald" Type="bit" />
+          <Property Name="is_geannuleerd" Type="bit" />
+          <Property Name="besteldatum" Type="datetime" />
+          <Property Name="ophaalcode" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Special">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="spreker" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Event_Locatie">
+          <End Role="Locatie" Type="Self.Locatie" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locatie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="locatie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klant_reservering_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+          <End Role="Klant_reservering" Type="Self.Klant_reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="Klant_reservering">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klant_reservering_Reservering">
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="0..1" />
+          <End Role="Klant_reservering" Type="Self.Klant_reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservering">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Klant_reservering">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservering_Klant">
+          <End Role="Klant" Type="Self.Klant" Multiplicity="1" />
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservering">
+              <PropertyRef Name="klantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Special_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Special" Type="Self.Special" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="Special">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="iHFF1617S_A3ModelStoreContainer">
+          <EntitySet Name="Cultuuritem" EntityType="Self.Cultuuritem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klant" EntityType="Self.Klant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klant_reservering" EntityType="Self.Klant_reservering" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locatie" EntityType="Self.Locatie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservering" EntityType="Self.Reservering" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Event_Locatie" Association="Self.FK_Event_Locatie">
+            <End Role="Locatie" EntitySet="Locatie" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Event" Association="Self.FK_Film_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klant_reservering_Event" Association="Self.FK_Klant_reservering_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Klant_reservering" EntitySet="Klant_reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klant_reservering_Reservering" Association="Self.FK_Klant_reservering_Reservering">
+            <End Role="Reservering" EntitySet="Reservering" />
+            <End Role="Klant_reservering" EntitySet="Klant_reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservering_Klant" Association="Self.FK_Reservering_Klant">
+            <End Role="Klant" EntitySet="Klant" />
+            <End Role="Reservering" EntitySet="Reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Special_Event" Association="Self.FK_Special_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Special" EntitySet="Special" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="iHFF1617S_A3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cultuuritem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="beschrijving" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="soort" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="naam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="straatnaam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="huisnr" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="toevoeging" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="locatie" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="openinsstarttijd" Type="DateTime" Precision="3" />
+          <Property Name="openingeindtijd" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="prijs" Type="Double" />
+          <Property Name="begin_datumtijd" Type="DateTime" Precision="3" />
+          <Property Name="eind_datumtijd" Type="DateTime" Precision="3" />
+          <Property Name="locatie_id" Type="Int32" />
+          <Property Name="beschrijving" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="afbeelding_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="rating" Type="Double" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Locatie" Relationship="Self.FK_Event_Locatie" FromRole="Event" ToRole="Locatie" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Film_Event" FromRole="Event" ToRole="Film" />
+          <NavigationProperty Name="Klant_reservering" Relationship="Self.FK_Klant_reservering_Event" FromRole="Event" ToRole="Klant_reservering" />
+          <NavigationProperty Name="Special" Relationship="Self.FK_Special_Event" FromRole="Event" ToRole="Special" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="naam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="trailer_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Film_Event" FromRole="Film" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Klant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="emailadres" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="voornaam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="achternaam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="telefoonnummer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservering" Relationship="Self.FK_Reservering_Klant" FromRole="Klant" ToRole="Reservering" />
+        </EntityType>
+        <EntityType Name="Klant_reservering">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reservering_id" Type="Int32" />
+          <Property Name="event_id" Type="Int32" />
+          <Property Name="prijs" Type="Double" />
+          <Property Name="aantal_personen" Type="Int32" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Klant_reservering_Event" FromRole="Klant_reservering" ToRole="Event" />
+          <NavigationProperty Name="Reservering" Relationship="Self.FK_Klant_reservering_Reservering" FromRole="Klant_reservering" ToRole="Reservering" />
+        </EntityType>
+        <EntityType Name="Locatie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="capaciteit" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="naam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="zaal" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="straat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="huisnr" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="toevoeging" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="plaats" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Event_Locatie" FromRole="Locatie" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Reservering">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="klantid" Type="Int32" Nullable="false" />
+          <Property Name="is_betaald" Type="Boolean" />
+          <Property Name="is_geannuleerd" Type="Boolean" />
+          <Property Name="besteldatum" Type="DateTime" Precision="3" />
+          <Property Name="ophaalcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Klant" Relationship="Self.FK_Reservering_Klant" FromRole="Reservering" ToRole="Klant" />
+          <NavigationProperty Name="Klant_reservering" Relationship="Self.FK_Klant_reservering_Reservering" FromRole="Reservering" ToRole="Klant_reservering" />
+        </EntityType>
+        <EntityType Name="Special">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="spreker" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Special_Event" FromRole="Special" ToRole="Event" />
+        </EntityType>
+        <Association Name="FK_Event_Locatie">
+          <End Role="Locatie" Type="Self.Locatie" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locatie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="locatie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klant_reservering_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+          <End Role="Klant_reservering" Type="Self.Klant_reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="Klant_reservering">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Special_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Special" Type="Self.Special" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="Special">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservering_Klant">
+          <End Role="Klant" Type="Self.Klant" Multiplicity="1" />
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservering">
+              <PropertyRef Name="klantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klant_reservering_Reservering">
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="0..1" />
+          <End Role="Klant_reservering" Type="Self.Klant_reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservering">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Klant_reservering">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="iHFF1617S_A3Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cultuuritem" EntityType="Self.Cultuuritem" />
+          <EntitySet Name="Event" EntityType="Self.Event" />
+          <EntitySet Name="Film" EntityType="Self.Film" />
+          <EntitySet Name="Klant" EntityType="Self.Klant" />
+          <EntitySet Name="Klant_reservering" EntityType="Self.Klant_reservering" />
+          <EntitySet Name="Locatie" EntityType="Self.Locatie" />
+          <EntitySet Name="Reservering" EntityType="Self.Reservering" />
+          <EntitySet Name="Special" EntityType="Self.Special" />
+          <AssociationSet Name="FK_Event_Locatie" Association="Self.FK_Event_Locatie">
+            <End Role="Locatie" EntitySet="Locatie" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Event" Association="Self.FK_Film_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klant_reservering_Event" Association="Self.FK_Klant_reservering_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Klant_reservering" EntitySet="Klant_reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Special_Event" Association="Self.FK_Special_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Special" EntitySet="Special" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservering_Klant" Association="Self.FK_Reservering_Klant">
+            <End Role="Klant" EntitySet="Klant" />
+            <End Role="Reservering" EntitySet="Reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klant_reservering_Reservering" Association="Self.FK_Klant_reservering_Reservering">
+            <End Role="Reservering" EntitySet="Reservering" />
+            <End Role="Klant_reservering" EntitySet="Klant_reservering" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(iHFF1617S_A3Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(iHFF1617S_A3Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="iHFF1617S_A3ModelStoreContainer" CdmEntityContainer="iHFF1617S_A3Entities1">
+          <EntitySetMapping Name="Cultuuritem">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Cultuuritem">
+              <MappingFragment StoreEntitySet="Cultuuritem">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="beschrijving" ColumnName="beschrijving" />
+                <ScalarProperty Name="soort" ColumnName="soort" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="straatnaam" ColumnName="straatnaam" />
+                <ScalarProperty Name="huisnr" ColumnName="huisnr" />
+                <ScalarProperty Name="toevoeging" ColumnName="toevoeging" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="locatie" ColumnName="locatie" />
+                <ScalarProperty Name="openinsstarttijd" ColumnName="openinsstarttijd" />
+                <ScalarProperty Name="openingeindtijd" ColumnName="openingeindtijd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="prijs" ColumnName="prijs" />
+                <ScalarProperty Name="begin_datumtijd" ColumnName="begin_datumtijd" />
+                <ScalarProperty Name="eind_datumtijd" ColumnName="eind_datumtijd" />
+                <ScalarProperty Name="locatie_id" ColumnName="locatie_id" />
+                <ScalarProperty Name="beschrijving" ColumnName="beschrijving" />
+                <ScalarProperty Name="afbeelding_url" ColumnName="afbeelding_url" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Film">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="trailer_url" ColumnName="trailer_url" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klant">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Klant">
+              <MappingFragment StoreEntitySet="Klant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="emailadres" ColumnName="emailadres" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+                <ScalarProperty Name="telefoonnummer" ColumnName="telefoonnummer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klant_reservering">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Klant_reservering">
+              <MappingFragment StoreEntitySet="Klant_reservering">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="reservering_id" ColumnName="reservering_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="prijs" ColumnName="prijs" />
+                <ScalarProperty Name="aantal_personen" ColumnName="aantal_personen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locatie">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Locatie">
+              <MappingFragment StoreEntitySet="Locatie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="capaciteit" ColumnName="capaciteit" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="zaal" ColumnName="zaal" />
+                <ScalarProperty Name="straat" ColumnName="straat" />
+                <ScalarProperty Name="huisnr" ColumnName="huisnr" />
+                <ScalarProperty Name="toevoeging" ColumnName="toevoeging" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="plaats" ColumnName="plaats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservering">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Reservering">
+              <MappingFragment StoreEntitySet="Reservering">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="klantid" ColumnName="klantid" />
+                <ScalarProperty Name="is_betaald" ColumnName="is_betaald" />
+                <ScalarProperty Name="is_geannuleerd" ColumnName="is_geannuleerd" />
+                <ScalarProperty Name="besteldatum" ColumnName="besteldatum" />
+                <ScalarProperty Name="ophaalcode" ColumnName="ophaalcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Special">
+            <EntityTypeMapping TypeName="iHFF1617S_A3Model.Special">
+              <MappingFragment StoreEntitySet="Special">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="spreker" ColumnName="spreker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="iHFF1617S_A3Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="iHFF1617S_A3Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="iHFF1617S_A3Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="iHFF1617S_A3Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="iHFF1617S_A3Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="iHFF1617S_A3Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="iHFF1617S_A3Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="iHFF1617S_A3Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="iHFF1617S_A3Model.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
