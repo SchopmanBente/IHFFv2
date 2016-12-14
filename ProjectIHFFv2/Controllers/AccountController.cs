@@ -13,6 +13,8 @@ using ProjectIHFFv2.Models;
 namespace ProjectIHFFv2.Controllers
 {
     [Authorize]
+
+
     public class AccountController : Controller
     {
         public AccountController()
