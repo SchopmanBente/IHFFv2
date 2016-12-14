@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -163,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,6 +205,7 @@
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories\FilmRepository.cs" />
+    <Compile Include="Models\Repositories\RestaurantRepository.cs" />
     <Compile Include="Models\Reservering.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
@@ -282,10 +285,14 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Film\Woensdag.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Film\Donderdag.cshtml" />
     <Content Include="Views\Film\Vrijdag.cshtml" />
     <Content Include="Views\Film\Zaterdag.cshtml" />
     <Content Include="Views\Film\Zondag.cshtml" />
+=======
+    <Content Include="Views\Restaurant\Bloemendaal.cshtml" />
+>>>>>>> 8415c4f1901d8a6cdd027c655d469402df569ca3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
