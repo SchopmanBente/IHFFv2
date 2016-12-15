@@ -15,31 +15,31 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult Woensdag()
         {
-            IEnumerable<Film> films = filmrepository.GetAllForWednesday();
+            IEnumerable<Film> films = filmrepository.GetAllForDay( new DateTime(2017, 1, 11, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Donderdag()
         {
-            IEnumerable<Film> films = filmrepository.GetAllForThursday();
+            IEnumerable<Film> films = filmrepository.GetAllForDay(new DateTime(2017, 1, 12, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Vrijdag()
         {
-            IEnumerable<Film> films = filmrepository.GetAllForFriday();
+            IEnumerable<Film> films = filmrepository.GetAllForDay(new DateTime(2017, 1, 13, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Zaterdag()
         {
-            IEnumerable<Film> films = filmrepository.GetAllForSaturday();
+            IEnumerable<Film> films = filmrepository.GetAllForDay(new DateTime(2017, 1, 14, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Zondag()
         {
-            IEnumerable<Film> films = filmrepository.GetAllForSunday();
+            IEnumerable<Film> films = filmrepository.GetAllForDay(new DateTime(2017, 1, 15, 00, 00, 00));
             return View(films);
         }
 	}
