@@ -1,0 +1,34 @@
+﻿@using ProjectIHFFv2.Models;
+@model FilmDetailPresentationModel
+@{
+    ViewBag.Title = "ViewDetails";
+}
+
+<h2>ViewDetails</h2>
+<header>
+    <p> Insert breadcrumb </p>
+    <h1>@Model.Naam</h1>
+</header>
+<section class="filmdetail-left">
+    <div>
+        <img src="@Model.AfbeeldingUrl" />
+        <p>@Model.Beschrijving</p>
+        <p>@Model.TrailerUrl</p>
+    </div>
+    <div>
+        @foreach(var v in Model.filmVoorstellingen)
+        {
+            <p>@v.Event.begin_datumtijd</p>
+            <p>@v.Event.Locatie.naam</p>
+        }
+    </div>
+
+</section>
+<section class="filmdetail-right">
+    @foreach (var c in Model.CultuurItems)
+    {
+        <p>@c.naam</p>
+        <p>@c.beschrijving</p>
+    }
+</section>
+

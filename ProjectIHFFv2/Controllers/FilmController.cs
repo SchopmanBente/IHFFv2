@@ -43,5 +43,11 @@ namespace ProjectIHFFv2.Controllers
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 15, 00, 00, 00));
             return View(films);
         }
+
+        public ActionResult ViewDetails(int id)
+        {
+            FilmDetailPresentationModel filmDetail = presentation.GetFilmDetails(id);
+            return View(filmDetail);
+        }
 	}
 }

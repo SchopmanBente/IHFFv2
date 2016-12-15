@@ -179,6 +179,7 @@
     <Compile Include="Models\Film.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FilmDetailPresentationModel.cs" />
     <Compile Include="Models\FilmOverviewPresentationModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IHFFModel.Context.cs">
@@ -206,6 +207,7 @@
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PresentationViews.cs" />
+    <Compile Include="Models\Repositories\CultuurRepository.cs" />
     <Compile Include="Models\Repositories\FilmRepository.cs" />
     <Compile Include="Models\Repositories\RestaurantRepository.cs" />
     <Compile Include="Models\Repositories\SpecialRepository.cs" />
@@ -301,6 +303,7 @@
     <Content Include="Views\Special\Vrijdag.cshtml" />
     <Content Include="Views\Special\Zaterdag.cshtml" />
     <Content Include="Views\Special\Zondag.cshtml" />
+    <Content Include="Views\Film\ViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

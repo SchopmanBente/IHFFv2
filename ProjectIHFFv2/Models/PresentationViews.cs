@@ -7,6 +7,7 @@ namespace ProjectIHFFv2.Models
 {
     public class PresentationViews
     {
+        private CultuurRepository cultuurRepository = new CultuurRepository();
         private FilmRepository filmRepository = new FilmRepository();
         private SpecialRepository specialRepository = new SpecialRepository();
 
@@ -32,6 +33,15 @@ namespace ProjectIHFFv2.Models
                 specialPresentations.Add(specialPresentation);
             }
             return specialPresentations.AsEnumerable();
+        }
+
+        public FilmDetailPresentationModel GetFilmDetails(int id)
+        {
+            Film f = filmRepository.GetById(id);
+            IEnumerable<Film> voorstellingenFilm = filmRepository.GetAllEventsForDetail(f.naam);
+            IEnumerable<Cultuuritem> cultuurActiviteiten = cultuurRepository.GetRandomCultuurItems();
+            FilmDetailPresentationModel model = new FilmDetailPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.trailer_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving, cultuurActiviteiten, voorstellingenFilm);
+            return model;          
         }
     }
 }
