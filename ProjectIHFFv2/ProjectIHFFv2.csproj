@@ -165,6 +165,7 @@
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
+    <Compile Include="Controllers\SpecialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,7 +179,7 @@
     <Compile Include="Models\Film.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FilmPresentationModel.cs" />
+    <Compile Include="Models\FilmOverviewPresentationModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IHFFModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -204,14 +205,17 @@
     <Compile Include="Models\Locatie.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PresentationViews.cs" />
     <Compile Include="Models\Repositories\FilmRepository.cs" />
     <Compile Include="Models\Repositories\RestaurantRepository.cs" />
+    <Compile Include="Models\Repositories\SpecialRepository.cs" />
     <Compile Include="Models\Reservering.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Special.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SpecialOverviewPresentationModel.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
@@ -292,6 +296,11 @@
     <Content Include="Views\Film\Zondag.cshtml" />
     <Content Include="Views\Restaurant\Bloemendaal.cshtml" />
     <Content Include="Views\Restaurant\Haarlem.cshtml" />
+    <Content Include="Views\Special\Woensdag.cshtml" />
+    <Content Include="Views\Special\Donderdag.cshtml" />
+    <Content Include="Views\Special\Vrijdag.cshtml" />
+    <Content Include="Views\Special\Zaterdag.cshtml" />
+    <Content Include="Views\Special\Zondag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,23 +1,23 @@
 ﻿@using ProjectIHFFv2.Models;
-@model IEnumerable<FilmOverviewPresentationModel>
+@model IEnumerable<SpecialOverviewPresentationModel>
 @{
     ViewBag.Title = "Zondag";
 }
 
 <h2>Zondag</h2>
 <section>
-    @foreach (FilmOverviewPresentationModel f in Model)
+    @foreach (SpecialOverviewPresentationModel s in Model)
     {
         <section class="filmOverview">
             <div class="film_image">
-                <img width="100" height="120" src="@f.AfbeeldingUrl" />
+                <img width="100" height="120" src="@s.AfbeeldingUrl" />
             </div>
             <div class="film_text">
-                <h3 class="headergegeven">@f.Naam</h3>
-                <h4 class="headergegeven">@f.BeginDatumTijd @f.EventLocatie</h4>
+                <h3 class="headergegeven">@s.Naam</h3>
+                <h4 class="headergegeven">@s.BeginDatumTijd @s.EventLocatie</h4>
 
                 <p>
-                    @f.Beschrijving
+                    @s.Beschrijving
                     @using (Html.BeginForm("someAction", "someController"))
                     {
                         <button type="submit">OK</button>
@@ -28,4 +28,3 @@
         </section>
     }
 </section>
-

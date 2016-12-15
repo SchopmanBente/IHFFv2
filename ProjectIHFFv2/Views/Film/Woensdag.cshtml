@@ -1,23 +1,22 @@
 ﻿@using ProjectIHFFv2.Models;
-@model IEnumerable<Film>
+@model IEnumerable<FilmOverviewPresentationModel>
 @{
     ViewBag.Title = "Woensdag";
 }
 <h2>Woensdag</h2>
 <section>
-    @foreach (Film f in Model)
+    @foreach (FilmOverviewPresentationModel f in Model)
     {
         <section class="filmOverview">
             <div class="film_image">
-                <img width="100" height="120" src="@f.Event.afbeelding_url" />
+                <img width="100" height="120" src="@f.AfbeeldingUrl" />
             </div>
             <div class="film_text">
-                <p class="headergegeven">@f.naam</p>
-                <p class="headergegeven">@f.Event.begin_datumtijd</p>
-                <p class="headergegeven">@f.Event.Locatie.naam @f.Event.Locatie.zaal</p>
+                <h3 class="headergegeven">@f.Naam</h3>
+                <h4 class="headergegeven">@f.BeginDatumTijd @f.EventLocatie</h4>
                 
                 <p>
-                    @f.Event.beschrijving
+                    @f.Beschrijving
                     @using (Html.BeginForm("someAction", "someController"))
                     {
                         <button type="submit">OK</button>
