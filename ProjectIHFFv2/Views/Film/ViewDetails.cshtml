@@ -4,7 +4,6 @@
     ViewBag.Title = "ViewDetails";
 }
 
-<h2>ViewDetails</h2>
 <header>
     <p> Insert breadcrumb </p>
     <h1>@Model.Naam</h1>
@@ -13,13 +12,15 @@
     <div>
         <img src="@Model.AfbeeldingUrl" />
         <p>@Model.Beschrijving</p>
-        <p>@Model.TrailerUrl</p>
+        <iframe width="560" height="315" src="@Model.TrailerUrl" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div>
+    <div class="voorstellingen">
+        <h3>Reveal the story..</h3>
         @foreach(var v in Model.filmVoorstellingen)
         {
-            <p>@v.Event.begin_datumtijd</p>
+            <p>@v.Event.begin_datumtijd.Value.Date @v.Event.begin_datumtijd.Value.Hour @v.Event.begin_datumtijd.Value.Minute</p>
             <p>@v.Event.Locatie.naam</p>
+            
         }
     </div>
 

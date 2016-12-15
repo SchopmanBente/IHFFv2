@@ -18,14 +18,12 @@
 
                 <p>
                     @f.Beschrijving
-                    @using (Html.BeginForm("someAction", "someController"))
-                    {
-                        <button type="submit">OK</button>
-                    }
+                    @Html.ActionLink("View", "ViewDetails", "Film", new { id = @f.EventId }, null);
+                    <input type="button" title="View" value="View more" onclick="location.href='@Url.Action("ViewDetails", "Film", new { id = f.EventId })'" />
                 </p>
-
             </div>
         </section>
     }
+
 </section>
 
