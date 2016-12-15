@@ -1,14 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #CCC; 
+    background-color: #CCC;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #CCC; 
+    background-color: #CCC;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -42,3 +42,30 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+footer {
+    background-color: black;
+    max-width: 2000px;
+    max-height: 300px;
+    padding-top: 7px;
+    padding-bottom: 7px; 
+    min-width: 1000px
+}
+
+    footer h4 {
+        color: white;
+        display: inline;
+        margin-left: 80px;
+        margin-right: 200px;
+        margin-top: 50px;
+    }
+
+    footer h5 {
+        color: white;
+        font-size: 12px;
+        margin-left: 40px; 
+    }
+
+    footer li {
+        list-style: none;
+    }
