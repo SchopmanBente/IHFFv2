@@ -23,7 +23,8 @@ namespace ProjectIHFFv2.Models
                 if (!randomNummers.Exists(c => c == optie))
                 {
                     Cultuuritem item = ctx.Cultuuritem.FirstOrDefault(c => c.id == optie);
-                    items.Add(item);
+                    if(item != null)
+                        items.Add(item);
                 }
 
             } while (items.Count < 5);
