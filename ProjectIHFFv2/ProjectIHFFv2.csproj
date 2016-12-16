@@ -304,6 +304,7 @@
     <Content Include="Views\Special\Zaterdag.cshtml" />
     <Content Include="Views\Special\Zondag.cshtml" />
     <Content Include="Views\Film\ViewDetails.cshtml" />
+    <Content Include="Views\Restaurant\DetailPagina.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,6 +27,21 @@ namespace ProjectIHFFv2.Models
             return film;
         }
 
+        public IEnumerable<Film> GetRandomFilms()
+        {
+            Random rnd = new Random();
+            List<int> rndFilmid = new List<int>();
+
+            while (rndFilmid.Count < 5)
+                rndFilmid.Add(rnd.Next());
+
+            List<Film> films = new List<Film>();
+
+            return films.AsEnumerable(); 
+
+            
+        }
+
 
     }
 }
