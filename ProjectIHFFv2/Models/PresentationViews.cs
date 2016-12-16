@@ -12,7 +12,7 @@ namespace ProjectIHFFv2.Models
         private SpecialRepository specialRepository = new SpecialRepository();
         private RestaurantRepository restaurantRepository = new RestaurantRepository();
         private LocatieRepository locatieRepository = new LocatieRepository();
-        private RestaurantRepository restaurantRepository = new RestaurantRepository();
+      
 
         public IEnumerable<FilmOverviewPresentationModel> GetAllFilmsForDay(DateTime day)
         {
