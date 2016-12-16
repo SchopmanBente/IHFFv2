@@ -32,7 +32,7 @@ namespace ProjectIHFFv2.Models
             List<SpecialOverviewPresentationModel> specialPresentations = new List<SpecialOverviewPresentationModel>();
             foreach (Special s in specials)
             {
-                SpecialOverviewPresentationModel specialPresentation = new SpecialOverviewPresentationModel(s.EventId, s.Event.naam, s.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.Locatie.naam, s.Event.Locatie.zaal, s.Event.beschrijving);
+                SpecialOverviewPresentationModel specialPresentation = new SpecialOverviewPresentationModel(s.EventId, (double)s.Event.prijs, s.Event.naam, s.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.Locatie.naam, s.Event.Locatie.zaal, s.Event.beschrijving);
                 specialPresentations.Add(specialPresentation);
             }
             return specialPresentations.AsEnumerable();
@@ -62,7 +62,7 @@ namespace ProjectIHFFv2.Models
             Special s = specialRepository.GetSpecialById(id);
             IEnumerable<Event> restaurants = restaurantRepository.GetRandomRestaurants();
             Locatie locatie = locatieRepository.GetById(s.Event.Locatie.id);
-            SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId, s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
+            SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId,(double)s.Event.prijs,s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
             return special;
         }
     }

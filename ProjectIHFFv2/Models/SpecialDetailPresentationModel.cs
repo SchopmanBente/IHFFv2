@@ -8,6 +8,7 @@ namespace ProjectIHFFv2.Models
     public class SpecialDetailPresentationModel
     {
          public int EventId { get; set; }
+         public double Prijs { get; set; }
         public string Naam { get; set; }
         public string AfbeeldingUrl { get; set; }
         public string BeginDatumTijd { get; set; }
@@ -17,9 +18,10 @@ namespace ProjectIHFFv2.Models
         public IEnumerable<Event> Restaurants { get; set; }
 
 
-        public SpecialDetailPresentationModel(int id, string naam,string spreker,string afbeelding, DateTime? begindatum, DateTime? einddatum,Locatie locatie, string beschrijving,IEnumerable<Event> activiteiten)
+        public SpecialDetailPresentationModel(int id, double prijs,string naam,string spreker,string afbeelding, DateTime? begindatum, DateTime? einddatum,Locatie locatie, string beschrijving,IEnumerable<Event> activiteiten)
         {
             this.EventId = id;
+            this.Prijs = prijs;
             this.Naam = naam + " "+ spreker;
             this.AfbeeldingUrl = afbeelding;
             this.EventLocatie = locatie;

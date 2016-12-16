@@ -22,6 +22,7 @@
                 <p>@Model.EventLocatie.naam @Model.EventLocatie.zaal</p>
                 <p>@Model.EventLocatie.straat @Model.EventLocatie.huisnr</p>
                 <p>@Model.EventLocatie.plaats</p>
+                <p>Ticket: @Model.</p>
             </div>
             <div class="voorstelling-right">
                 @Html.ActionLink("Add to cart", "Add", "Cart", new { id = @Model.EventId }, new { @class = "btn btn-info" })
