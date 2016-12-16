@@ -72,3 +72,33 @@ footer {
     footer li {
         list-style: none;
     }
+
+/* CSS voor programma samenstellen START*/
+.TabelCss {
+    width : 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.TabelKolomCss {
+        border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.TabelRijCssOneven {
+        border: 1px solid black;
+    border-collapse: collapse;
+    background-color: grey;
+}
+
+.TabelRijCssEven {
+        border: 1px solid black;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
