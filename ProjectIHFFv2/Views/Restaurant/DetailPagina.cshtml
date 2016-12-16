@@ -1,11 +1,17 @@
 ﻿@using ProjectIHFFv2.Models;
 
-@model Event
+@model RestaurantDetailPresentationModel
 
-<h2>@Model.naam</h2>
-
-
-<img src="@Model.afbeelding_url" />
+<h2>@Model.Event.naam</h2>
 
 
-<p>@Model.beschrijving</p>
+<img src="@Model.Event.afbeelding_url" />
+
+
+<p>@Model.Event.beschrijving</p>
+
+
+@foreach(Film f in Model.Films)
+{
+    <img src="@f.Event.afbeelding_url" />
+}

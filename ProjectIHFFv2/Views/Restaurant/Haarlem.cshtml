@@ -2,11 +2,18 @@
 
 @model IEnumerable<Event>
 
+
 <header>
     <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Restaurant >  @Html.ActionLink("Haarlem", "Restaurant") </p>
     <h1>Haarlem</h1>
     @Html.Partial("~\\views\\shared\\_RestaurantLocationSelection.cshtml");
 </header>
+
+
+
+
+<h2>Haarlem</h2>
+
 
 @foreach (Event r in Model)
 {
