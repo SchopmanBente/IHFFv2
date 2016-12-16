@@ -9,7 +9,8 @@ namespace ProjectIHFFv2.Controllers
 {
     public class RestaurantController : Controller
     {
-        private RestaurantRepository resrep = new RestaurantRepository(); 
+        private RestaurantRepository resrep = new RestaurantRepository();
+        private PresentationViews presentation = new PresentationViews();
         // GET: Restaurant
         public ActionResult Bloemendaal()
         {
@@ -27,7 +28,7 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult DetailPagina(int id)
         {
-            Event restaurant = resrep.GetRestaurantByid(id); 
+            RestaurantDetailPresentationModel restaurant = presentation.GetRestaurantDetails(id); 
 
             return View(restaurant); 
         }

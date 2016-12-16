@@ -10,7 +10,7 @@ namespace ProjectIHFFv2.Models
         private CultuurRepository cultuurRepository = new CultuurRepository();
         private FilmRepository filmRepository = new FilmRepository();
         private SpecialRepository specialRepository = new SpecialRepository();
-
+        private RestaurantRepository restaurantRepository = new RestaurantRepository();
         public IEnumerable<FilmOverviewPresentationModel> GetAllFilmsForDay(DateTime day)
         {
             IEnumerable<Film> movies = filmRepository.GetAllForDay(day);
@@ -29,7 +29,7 @@ namespace ProjectIHFFv2.Models
             List<SpecialOverviewPresentationModel> specialPresentations = new List<SpecialOverviewPresentationModel>();
             foreach (Special s in specials)
             {
-                SpecialOverviewPresentationModel specialPresentation = new SpecialOverviewPresentationModel(s.EventId,s.Event.naam,s.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.Locatie.naam, s.Event.Locatie.zaal, s.Event.beschrijving);
+                SpecialOverviewPresentationModel specialPresentation = new SpecialOverviewPresentationModel(s.EventId, s.Event.naam, s.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.Locatie.naam, s.Event.Locatie.zaal, s.Event.beschrijving);
                 specialPresentations.Add(specialPresentation);
             }
             return specialPresentations.AsEnumerable();
@@ -41,7 +41,17 @@ namespace ProjectIHFFv2.Models
             IEnumerable<Film> voorstellingenFilm = filmRepository.GetAllEventsForDetail(f.naam);
             IEnumerable<Cultuuritem> cultuurActiviteiten = cultuurRepository.GetRandomCultuurItems();
             FilmDetailPresentationModel model = new FilmDetailPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.trailer_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving, cultuurActiviteiten, voorstellingenFilm);
-            return model;          
+            return model;
+        }
+
+        public RestaurantDetailPresentationModel GetRestaurantDetails(int id)
+        {
+            List<Film> films = (List<Film>)filmRepository.GetRandomFilms();
+            Event Event = restaurantRepository.GetRestaurantByid(id);
+            RestaurantDetailPresentationModel model = new RestaurantDetailPresentationModel(films, Event);
+
+            return model;
+
         }
     }
 }
