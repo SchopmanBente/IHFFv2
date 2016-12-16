@@ -1,0 +1,9 @@
+diff a/ProjectIHFFv2/Views/Film/Wednesday.cshtml b/ProjectIHFFv2/Views/Film/Wednesday.cshtml	(rejected hunks)
+@@ -1,7 +1,6 @@
+ ﻿@using ProjectIHFFv2.Models;
+ @model IEnumerable<FilmOverviewPresentationModel>
+ @{
+-    ViewBag.Title = "Zondag";
+     ViewBag.Title = "Wednesday";
+ }
+ <header>

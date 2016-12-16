@@ -15,34 +15,30 @@ namespace ProjectIHFFv2.Controllers
         private PresentationViews presentation = new PresentationViews();
 
         public ActionResult Woensdag()
-        public ActionResult Wednesday()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 11, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Donderdag()
-        public ActionResult Thursday()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 12, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Vrijdag()
-        public ActionResult Friday()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 13, 00, 00, 00));
             return View(films);
         }
 
         public ActionResult Zaterdag()
-        public ActionResult Saturday()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 14, 00, 00, 00));
             return View(films);
         }
 
-        public ActionResult Sunday()
+        public ActionResult Zondag()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 15, 00, 00, 00));
             return View(films);
