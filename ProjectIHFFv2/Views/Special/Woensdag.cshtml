@@ -17,10 +17,7 @@
 
                 <p>
                     @s.Beschrijving
-                    @using (Html.BeginForm("someAction", "someController"))
-                    {
-                        <button type="submit">OK</button>
-                    }
+                    @Html.ActionLink("View Details", "ViewDetails", "Special", new { id = @s.EventId }, new { @class = "btn btn-info" })
                 </p>
 
             </div>

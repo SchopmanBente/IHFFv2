@@ -22,8 +22,12 @@ namespace ProjectIHFFv2.Models
                 int optie = random.Next(0, 19);
                 if (!randomNummers.Contains(optie))
                 {
+                    //Voeg nummer toe aan lijst
+                    randomNummers.Add(optie);
+                    //Haal het item met het id op
                     Cultuuritem item = ctx.Cultuuritem.FirstOrDefault(c => c.id == optie);
-                    if(item != null)
+                    //Als item ongelijk aan null voeg toe aan items
+                    if(item != null && !items.Exists(c => c.naam == item.naam))
                         items.Add(item);
                 }
 

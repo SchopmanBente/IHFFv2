@@ -11,6 +11,9 @@ namespace ProjectIHFFv2.Models
         private FilmRepository filmRepository = new FilmRepository();
         private SpecialRepository specialRepository = new SpecialRepository();
         private RestaurantRepository restaurantRepository = new RestaurantRepository();
+        private LocatieRepository locatieRepository = new LocatieRepository();
+        private RestaurantRepository restaurantRepository = new RestaurantRepository();
+
         public IEnumerable<FilmOverviewPresentationModel> GetAllFilmsForDay(DateTime day)
         {
             IEnumerable<Film> movies = filmRepository.GetAllForDay(day);
@@ -52,6 +55,15 @@ namespace ProjectIHFFv2.Models
 
             return model;
 
+        }
+
+        public SpecialDetailPresentationModel GetSpecialDetails(int id)
+        {
+            Special s = specialRepository.GetSpecialById(id);
+            IEnumerable<Event> restaurants = restaurantRepository.GetRandomRestaurants();
+            Locatie locatie = locatieRepository.GetById(s.Event.Locatie.id);
+            SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId, s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
+            return special;
         }
     }
 }

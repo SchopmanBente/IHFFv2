@@ -14,5 +14,11 @@ namespace ProjectIHFFv2.Models
             IQueryable<Special> specialsDay = ctx.Special.Where(x => x.Event.type == 3 && x.Event.begin_datumtijd.Value.Day == dag.Day).OrderBy(x => x.Event.begin_datumtijd);
             return specialsDay;
         }
+
+        public Special GetSpecialById(int id)
+        {
+            Special special = ctx.Special.FirstOrDefault(x => x.EventId == id);
+            return special;
+        }
     }
 }
