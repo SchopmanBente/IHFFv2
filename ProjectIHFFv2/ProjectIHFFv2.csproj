@@ -218,6 +218,7 @@
     <Compile Include="Models\Special.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SpecialDetailPresentationModel.cs" />
     <Compile Include="Models\SpecialOverviewPresentationModel.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>

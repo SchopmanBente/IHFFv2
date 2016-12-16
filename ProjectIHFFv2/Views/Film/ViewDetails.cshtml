@@ -5,10 +5,10 @@
 }
 
 <header>
-    <p> Insert breadcrumb </p>
+    <p class="breadcrumb">@Html.ActionLink("Index","Home") > @Html.ActionLink("Woensdag","Film") > @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @Model.EventId }, null) </p>
     <h1>@Model.Naam</h1>
 </header>
-<section class="filmdetail-left">
+<section class="detail-left">
     <div>
         <img src="@Model.AfbeeldingUrl" />
         <p>@Model.Beschrijving</p>
@@ -34,12 +34,15 @@
     </div>
 
 </section>
-<section class="filmdetail-right">
+<section class="detail-right">
+    <h3>Discover Haarlem's Culture</h3>
    @foreach (var c in Model.CultuurItems)
    {
-       <p>@c.naam</p>
-       <p>@c.beschrijving</p>
-       @Html.ActionLink("View", "ViewDetails", "Cultuur", new { id = @c.id }, new { @class = "btn btn-info" })
+       <section class="cultuuritem">
+           <p>@c.naam</p>
+           <p>@c.beschrijving</p>
+           @Html.ActionLink("View", "ViewDetails", "Cultuur", new { id = @c.id }, new { @class = "btn btn-info" })
+       </section>     
    }
 </section>
 
