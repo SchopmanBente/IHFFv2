@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="iHFF1617S_A3Model.Event" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="iHFF1617S_A3Model.Film" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="iHFF1617S_A3Model.Klant" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="iHFF1617S_A3Model.Klant_reservering" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iHFF1617S_A3Model.Klant_reservering" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="iHFF1617S_A3Model.Locatie" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="iHFF1617S_A3Model.Reservering" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="iHFF1617S_A3Model.Special" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />

@@ -20,7 +20,7 @@ namespace ProjectIHFFv2.Models
             do
             {
                 int optie = random.Next(0, 19);
-                if (!randomNummers.Exists(c => c == optie))
+                if (!randomNummers.Contains(optie))
                 {
                     Cultuuritem item = ctx.Cultuuritem.FirstOrDefault(c => c.id == optie);
                     if(item != null)

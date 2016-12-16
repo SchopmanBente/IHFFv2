@@ -166,6 +166,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\SpecialController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +218,7 @@
     <Compile Include="Models\Special.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SpecialDetailPresentationModel.cs" />
     <Compile Include="Models\SpecialOverviewPresentationModel.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
@@ -305,6 +307,7 @@
     <Content Include="Views\Special\Zondag.cshtml" />
     <Content Include="Views\Film\ViewDetails.cshtml" />
     <Content Include="Views\Restaurant\DetailPagina.cshtml" />
+    <Content Include="Views\Wishlist\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

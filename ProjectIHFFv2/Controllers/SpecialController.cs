@@ -44,6 +44,10 @@ namespace ProjectIHFFv2.Controllers
             return View(specials);
         }
 
+        public ActionResult ViewDetails()
+        {
+            return View();
+        }
 
 
 	}

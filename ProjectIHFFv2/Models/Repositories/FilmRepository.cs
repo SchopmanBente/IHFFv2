@@ -20,7 +20,7 @@ namespace ProjectIHFFv2.Models
             IQueryable<Film> voorstellingen = ctx.Film.Where(x => x.Event.type == 0 && x.Event.naam == naam);
             return voorstellingen;
         }
-
+       
         public Film GetById(int id)
         {
             Film film = ctx.Film.FirstOrDefault(x => x.Event.EventId == id);
