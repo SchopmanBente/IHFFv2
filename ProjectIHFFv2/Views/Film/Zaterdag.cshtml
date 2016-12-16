@@ -3,8 +3,11 @@
 @{
     ViewBag.Title = "Zaterdag";
 }
-
-<h2>Zaterdag</h2>
+<header>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Film > @Html.ActionLink("Zaterdag", "Film") </p>
+    <h1>Zaterdag</h1>
+    @Html.Partial("~\\views\\shared\\_MovieDaySelection.cshtml");
+</header>
 <section>
     @foreach (FilmOverviewPresentationModel f in Model)
     {

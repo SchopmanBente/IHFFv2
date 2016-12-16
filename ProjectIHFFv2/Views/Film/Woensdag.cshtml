@@ -3,24 +3,28 @@
 @{
     ViewBag.Title = "Woensdag";
 }
-<h2>Woensdag</h2>
+<header>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Film > @Html.ActionLink("Woensdag", "Film") </p>
+    <h1>Woensdag</h1>
+    @Html.Partial("~\\views\\shared\\_MovieDaySelection.cshtml");
+</header>
 <section>
     @foreach (FilmOverviewPresentationModel f in Model)
-    { 
-          <section class="filmOverview">
+    {
+        <section class="filmOverview">
             <div class="film_image">
                 <img width="100" height="120" src="@f.AfbeeldingUrl" />
             </div>
             <div class="film_text">
                 <h3 class="headergegeven">@f.Naam</h3>
                 <h4 class="headergegeven">@f.BeginDatumTijd @f.EventLocatie</h4>
-                
+
                 <p>
                     @f.Beschrijving
                     @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @f.EventId }, new { @class = "btn btn-info" })
-                </p>    
+                </p>
             </div>
-       </section>
+        </section>
     }
-      
+
 </section>

@@ -3,6 +3,10 @@
 }
 
 <h2>Your personal wishlist.</h2>
+@Html.ActionLink("Add another event", "Index", "Home", null, new { @class = "btn btn-info" })
+@Html.ActionLink("Add all to cart", "Index", "Cart", null, new { @class = "btn btn-info" })
+
+
 <table class="TabelCss">
     <tr class ="TabelRijCssEven">
         <th> Datum </th><th>11</th><th>11:30</th><th>12</th><th>12:30</th><th>13</th><th>13:30</th><th>14</th><th>14:30</th><th>15</th><th>15:30</th><th>16</th>
