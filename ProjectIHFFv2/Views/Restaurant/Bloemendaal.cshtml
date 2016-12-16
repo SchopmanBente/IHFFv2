@@ -15,5 +15,6 @@
 
         <img width="100" height="120" src="@r.afbeelding_url" />
         <p> @r.beschrijving</p>
+        @Html.ActionLink("More info", "DetailPagina", "Restaurant", new { id = @r.EventId}, new { @class = "btn btn-info"})
 }
 

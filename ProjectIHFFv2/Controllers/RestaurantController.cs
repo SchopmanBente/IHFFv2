@@ -13,16 +13,23 @@ namespace ProjectIHFFv2.Controllers
         // GET: Restaurant
         public ActionResult Bloemendaal()
         {
-            IEnumerable<Event> resb = resrep.GetRestaurantsBloemendaal(); 
+            IEnumerable<Event> resb = resrep.GetRestaurantsByPlaatsnaam("Bloemendaal"); 
 
             return View(resb);
         }
 
         public ActionResult Haarlem()
         {
-            IEnumerable<Event> resh = resrep.GetRestaurantsHaarlem();
+            IEnumerable<Event> resh = resrep.GetRestaurantsByPlaatsnaam("Haarlem");
 
             return View(resh); 
+        }
+
+        public ActionResult DetailPagina(int id)
+        {
+            Event restaurant = resrep.GetRestaurantByid(id); 
+
+            return View(restaurant); 
         }
     }
 }

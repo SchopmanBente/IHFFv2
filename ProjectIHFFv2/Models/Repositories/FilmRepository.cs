@@ -20,15 +20,26 @@ namespace ProjectIHFFv2.Models
             IQueryable<Film> voorstellingen = ctx.Film.Where(x => x.Event.type == 0 && x.Event.naam == naam);
             return voorstellingen;
         }
-        public Film GetByNaam(string naam)
-        {
-            Film film = ctx.Film.FirstOrDefault(x => x.naam == naam);
-            return film;
-        }
+       
         public Film GetById(int id)
         {
             Film film = ctx.Film.FirstOrDefault(x => x.Event.EventId == id);
             return film;
+        }
+
+        public IEnumerable<Film> GetRandomFilms()
+        {
+            Random rnd = new Random();
+            List<int> rndFilmid = new List<int>();
+
+            while (rndFilmid.Count < 5)
+                rndFilmid.Add(rnd.Next());
+
+            List<Film> films = new List<Film>();
+
+            return films.AsEnumerable(); 
+
+            
         }
 
 

@@ -14,10 +14,10 @@ namespace ProjectIHFFv2.Models
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
 
-        public IEnumerable<Event> GetRestaurantsBloemendaal()
+        public IEnumerable<Event> GetRestaurantsByPlaatsnaam(string plaatsnaam)
         {
             DateTime dag = new DateTime(2017, 1, 11);
-            IEnumerable<Event> res = ctx.Event.Where(r => r.type == 2 && r.Locatie.plaats == "Bloemendaal");
+            IEnumerable<Event> res = ctx.Event.Where(r => r.type == 2 && r.Locatie.plaats == plaatsnaam);
 
             IEnumerable<Event> resU = res.DistinctBy(e => e.naam); 
            // IEnumerable<Event> resBl = ctx.Event.DistinctBy(r => r.naam) ; 
@@ -26,16 +26,11 @@ namespace ProjectIHFFv2.Models
              
         }
 
-        public IEnumerable<Event> GetRestaurantsHaarlem()
+        public Event GetRestaurantByid(int id)
         {
-            DateTime dag = new DateTime(2017, 1, 11);
-            IEnumerable<Event> res = ctx.Event.Where(r => r.type == 2 && r.Locatie.plaats == "Haarlem");
+            Event restaurant = ctx.Event.FirstOrDefault(r => r.EventId == id);
 
-            IEnumerable<Event> resU = res.DistinctBy(e => e.naam);
-            // IEnumerable<Event> resBl = ctx.Event.DistinctBy(r => r.naam) ; 
-
-            return resU;
-
+            return restaurant; 
         }
 
 

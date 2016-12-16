@@ -20,9 +20,13 @@ namespace ProjectIHFFv2.Models
             do
             {
                 int optie = random.Next(0, 19);
-                if (!randomNummers.Exists(c => c == optie))
+                if (!randomNummers.Contains(optie))
                 {
+                    //Voeg nummer toe aan lijst
+                    randomNummers.Add(optie);
+                    //Haal het item met het id op
                     Cultuuritem item = ctx.Cultuuritem.FirstOrDefault(c => c.id == optie);
+                    //Als item ongelijk aan null voeg toe aan items
                     if(item != null)
                         items.Add(item);
                 }
