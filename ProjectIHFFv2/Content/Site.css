@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 20px; 
     background-color: #CCC;
 }
 
@@ -49,7 +49,10 @@ footer {
     max-height: 300px;
     padding-top: 7px;
     padding-bottom: 7px; 
-    min-width: 1000px
+    min-width: 1000px;
+    position:absolute; 
+    width:100%; 
+    
 }
 
     footer h4 {
