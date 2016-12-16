@@ -44,9 +44,10 @@ namespace ProjectIHFFv2.Controllers
             return View(specials);
         }
 
-        public ActionResult ViewDetails()
+        public ActionResult ViewDetails(int id)
         {
-            return View();
+            SpecialDetailPresentationModel special = presentation.GetSpecialDetails(id);
+            return View(special);
         }
 
 

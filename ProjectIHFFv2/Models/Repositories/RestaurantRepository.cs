@@ -33,6 +33,32 @@ namespace ProjectIHFFv2.Models
             return restaurant; 
         }
 
+        public IEnumerable<Event> GetRandomRestaurants()
+        {
+            List<Event> items = new List<Event>();
+            List<int> randomNummers = new List<int>();
+            //Bepaal random positie
+            Random random = new Random();
+
+            //Haal 5 x een random cultuuritem op
+            do
+            {
+                int optie = random.Next(61,70);
+                if (!randomNummers.Contains(optie))
+                {
+                    //Voeg nummer toe aan lijst
+                    randomNummers.Add(optie);
+                    //Haal het item met het id op
+                    Event restaurant = ctx.Event.FirstOrDefault(r => r.EventId == optie);
+                    //Als item ongelijk aan null voeg toe aan items
+                    if (restaurant != null && !items.Exists(r => r.naam == restaurant.naam))
+                        items.Add(restaurant);
+                }
+
+            } while (items.Count < 5);
+
+            return items.AsEnumerable();
+        }
 
     }
 }

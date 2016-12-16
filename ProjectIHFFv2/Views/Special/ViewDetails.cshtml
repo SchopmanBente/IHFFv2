@@ -1,0 +1,43 @@
+﻿@using ProjectIHFFv2.Models;
+@model SpecialDetailPresentationModel
+@{
+    ViewBag.Title = "ViewDetails";
+}
+<h2>ViewDetails</h2>
+<header>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("Woensdag", "Special") > @Html.ActionLink("View Details", "ViewDetails", "Special", new { id = @Model.EventId }, null) </p>
+    <h1>@Model.Naam</h1>
+</header>
+<section class="detail-left">
+    <div>
+        <img src="@Model.AfbeeldingUrl" />
+        <p>@Model.Beschrijving</p>
+    </div>
+    <div class="voorstellingen">
+        <h3>Reveal the story..</h3>
+          <div class="voorstelling-left">
+                <p>@Model.BeginDatumTijd</p>
+            </div>
+            <div class="voorstelling-midden">
+                <p>@Model.EventLocatie.naam @Model.EventLocatie.zaal</p>
+                <p>@Model.EventLocatie.straat @Model.EventLocatie.huisnr</p>
+                <p>@Model.EventLocatie.plaats</p>
+            </div>
+            <div class="voorstelling-right">
+                @Html.ActionLink("Add to cart", "Add", "Cart", new { id = @Model.EventId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Add to wishlist", "Add", "Wish", new { id = @Model.EventId }, new { @class = "btn btn-info" })
+            </div>
+    </div>
+</section>
+<section class="detail-right">
+    <h3>Discover delicious food..</h3>
+    @foreach (var r in Model.Restaurants)
+    {
+        <section class="cultuuritem">
+            <img src="@r.afbeelding_url" />
+            <p>@r.naam</p>
+            <p>@r.beschrijving</p>
+            @Html.ActionLink("View", "DetailPagina", "Restaurant", new { id = @r.EventId }, new { @class = "btn btn-info" })
+        </section>
+    }
+</section>

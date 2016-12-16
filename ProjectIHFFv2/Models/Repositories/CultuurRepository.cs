@@ -27,7 +27,7 @@ namespace ProjectIHFFv2.Models
                     //Haal het item met het id op
                     Cultuuritem item = ctx.Cultuuritem.FirstOrDefault(c => c.id == optie);
                     //Als item ongelijk aan null voeg toe aan items
-                    if(item != null)
+                    if(item != null && !items.Exists(c => c.naam == item.naam))
                         items.Add(item);
                 }
 

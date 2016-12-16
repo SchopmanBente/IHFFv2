@@ -210,6 +210,7 @@
     <Compile Include="Models\PresentationViews.cs" />
     <Compile Include="Models\Repositories\CultuurRepository.cs" />
     <Compile Include="Models\Repositories\FilmRepository.cs" />
+    <Compile Include="Models\Repositories\LocatieRepository.cs" />
     <Compile Include="Models\Repositories\RestaurantRepository.cs" />
     <Compile Include="Models\Repositories\SpecialRepository.cs" />
     <Compile Include="Models\Reservering.cs">
@@ -308,6 +309,7 @@
     <Content Include="Views\Film\ViewDetails.cshtml" />
     <Content Include="Views\Restaurant\DetailPagina.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
+    <Content Include="Views\Special\ViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
