@@ -14,7 +14,6 @@ namespace ProjectIHFFv2.Controllers
         private FilmRepository filmrepository = new FilmRepository();
         private PresentationViews presentation = new PresentationViews();
 
-        //Fucking doe het nou kut
         public ActionResult Wednesday()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 11, 00, 00, 00));
