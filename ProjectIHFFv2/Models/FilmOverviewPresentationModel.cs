@@ -25,7 +25,7 @@ namespace ProjectIHFFv2.Models
             DateTime start = (DateTime)begindatum;
 
             if (start.Minute == dag.Minute)
-                this.BeginDatumTijd = start.Hour.ToString() + ':' + 0 + start.Minute.ToString();
+                this.BeginDatumTijd = start.Hour.ToString() + ":00";
             else
                 this.BeginDatumTijd = start.Hour.ToString() + ':' + start.Minute.ToString();
                         
