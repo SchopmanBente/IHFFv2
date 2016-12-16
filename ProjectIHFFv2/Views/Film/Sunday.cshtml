@@ -1,11 +1,10 @@
-﻿@using ProjectIHFFv2.Models;
-@model IEnumerable<FilmOverviewPresentationModel>
+﻿@model IEnumerable<FilmOverviewPresentationModel>
 @{
-    ViewBag.Title = "Zaterdag";
+    ViewBag.Title = "Wednesday";
 }
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Film > @Html.ActionLink("Zaterdag", "Film") </p>
-    <h1>Zaterdag</h1>
+    <p class="breadcrumb-adjusted">@Html.ActionLink("Index", "Home") > Film > @Html.ActionLink("Sunday", "Film") </p>
+    <h1>Sunday</h1>
     @Html.Partial("~\\views\\shared\\_MovieDaySelection.cshtml");
 </header>
 <section>
@@ -22,10 +21,10 @@
                 <p>
                     @f.Beschrijving
                     @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @f.EventId }, new { @class = "btn btn-info" })
+
                 </p>
             </div>
         </section>
     }
 
 </section>
-
