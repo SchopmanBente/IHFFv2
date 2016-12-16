@@ -312,6 +312,9 @@
     <Content Include="Views\Restaurant\DetailPagina.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Special\ViewDetails.cshtml" />
+    <Content Include="Views\Shared\_MovieDaySelection.cshtml" />
+    <Content Include="Views\Shared\_SpecialDaySelection.cshtml" />
+    <Content Include="Views\Shared\_RestaurantLocationSelection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
