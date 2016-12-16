@@ -18,9 +18,18 @@
         <h3>Reveal the story..</h3>
         @foreach(var v in Model.filmVoorstellingen)
         {
+            <div class="voorstelling-left">
             <p>@v.Event.begin_datumtijd.Value.Date @v.Event.begin_datumtijd.Value.Hour @v.Event.begin_datumtijd.Value.Minute</p>
-            <p>@v.Event.Locatie.naam</p>
-            
+            </div>
+            <div class="voorstelling-midden">
+                <p>@v.Event.Locatie.naam @v.Event.Locatie.zaal</p>
+                <p>@v.Event.Locatie.straat @v.Event.Locatie.huisnr</p>
+                <p>@v.Event.Locatie.plaats</p>
+            </div>
+            <div class="voorstelling-right">
+                @Html.ActionLink("Add to cart", "Add", "Cart", new { id = @v.EventId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Add to wishlist", "Add", "Wish", new { id = @v.EventId }, new { @class = "btn btn-info" })
+            </div>            
         }
     </div>
 
@@ -30,6 +39,7 @@
    {
        <p>@c.naam</p>
        <p>@c.beschrijving</p>
+       @Html.ActionLink("View", "ViewDetails", "Cultuur", new { id = @c.id }, new { @class = "btn btn-info" })
    }
 </section>
 

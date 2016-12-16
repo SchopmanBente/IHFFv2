@@ -8,7 +8,7 @@
 <section>
     @foreach (FilmOverviewPresentationModel f in Model)
     {
-        <section class="filmOverview">
+        <section class="overview">
             <div class="film_image">
                 <img width="100" height="120" src="@f.AfbeeldingUrl" />
             </div>
@@ -18,8 +18,7 @@
 
                 <p>
                     @f.Beschrijving
-                    @Html.ActionLink("View", "ViewDetails", "Film", new { id = @f.EventId }, null);
-                    <input type="button" title="View" value="View more" onclick="location.href='@Url.Action("ViewDetails", "Film", new { id = f.EventId })'" />
+                    @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @f.Naam}, new { @class = "btn btn-info" })
                 </p>
             </div>
         </section>

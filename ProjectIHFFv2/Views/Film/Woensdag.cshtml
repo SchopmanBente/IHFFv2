@@ -17,8 +17,7 @@
                 
                 <p>
                     @f.Beschrijving
-                    @Html.ActionLink("View", "ViewDetails", "Film", new { id = @f.EventId }, null);
-                    <input type="button" title="View" value="View more" onclick="location.href='@Url.Action("ViewDetails", "Film", new { id = f.EventId })'" />
+                    @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @f.EventId }, new { @class = "btn btn-info" })
                 </p>    
             </div>
        </section>
