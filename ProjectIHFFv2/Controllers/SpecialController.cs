@@ -14,35 +14,36 @@ namespace ProjectIHFFv2.Controllers
         private SpecialRepository specialRepository = new SpecialRepository();
         private PresentationViews presentation = new PresentationViews();
 
-        public ActionResult Woensdag()
+        public ActionResult Wednesday()
         {
             IEnumerable<SpecialOverviewPresentationModel> specials = presentation.GetAllSpecialsForDay(new DateTime(2017, 1, 11, 00, 00, 00));
             return View(specials);
         }
 
-        public ActionResult Donderdag()
+        public ActionResult Thursday()
         {
             IEnumerable<SpecialOverviewPresentationModel> specials = presentation.GetAllSpecialsForDay(new DateTime(2017, 1, 12, 00, 00, 00));
             return View(specials);
         }
 
-        public ActionResult Vrijdag()
+        public ActionResult Friday()
         {
             IEnumerable<SpecialOverviewPresentationModel> specials = presentation.GetAllSpecialsForDay(new DateTime(2017, 1, 13, 00, 00, 00));
             return View(specials);
         }
 
-        public ActionResult Zaterdag()
+        public ActionResult Saturday()
         {
             IEnumerable<SpecialOverviewPresentationModel> specials = presentation.GetAllSpecialsForDay(new DateTime(2017, 1, 14, 00, 00, 00));
             return View(specials);
         }
 
-        public ActionResult Zondag()
+        public ActionResult Sunday()
         {
             IEnumerable<SpecialOverviewPresentationModel> specials = presentation.GetAllSpecialsForDay(new DateTime(2017, 1, 15, 00, 00, 00));
             return View(specials);
         }
+       
 
         public ActionResult ViewDetails(int id)
         {

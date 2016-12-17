@@ -1,11 +1,11 @@
 ﻿@using ProjectIHFFv2.Models;
 @model IEnumerable<SpecialOverviewPresentationModel>
 @{
-    ViewBag.Title = "Zondag";
+    ViewBag.Title = "Friday";
 }
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Special >  @Html.ActionLink("Zondag", "Film") </p>
-    <h1>Zondag</h1>   
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Special > @Html.ActionLink("Friday", "Film") </p>
+    <h1>Friday</h1>
     @Html.Partial("~\\views\\shared\\_SpecialDaySelection.cshtml");
 </header>
 <section>
@@ -21,10 +21,7 @@
 
                 <p>
                     @s.Beschrijving
-                    @using (Html.BeginForm("someAction", "someController"))
-                    {
-                        <button type="submit">OK</button>
-                    }
+                    @Html.ActionLink("View Details", "ViewDetails", "Special", new { id = @s.EventId }, new { @class = "btn btn-info" })
                 </p>
 
             </div>

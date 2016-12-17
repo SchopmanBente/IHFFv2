@@ -305,11 +305,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Restaurant\Bloemendaal.cshtml" />
     <Content Include="Views\Restaurant\Haarlem.cshtml" />
-    <Content Include="Views\Special\Woensdag.cshtml" />
-    <Content Include="Views\Special\Donderdag.cshtml" />
-    <Content Include="Views\Special\Vrijdag.cshtml" />
-    <Content Include="Views\Special\Zaterdag.cshtml" />
-    <Content Include="Views\Special\Zondag.cshtml" />
     <Content Include="Views\Film\ViewDetails.cshtml" />
     <Content Include="Views\Restaurant\DetailPagina.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
@@ -322,6 +317,11 @@
     <Content Include="Views\Film\Saturday.cshtml" />
     <Content Include="Views\Film\Friday.cshtml" />
     <Content Include="Views\Film\Thursday.cshtml" />
+    <Content Include="Views\Special\Wednesday.cshtml" />
+    <Content Include="Views\Special\Thursday.cshtml" />
+    <Content Include="Views\Special\Friday.cshtml" />
+    <Content Include="Views\Special\Saturday.cshtml" />
+    <Content Include="Views\Special\Sunday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

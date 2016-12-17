@@ -1,11 +1,11 @@
 ﻿@using ProjectIHFFv2.Models;
 @model IEnumerable<SpecialOverviewPresentationModel>
 @{
-    ViewBag.Title = "Woensdag";
+    ViewBag.Title = "Saturday";
 }
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("Woensdag", "Film") </p>
-    <h1>Woensdag</h1>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Special > @Html.ActionLink("Saturday", "Film") </p>
+    <h1>Saturday</h1>
     @Html.Partial("~\\views\\shared\\_SpecialDaySelection.cshtml");
 </header>
 <section>
@@ -28,4 +28,3 @@
         </section>
     }
 </section>
-
