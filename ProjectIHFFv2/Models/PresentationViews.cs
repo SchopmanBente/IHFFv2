@@ -20,7 +20,8 @@ namespace ProjectIHFFv2.Models
             List<FilmOverviewPresentationModel> moviePresentations = new List<FilmOverviewPresentationModel>();
             foreach (Film f in movies)
             {
-                FilmOverviewPresentationModel moviePresentation = new FilmOverviewPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.Event.begin_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving);
+                Locatie locatie = locatieRepository.GetById(f.Event.Locatie.id);
+                FilmOverviewPresentationModel moviePresentation = new FilmOverviewPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd,locatie, f.Event.beschrijving);
                 moviePresentations.Add(moviePresentation);
             }
             return moviePresentations.AsEnumerable();

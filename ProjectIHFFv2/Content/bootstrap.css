@@ -71,8 +71,8 @@ a:hover {
 }
 
 h1 {
-  margin: 0.67em 0;
   font-size: 2em;
+  font-family: 'Poppins', sans-serif;
 }
 
 abbr[title] {
@@ -474,9 +474,9 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 0.7;
 }
 
 h1 small,
@@ -496,7 +496,7 @@ h6 small,
   color: #999999;
 }
 
-h1,
+/* h1 weggehaald test*/
 h2,
 h3 {
   margin-top: 20px;
@@ -513,6 +513,11 @@ h6 {
 h1,
 .h1 {
   font-size: 36px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #E82830;
+  padding: 0px 38px 0px 105px;
 }
 
 h2,
@@ -4621,11 +4626,19 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .breadcrumb {
-  padding: 8px 15px;
-  margin-bottom: 20px;
+ padding: 8px 38px 0px 105px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: #ccc;
   border-radius: 4px;
+  color : #333;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.breadcrumb > a 
+{
+    color: #333;
 }
 
 .breadcrumb > li {

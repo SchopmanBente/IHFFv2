@@ -7,6 +7,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <script src="@Url.Content("~/Scripts/script.js")"></script>
+    @RenderSection("Scripts",false/*required*/)
+ 
 
 </head>
 <body>
@@ -55,7 +58,6 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/bootstrap")    
 </body>
 </html>

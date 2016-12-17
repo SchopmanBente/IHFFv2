@@ -4,26 +4,29 @@
     ViewBag.Title = "Wednesday";
 }
 <header>
-    <p class="breadcrumb-adjusted">@Html.ActionLink("Index", "Home") > Film > @Html.ActionLink("Sunday", "Film") </p>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Film > @Html.ActionLink("Sunday", "Film") </p>
     <h1>Sunday</h1>
     @Html.Partial("~\\views\\shared\\_MovieDaySelection.cshtml");
 </header>
 <section>
     @foreach (FilmOverviewPresentationModel f in Model)
     {
-        <section class="filmOverview">
+        <section>
             <div class="film_image">
                 <img width="100" height="120" src="@f.AfbeeldingUrl" />
             </div>
             <div class="film_text">
-                <h3 class="headergegeven">@f.Naam</h3>
-                <h4 class="headergegeven">@f.BeginDatumTijd @f.EventLocatie</h4>
-
-                <p>
+                <header class="head-item">
+                    <h3 class="headergegeven">@f.Naam</h3>
+                    <h4 class="headergegeven">@f.BeginDatumTijd - @f.EindDatumTijd at @f.EventLocatie.naam @f.EventLocatie.zaal</h4>
+                </header>
+                <p class="beschrijving">
                     @f.Beschrijving
-                    @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @f.EventId }, new { @class = "btn btn-info" })
-
                 </p>
+                <div class="item-button">
+                    @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @f.EventId }, new { @class = "btn btn-view btn-info" })
+
+                </div>
             </div>
         </section>
     }

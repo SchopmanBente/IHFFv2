@@ -50,7 +50,7 @@ footer {
     padding-top: 7px;
     padding-bottom: 7px; 
     min-width: 1000px;
-    position:absolute; 
+    position:absolute;  
     width:100%; 
     
 }
@@ -144,10 +144,86 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
-header > p .breadcrumb-adjusted  
+body > div:nth-child(2) > header > .dagselectie
 {
-    color : #ff0000;
+    border-radius: 20px;
+    background-color: #2E2E2E;
+    height: 40px;
+    width: 787px;
+    margin: 25px 0px 0px 105px;
+}
+
+body > div:nth-child(2) > header > .dagselectie > a
+{
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size: 24px;
+    color: #FFF;
+    margin: 25px;
+    vertical-align: middle;
+    line-height: 3;
+    padding: 0px 20px 0px 20px;
 }
+
+body > div:nth-child(2) > header > .dagselectie > a:hover
+{
+    color: #E82830;
+}
+
+body > div:nth-child(2) > section > section
+{
+    background-color: #fff;
+    margin: 10px 0px 0px 105px;
+    width: 80%;
+    height: 120px;
+}
+
+body > div:nth-child(2) > section > section > .film_image 
+{
+    float: left;
+    height: 120px;
+}
+
+body > div:nth-child(2) > section > section > .film_text 
+{
+    text-align: left;
+    display: block;
+    margin: auto;
+    width: 75%;
+    height: 120px;
+}
+body > div:nth-child(2) > section > section > .film_text
+{
+   position: relative;
+}
+body > div:nth-child(2) > section > section > div.film_text > header
+{
+      padding-top: 5px;
+    height: 70px;
+}
+
+body > div:nth-child(2) > section > section > .film_text > .beschrijving
+{
+   padding-bottom: 5px;
+   height: 50px;
+}
+body > div:nth-child(2) > section > section > .film_text > .item-button  
+{
+ 
+    position: absolute;
+    float: right;
+    top: 45px;
+    bottom: 30px;
+    left: 800px;
+    right: 100px;
+}
+
+.btn-view 
+{
+     background-color: #E82830; 
+    color: #fff;
+     border-radius: 20px; 
+    border-color: #E82830; 
+}
+
+
+
