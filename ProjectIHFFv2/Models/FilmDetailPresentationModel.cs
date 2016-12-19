@@ -12,8 +12,6 @@ namespace ProjectIHFFv2.Models
         public string Naam { get; set; }
         public string AfbeeldingUrl { get; set; }
         public string TrailerUrl { get; set; }
-        public string BeginDatumTijd { get; set; }
-        public string EindDatumTijd { get; set; }
         public string EventLocatie { get; set; }
         public string Beschrijving { get; set; }
         public IEnumerable<Cultuuritem> CultuurItems { get; set; }
@@ -34,21 +32,7 @@ namespace ProjectIHFFv2.Models
             this.Beschrijving = beschrijving;
             this.CultuurItems = activiteiten;
             this.filmVoorstellingen = voorstellingen;
-
-            //Bepaal de juiste weergave
-            DateTime dag = new DateTime(2017, 8, 10, 0, 0, 0);
-            DateTime start = (DateTime)begindatum;
-            DateTime eind = (DateTime)einddatum;
-
-            if (start.Minute == dag.Minute)
-                this.BeginDatumTijd = start.Date.ToString() + " " + start.Hour.ToString() + ":00";
-            else
-                this.BeginDatumTijd = start.Date.ToString() + " " + start.Hour.ToString() + ':' + start.Minute.ToString();
-
-            if(eind.Minute == dag.Minute)
-                this.BeginDatumTijd = eind.Date.ToString() + " " + eind.Hour.ToString() + ':' + 0 + eind.Minute.ToString();
-            else
-                this.BeginDatumTijd = eind.Date.ToString() + " " + eind.Hour.ToString() + ':' + eind.Minute.ToString();     
+          
         }
     }
 }

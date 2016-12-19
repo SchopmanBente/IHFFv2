@@ -3,32 +3,39 @@
 @{
     ViewBag.Title = "ViewDetails";
 }
-<h2>ViewDetails</h2>
 <header>
     <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("Woensdag", "Special") > @Html.ActionLink("View Details", "ViewDetails", "Special", new { id = @Model.EventId }, null) </p>
     <h1>@Model.Naam</h1>
 </header>
 <section class="detail-left">
-    <div>
-        <img src="@Model.AfbeeldingUrl" />
+    <div class="detail-image">
+        <img src="@Model.AfbeeldingUrl" height="300" width="200" />
+    </div>
+    <div class="details">
         <p>@Model.Beschrijving</p>
     </div>
-    <div class="voorstellingen">
-        <h3>Reveal the story..</h3>
-          <div class="voorstelling-left">
-                <p>@Model.BeginDatumTijd</p>
-            </div>
-            <div class="voorstelling-midden">
-                <p>@Model.EventLocatie.naam @Model.EventLocatie.zaal</p>
-                <p>@Model.EventLocatie.straat @Model.EventLocatie.huisnr</p>
-                <p>@Model.EventLocatie.plaats</p>
-                <p>Ticket: @Model.</p>
-            </div>
-            <div class="voorstelling-right">
-                @Html.ActionLink("Add to cart", "Add", "Cart", new { id = @Model.EventId }, new { @class = "btn btn-info" })
-                @Html.ActionLink("Add to wishlist", "Add", "Wish", new { id = @Model.EventId }, new { @class = "btn btn-info" })
-            </div>
-    </div>
+        <div class="voorstellingen">
+           <div class="voorstelling">
+               <div class="voorstelling-left">
+                   <p>@Model.BeginDatumTijd.Day-@Model.BeginDatumTijd.Month-@Model.BeginDatumTijd.Year @Model.BeginDatumTijd.Hour:@Model.BeginDatumTijd.Minute</p>
+               </div>
+               <div class="voorstelling-midden">
+                   <p>@Model.BeginDatumTijd - @Model.EindDatumTijd</p>
+                   <p>@Model.EventLocatie.naam @Model.EventLocatie.zaal </p>
+                   <p>@Model.EventLocatie.straat @Model.EventLocatie.huisnr @Model.EventLocatie.plaats</p>
+                   <p>Ticket: @Model.Prijs</p>
+               </div>
+               <div class="voorstelling-right">
+                   @using (Html.BeginForm())
+                   {
+                       @Html.TextBoxFor(c => c.AantalPersonen, new { @type = "number", @style = "width:50px" });
+                       <input type="submit" id="@Model.EventId" name="Cart" class="btn btn-view" value="Add to cart" formaction="AddToCart" formmethod="post" />
+                       <input type="submit" id="@Model.EventId" name="Wishlist" class="btn btn-view" value="Add to wishlist" formaction="AddToWishlist" formmethod="post" />
+                   }
+               </div>
+           </div>
+           
+        </div>
 </section>
 <section class="detail-right">
     <h3>Discover delicious food..</h3>
