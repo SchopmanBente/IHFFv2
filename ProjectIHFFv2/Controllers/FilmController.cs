@@ -52,5 +52,25 @@ namespace ProjectIHFFv2.Controllers
             FilmDetailPresentationModel filmDetail = presentation.GetFilmDetails(id);
             return View(filmDetail);
         }
+
+        [HttpPost]
+        public ActionResult AddToCart(FilmDetailPresentationModel model, int eventId)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("","Cart");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddToWishlist(FilmDetailPresentationModel model, int eventId)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("", "Wishlist");
+            }
+            return View();
+        }
 	}
 }

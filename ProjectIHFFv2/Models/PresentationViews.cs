@@ -41,10 +41,14 @@ namespace ProjectIHFFv2.Models
 
         public FilmDetailPresentationModel GetFilmDetails(int id)
         {
+            //Haal de film op
             Film f = filmRepository.GetById(id);
+            //Haal de voorstellingen van de film op
             IEnumerable<Film> voorstellingenFilm = filmRepository.GetAllEventsForDetail(f.naam);
+            //Haal culturele activiteiten op
             IEnumerable<Cultuuritem> cultuurActiviteiten = cultuurRepository.GetRandomCultuurItems();
-            FilmDetailPresentationModel model = new FilmDetailPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.trailer_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving, cultuurActiviteiten, voorstellingenFilm);
+            //Creer een model
+            FilmDetailPresentationModel model = new FilmDetailPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.trailer_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving, cultuurActiviteiten,voorstellingenFilm);
             return model;
         }
 

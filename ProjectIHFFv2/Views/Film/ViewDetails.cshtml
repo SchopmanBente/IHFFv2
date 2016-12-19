@@ -5,7 +5,7 @@
 }
 
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Index","Home") > @Html.ActionLink("Woensdag","Film") > @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @Model.EventId }, null) </p>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("Woensdag", "Film") > @Html.ActionLink("View Details", "ViewDetails", "Film", new { id = @Model.EventId }, null) </p>
     <h1>@Model.Naam</h1>
 </header>
 <section class="detail-left">
@@ -16,10 +16,10 @@
     </div>
     <div class="voorstellingen">
         <h3>Reveal the story..</h3>
-        @foreach(var v in Model.filmVoorstellingen)
+        @foreach (var v in Model.filmVoorstellingen)
         {
             <div class="voorstelling-left">
-            <p>@v.Event.begin_datumtijd.Value.Day @v.Event.begin_datumtijd.Value.Month-@v.Event.begin_datumtijd.Value.Year- @v.Event.begin_datumtijd.Value.Hour:@v.Event.begin_datumtijd.Value.Minute</p>
+                <p>@v.Event.begin_datumtijd.Value.Day @v.Event.begin_datumtijd.Value.Month-@v.Event.begin_datumtijd.Value.Year- @v.Event.begin_datumtijd.Value.Hour:@v.Event.begin_datumtijd.Value.Minute</p>
             </div>
             <div class="voorstelling-midden">
                 <p>@v.Event.Locatie.naam @v.Event.Locatie.zaal</p>
@@ -28,22 +28,25 @@
                 <p>Ticket: @v.Event.prijs</p>
             </div>
             <div class="voorstelling-right">
-                @Html.ActionLink("Add to cart", "Add", "Cart", new { id = @v.EventId }, new { @class = "btn btn-info" })
-                @Html.ActionLink("Add to wishlist", "Add", "Wish", new { id = @v.EventId }, new { @class = "btn btn-info" })
-            </div>            
+                @using (Html.BeginForm())
+                {
+                    @Html.TextBoxFor(c => c.AantalPersonen);
+                    <input type="submit" id="@v.EventId" name="Cart" value="Add to cart" formaction="AddToCart" formmethod="post" />
+                    <input type="submit" id="@v.EventId" name="Wishlist" value="Add to wishlist" formaction="AddToWishlist" formmethod="post" />
+                }
+            </div>
         }
     </div>
 
 </section>
 <section class="detail-right">
     <h3>Discover Haarlem's Culture</h3>
-   @foreach (var c in Model.CultuurItems)
-   {
-       <section class="cultuuritem">
-           <p>@c.naam</p>
-           <p>@c.beschrijving</p>
-           @Html.ActionLink("View", "ViewDetails", "Cultuur", new { id = @c.id }, new { @class = "btn btn-info" })
-       </section>     
-   }
+    @foreach (var c in Model.CultuurItems)
+    {
+        <section class="cultuuritem">
+            <p>@c.naam</p>
+            <p>@c.beschrijving</p>
+            @Html.ActionLink("View", "ViewDetails", "Cultuur", new { id = @c.id }, new { @class = "btn btn-info" })
+        </section>
+    }
 </section>
-
