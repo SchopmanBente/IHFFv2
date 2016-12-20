@@ -37,5 +37,23 @@ namespace ProjectIHFFv2.Models
 
         }
 
+        public IEnumerable<Cultuuritem> GetMonuments()
+        {
+            IQueryable<Cultuuritem> monuments = ctx.Cultuuritem.Where(c => c.soort == "Monument");
+            return monuments;
+        }
+
+        public IEnumerable<Cultuuritem> GetMuseums()
+        {
+            IQueryable<Cultuuritem> museums = ctx.Cultuuritem.Where(c => c.soort == "Museum");
+            return museums;
+        }
+
+        public IEnumerable<Cultuuritem> GetMusics()
+        {
+            IQueryable<Cultuuritem> musics = ctx.Cultuuritem.Where(c => c.soort == "Music");
+            return musics;
+        }
+
     }
 }

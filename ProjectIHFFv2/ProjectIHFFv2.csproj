@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -326,6 +327,11 @@
     <Content Include="Views\Special\Friday.cshtml" />
     <Content Include="Views\Special\Saturday.cshtml" />
     <Content Include="Views\Special\Sunday.cshtml" />
+    <Content Include="Views\Culture\monument.cshtml" />
+    <Content Include="Views\Culture\museum.cshtml" />
+    <Content Include="Views\Culture\music.cshtml" />
+    <Content Include="Views\Shared\_CultureTypeSelection.cshtml" />
+    <Content Include="Views\Culture\ViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
