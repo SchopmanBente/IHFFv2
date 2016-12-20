@@ -11,7 +11,8 @@ namespace ProjectIHFFv2.Controllers
     {
         public ActionResult Index()
         {
-            Session["wishlist"] = new List<WishlistItem>(); //session is aangemaakt als 'wishlist'.
+            //Session["wishlist"] = new List<WishlistItem>(); //session is aangemaakt als 'wishlist'.
+            List<WishlistItem> items = Session["wishlist"] as List<WishlistItem>;
             return View();
         }
     }

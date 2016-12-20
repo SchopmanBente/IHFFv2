@@ -11,7 +11,6 @@ namespace ProjectIHFFv2.Controllers
     {
         //
         // GET: /Film/
-        private FilmRepository filmrepository = new FilmRepository();
         private PresentationViews presentation = new PresentationViews();
 
         public ActionResult Wednesday()
@@ -34,7 +33,7 @@ namespace ProjectIHFFv2.Controllers
             return View(films);
         }
 
-  
+
         public ActionResult Saturday()
         {
             IEnumerable<FilmOverviewPresentationModel> films = presentation.GetAllFilmsForDay(new DateTime(2017, 1, 14, 00, 00, 00));
@@ -54,23 +53,64 @@ namespace ProjectIHFFv2.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(FilmDetailPresentationModel model, int eventId)
+        public ActionResult ViewDetails(int eventId, int qty, string submit)
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("","Cart");
+                if (qty > 0)
+                {
+                    switch (submit)
+                    {
+                        case "Add to wishlist":
+                            List<WishlistItem> items = HaalWishlistSessieOp();
+                            presentation.AddToWishlist(qty, eventId, items);
+                            return RedirectToAction("Index", "Wishlist");
+                        case "Add to cart":
+                            List<ShoppingCartItem> cartItems = HaalCartSessieOp();
+                            presentation.AddToCart(qty, eventId, cartItems);
+                            return RedirectToAction("Index", "Cart");
+                        default:
+                            return View();
+                    }
+      
+                }
+
+                return View();
             }
             return View();
         }
 
-        [HttpPost]
-        public ActionResult AddToWishlist(FilmDetailPresentationModel model, int eventId)
+        private List<ShoppingCartItem> HaalCartSessieOp()
         {
-            if (ModelState.IsValid)
+            if (Session["cart"] == null)
             {
-                return RedirectToAction("", "Wishlist");
+                List<ShoppingCartItem> items = new List<ShoppingCartItem>();
+                Session["cart"] = items;
+                return items;
             }
-            return View();
+            else
+            {
+                var cart = Session["cart"] as List<ShoppingCartItem>;
+                List<ShoppingCartItem> items = (List<ShoppingCartItem>)cart;
+                return items;
+            }
         }
-	}
-}
+
+        private List<WishlistItem> HaalWishlistSessieOp()
+        {
+            if (Session["wishlist"] == null)
+            {
+                List<WishlistItem> items = new List<WishlistItem>();
+                Session["wishlist"] = items;
+                return items;
+            }
+            else
+            {
+                var wishlist = Session["wishlist"] as List<WishlistItem>;
+                List<WishlistItem> items = (List<WishlistItem>)wishlist;
+                return items;
+            }
+        }
+
+        }
+    }

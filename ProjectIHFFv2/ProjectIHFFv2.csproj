@@ -208,7 +208,9 @@
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PresentationViews.cs" />
+    <Compile Include="Models\Repositories\CartRepository.cs" />
     <Compile Include="Models\Repositories\CultuurRepository.cs" />
+    <Compile Include="Models\Repositories\EventRepository.cs" />
     <Compile Include="Models\Repositories\FilmRepository.cs" />
     <Compile Include="Models\Repositories\LocatieRepository.cs" />
     <Compile Include="Models\Repositories\RestaurantRepository.cs" />
@@ -219,6 +221,7 @@
     </Compile>
     <Compile Include="Models\RestaurantDetailPresentationModel.cs" />
     <Compile Include="Models\RestaurantOverviewPresentationModel.cs" />
+    <Compile Include="Models\ShoppingCartItem.cs" />
     <Compile Include="Models\Special.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>

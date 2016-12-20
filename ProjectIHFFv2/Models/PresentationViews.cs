@@ -8,10 +8,13 @@ namespace ProjectIHFFv2.Models
     public class PresentationViews
     {
         private CultuurRepository cultuurRepository = new CultuurRepository();
+        private CartRepository cartRepository = new CartRepository();
+        private EventRepository eventRepository = new EventRepository();
         private FilmRepository filmRepository = new FilmRepository();
         private SpecialRepository specialRepository = new SpecialRepository();
         private RestaurantRepository restaurantRepository = new RestaurantRepository();
         private LocatieRepository locatieRepository = new LocatieRepository();
+        private WishlistRepository wishlistRepository = new WishlistRepository();
       
 
         public IEnumerable<FilmOverviewPresentationModel> GetAllFilmsForDay(DateTime day)
@@ -69,6 +72,19 @@ namespace ProjectIHFFv2.Models
             Locatie locatie = locatieRepository.GetById(s.Event.Locatie.id);
             SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId,(double)s.Event.prijs,s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
             return special;
+        }
+
+        public void AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items) 
+        {
+            Event gebeurtenis = eventRepository.GetById(eventId); 
+            wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen, (DateTime)gebeurtenis.begin_datumtijd,items);
+
+        }
+
+        public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)
+        {
+            Event gebeurtenis = eventRepository.GetById(eventId);
+            cartRepository.AddEventToCart(gebeurtenis, aantalPersonen, items);
         }
     }
 }

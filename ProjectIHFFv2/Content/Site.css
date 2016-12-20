@@ -258,6 +258,38 @@ body > div:nth-child(2) {
     float: left;
     width: 100%;
 }
+<<<<<<< HEAD
+=======
+body > div:nth-child(2) > section.detail-left 
+{
+    float: left;
+    width: 55%;
+    height: 100%;
+    margin-left: 105px;  
+      background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+body > div:nth-child(2) > section.detail-left > div.detail-image
+{
+         float: left;
+    width: 25%;
+    height: 300px;
+    margin-bottom: 5px;
+     
+}
+
+body > div:nth-child(2) > section.detail-left > div.details
+{
+     float: left;
+    width: 75%;
+    /* margin-left: -1px; */
+    padding-left: 41px;
+    /* padding: 10px; */
+    margin-bottom: 5px;
+    height: 300px;
+}
+     
+
 
     body > div:nth-child(2) > section.detail-left {
         float: left;
