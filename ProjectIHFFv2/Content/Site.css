@@ -245,6 +245,7 @@ body > div:nth-child(2) > section > section {
     font-weight: bold;
 }
 
+
     .btn-view:hover,
     .btn-view:focus {
         background-color: #fff;
@@ -258,6 +259,7 @@ body > div:nth-child(2) {
     float: left;
     width: 100%;
 }
+
 
 body > div:nth-child(2) > section.detail-left 
 {
@@ -276,6 +278,7 @@ body > div:nth-child(2) > section.detail-left > div.detail-image
     margin-bottom: 5px;
      
 }
+
 
 body > div:nth-child(2) > section.detail-left > div.details
 {
