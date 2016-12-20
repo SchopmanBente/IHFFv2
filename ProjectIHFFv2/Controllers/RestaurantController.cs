@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ProjectIHFFv2.Models; 
+using ProjectIHFFv2.Models;
 
 namespace ProjectIHFFv2.Controllers
 {
@@ -14,7 +14,7 @@ namespace ProjectIHFFv2.Controllers
         // GET: Restaurant
         public ActionResult Bloemendaal()
         {
-            IEnumerable<RestaurantOverviewPresentationModel> resb = presentation.GetAllRestaurantsByLocation("Bloemendaal"); 
+            IEnumerable<RestaurantOverviewPresentationModel> resb = presentation.GetAllRestaurantsByLocation("Bloemendaal");
 
             return View(resb);
         }
@@ -23,14 +23,17 @@ namespace ProjectIHFFv2.Controllers
         {
             IEnumerable<RestaurantOverviewPresentationModel> resh = presentation.GetAllRestaurantsByLocation("Haarlem");
 
-            return View(resh); 
+            return View(resh);
         }
+
 
         public ActionResult DetailPagina(int id)
         {
-            RestaurantDetailPresentationModel restaurant = presentation.GetRestaurantDetails(id); 
+            
+                RestaurantDetailPresentationModel restaurant = presentation.GetRestaurantDetails(id);
 
-            return View(restaurant); 
+                return View(restaurant);
+           
         }
     }
 }

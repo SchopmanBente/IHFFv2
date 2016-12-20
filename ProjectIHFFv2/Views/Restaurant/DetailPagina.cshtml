@@ -2,16 +2,25 @@
 
 @model RestaurantDetailPresentationModel
 
-<h2>@Model.Event.naam</h2>
+<header>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Index" , "Home") > @Html.ActionLink("Restaurants "+Model.Event.Locatie.plaats, Model.Event.Locatie.plaats, "Restaurant") > @Html.ActionLink(Model.Event.naam, "DetailPagina", "Restaurant", new { id = @Model.Event.EventId }, null) </p>
+    <h1>@Model.Event.naam</h1>
+</header>
+
+<section style="background-color:white;">
+    <div>
+        <img src="@Model.Event.afbeelding_url" />
+    </div>
 
 
-<img src="@Model.Event.afbeelding_url" />
 
+    <p>@Model.Event.beschrijving</p>
 
-<p>@Model.Event.beschrijving</p>
+</section>
 
-
-@foreach(Film f in Model.Films)
-{
-    <img src="@f.Event.afbeelding_url" />
-}
+<article>
+    @foreach (Film f in Model.Films)
+    {
+        <img width="182" height="268" src="@f.Event.afbeelding_url" style="margin-bottom:300px;" />
+    }
+</article>
