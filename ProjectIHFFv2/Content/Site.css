@@ -258,8 +258,7 @@ body > div:nth-child(2) {
     float: left;
     width: 100%;
 }
-<<<<<<< HEAD
-=======
+
 body > div:nth-child(2) > section.detail-left 
 {
     float: left;
@@ -404,4 +403,11 @@ body > div:nth-child(2) > section.detail-right {
 
 section {
     margin-bottom: 300px;
+}
+
+/*xxx*/
+body > div:nth-child(2) > header > nav > a.current
+{
+    font-weight: bold;
+    color: #E82830;    
 }
