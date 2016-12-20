@@ -25,5 +25,11 @@ namespace ProjectIHFFv2.Controllers
         {
             return View(cultuurRepository.GetMusics());
         }
+
+        public ActionResult ViewDetails(int id)
+        {
+            Cultuuritem cultuurPresentationModel = cultuurRepository.GetCultuurItem(id);
+            return View(cultuurPresentationModel);
+        }
     }
 }

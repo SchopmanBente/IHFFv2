@@ -55,5 +55,12 @@ namespace ProjectIHFFv2.Models
             return musics;
         }
 
+        public Cultuuritem GetCultuurItem(int id)
+        {
+            //Haal de cultuurItem op
+            Cultuuritem cultuurItem = ctx.Cultuuritem.FirstOrDefault(x => x.id == id);
+            return cultuurItem;
+        }
+
     }
 }
