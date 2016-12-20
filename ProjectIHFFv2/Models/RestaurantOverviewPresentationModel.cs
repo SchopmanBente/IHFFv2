@@ -9,25 +9,9 @@ namespace ProjectIHFFv2.Models
     public class RestaurantOverviewPresentationModel
     {
         public Event Event { get; set; }
-        public string Beschrijving
-        {
-            get
-            {
-               
-                    for (int i = 0; i < Event.beschrijving.Length; i++)
-                    { if (i > 80 && Event.beschrijving[Event.beschrijving.Length - 1] == ' ')
-                    {
-                        return Event.beschrijving.Substring(0, i) + "...";
-
-                    }
-
-                    else
-                        return Event.beschrijving + "...";  
-                    }
-                   
-               
-            }
-        }
+        public string Beschrijving { get { return Event.beschrijving.Substring(0, 80) + "..."; } }
+        
+        
 
 
         public RestaurantOverviewPresentationModel(Event Event)

@@ -245,6 +245,7 @@ body > div:nth-child(2) > section > section {
     font-weight: bold;
 }
 
+
     .btn-view:hover,
     .btn-view:focus {
         background-color: #fff;
@@ -258,8 +259,8 @@ body > div:nth-child(2) {
     float: left;
     width: 100%;
 }
-<<<<<<< HEAD
-=======
+
+
 body > div:nth-child(2) > section.detail-left 
 {
     float: left;
@@ -277,6 +278,7 @@ body > div:nth-child(2) > section.detail-left > div.detail-image
     margin-bottom: 5px;
      
 }
+
 
 body > div:nth-child(2) > section.detail-left > div.details
 {
@@ -404,4 +406,11 @@ body > div:nth-child(2) > section.detail-right {
 
 section {
     margin-bottom: 300px;
+}
+
+/*xxx*/
+body > div:nth-child(2) > header > nav > a.current
+{
+    font-weight: bold;
+    color: #E82830;    
 }
