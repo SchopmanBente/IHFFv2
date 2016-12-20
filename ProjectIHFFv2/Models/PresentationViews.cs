@@ -86,5 +86,20 @@ namespace ProjectIHFFv2.Models
             Event gebeurtenis = eventRepository.GetById(eventId);
             cartRepository.AddEventToCart(gebeurtenis, aantalPersonen, items);
         }
+
+        public IEnumerable<RestaurantOverviewPresentationModel> GetAllRestaurantsByLocation(string locatie)
+        {
+            IEnumerable<Event> restaurants = restaurantRepository.GetRestaurantsByPlaatsnaam(locatie);
+
+            List<RestaurantOverviewPresentationModel> resPresentLijst = new List<RestaurantOverviewPresentationModel>();
+            
+            foreach(Event r in restaurants)
+            {
+                RestaurantOverviewPresentationModel resOverviewModel = new RestaurantOverviewPresentationModel(r);
+                resPresentLijst.Add(resOverviewModel); 
+            }
+
+            return resPresentLijst.AsEnumerable(); 
+        }
     }
 }

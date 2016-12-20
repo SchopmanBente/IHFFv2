@@ -14,14 +14,14 @@ namespace ProjectIHFFv2.Controllers
         // GET: Restaurant
         public ActionResult Bloemendaal()
         {
-            IEnumerable<Event> resb = resrep.GetRestaurantsByPlaatsnaam("Bloemendaal"); 
+            IEnumerable<RestaurantOverviewPresentationModel> resb = presentation.GetAllRestaurantsByLocation("Bloemendaal"); 
 
             return View(resb);
         }
 
         public ActionResult Haarlem()
         {
-            IEnumerable<Event> resh = resrep.GetRestaurantsByPlaatsnaam("Haarlem");
+            IEnumerable<RestaurantOverviewPresentationModel> resh = presentation.GetAllRestaurantsByLocation("Haarlem");
 
             return View(resh); 
         }
