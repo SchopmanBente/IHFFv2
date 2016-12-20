@@ -218,6 +218,7 @@
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RestaurantDetailPresentationModel.cs" />
+    <Compile Include="Models\RestaurantOverviewPresentationModel.cs" />
     <Compile Include="Models\Special.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
     background-color: #CCC;
 }
 
@@ -48,25 +48,25 @@ footer {
     max-width: 2000px;
     max-height: 300px;
     padding-top: 7px;
-    padding-bottom: 7px; 
+    padding-bottom: 7px;
     min-width: 1000px;
-   position:absolute;  
-    width:100%; 
-    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
     footer h4 {
         color: white;
         display: inline;
-        margin-left: 80px;
-        margin-right: 200px;
+        margin-left: 12%;
+        margin-right: 16%;
         margin-top: 50px;
     }
 
     footer h5 {
         color: white;
         font-size: 12px;
-        margin-left: 40px; 
+        margin-left: 40px;
     }
 
     footer li {
@@ -75,24 +75,24 @@ footer {
 
 /* CSS voor programma samenstellen START*/
 .TabelCss {
-    width : 100%;
+    width: 100%;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
 .TabelKolomCss {
-        border: 1px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
 }
 
 .TabelRijCssOneven {
-        border: 1px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
     background-color: grey;
 }
 
 .TabelRijCssEven {
-        border: 1px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
     background-color: white;
 }
@@ -102,37 +102,64 @@ th {
     border-collapse: collapse;
 }
 
-.home-img-top{
-    max-height:500px; 
-    min-height:500px; 
-    float:left; 
-   
+.home-img-top {
+    max-height: 500px;
+    min-height: 500px;
+    float: left;
 }
 
-#image1{
-    position:relative; 
-    width:65%; 
-    float:left; 
+.home-img-bottom {
+    max-height: 300px;
+    min-height: 300px;
+    float: left;
+    margin-top: 6px;
+    margin-right: 5px;
+    margin-bottom: 300px;
+    width: 34%;
 }
 
-#image2{
-    position:relative; 
-    float:left;
-    width:30%;
-    padding-left:62px; 
-      
+.home-img-bottom-last {
+    width: 28%;
+    height: 300px;
+    margin-top: 6px;
+    margin-bottom:300px; 
 }
 
-#image1tekst{
-    position: absolute; 
-   top: 390px; 
-   left: 0;
+#image1 {
+    position: relative;
+    width: 65%;
+    float: left;
 }
 
-#image2tekst{
-       position: absolute; 
-   top: 390px; 
-   left: 14%;
+#image2 {
+    position: relative;
+    float: left;
+    width: 30%;
+    padding-left: 62px;
+}
+
+#image3{
+    position:relative;
+     width:101%; 
+     float: left; 
+}
+
+#image1tekst {
+    position: absolute;
+    top: 77%;
+    left: 0;
+}
+
+#image2tekst {
+    position: absolute;
+    top: 77%;
+    left: 14%;
+}
+
+#image3tekst{
+    position:absolute; 
+    top: 90%; 
+    left: 0; 
 }
 
 h2 span {
@@ -144,8 +171,7 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
-body > div:nth-child(2) > header > .dagselectie
-{
+body > div:nth-child(2) > header > .dagselectie {
     border-radius: 20px;
     background-color: #2E2E2E;
     height: 40px;
@@ -153,189 +179,197 @@ body > div:nth-child(2) > header > .dagselectie
     margin: 25px 0px 0px 105px;
 }
 
-body > div:nth-child(2) > header > .dagselectie > a
-{
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    color: #FFF;
-    margin: 25px;
-    vertical-align: middle;
-    line-height: 3;
-    padding: 0px 20px 0px 20px;
-}
+    body > div:nth-child(2) > header > .dagselectie > a {
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        color: #FFF;
+        margin: 25px;
+        vertical-align: middle;
+        line-height: 3;
+        padding: 0px 20px 0px 20px;
+        text-decoration: none;
+    }
 
-body > div:nth-child(2) > header > .dagselectie > a:hover
-{
-    color: #E82830;
-}
+        body > div:nth-child(2) > header > .dagselectie > a:hover {
+            color: #E82830;
+        }
 
-body > div:nth-child(2) > section > section
-{
+body > div:nth-child(2) > section > section {
     background-color: #fff;
     margin: 10px 0px 0px 105px;
     width: 80%;
     height: 120px;
 }
 
-body > div:nth-child(2) > section > section > .film_image 
-{
-    float: left;
-    height: 120px;
-}
+    body > div:nth-child(2) > section > section > .film_image {
+        float: left;
+        height: 120px;
+    }
 
-body > div:nth-child(2) > section > section > .film_text 
-{
-    text-align: left;
-    display: block;
-    margin: auto;
-    width: 75%;
-    height: 120px;
-}
-body > div:nth-child(2) > section > section > .film_text
-{
-   position: relative;
-}
-body > div:nth-child(2) > section > section > div.film_text > header
-{
-      padding-top: 5px;
-    height: 70px;
-}
+    body > div:nth-child(2) > section > section > .film_text {
+        text-align: left;
+        display: block;
+        margin: auto;
+        width: 75%;
+        height: 120px;
+    }
 
-body > div:nth-child(2) > section > section > .film_text > .beschrijving
-{
-   padding-bottom: 5px;
-   height: 50px;
-}
-body > div:nth-child(2) > section > section > .film_text > .item-button  
-{
- 
-    position: absolute;
-    float: right;
-    top: 45px;
-    bottom: 30px;
-    left: 800px;
-    right: 100px;
-}
+    body > div:nth-child(2) > section > section > .film_text {
+        position: relative;
+    }
 
-.btn-view 
-{
-     background-color: #E82830; 
+    body > div:nth-child(2) > section > section > div.film_text > header {
+        padding-top: 5px;
+        height: 70px;
+    }
+
+    body > div:nth-child(2) > section > section > .film_text > .beschrijving {
+        padding-bottom: 5px;
+        height: 50px;
+    }
+
+    body > div:nth-child(2) > section > section > .film_text > .item-button {
+        position: absolute;
+        float: right;
+        top: 45px;
+        bottom: 30px;
+        left: 800px;
+        right: 100px;
+    }
+
+.btn-view {
+    background-color: #E82830;
     color: #fff;
-     border-radius: 20px; 
-    border-color: #E82830; 
+    border-radius: 20px;
+    border-color: #E82830;
+    font-weight: bold;
 }
+
+    .btn-view:hover,
+    .btn-view:focus {
+        background-color: #fff;
+        border-color: #E82830;
+        color: #E82830;
+        font-weight: bold;
+    }
 
 /* Detailpage */
-body > div:nth-child(2){
-    float: left;
-    width: 100%;
-}
-body > div:nth-child(2) > section.detail-left 
-{
-    float: left;
-    width: 55%;
-    height: 100%;
-    margin-left: 105px;  
-      background-color: #fff;
-    font-family: 'Poppins', sans-serif;
-}
-body > div:nth-child(2) > section.detail-left > div.detail-image
-{
-         float: left;
-    width: 25%;
-    height: 300px;
-    margin-bottom: 5px;
-     
-}
-
-body > div:nth-child(2) > section.detail-left > div.details
-{
-     float: left;
-    width: 75%;
-    /* margin-left: -1px; */
-    padding-left: 41px;
-    /* padding: 10px; */
-    margin-bottom: 5px;
-    height: 300px;
-}
-     
-}
-
-
-
-body > div:nth-child(2) > section.detail-left > div.voorstellingen
-{
+body > div:nth-child(2) {
     float: left;
     width: 100%;
 }
 
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling
-{
-    float: left;
-    width: 100%;
-    height: 110px;
-    margin-bottom: 5px;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-}
-
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left
-{
-   float: left;
-    width: 15%;
-    height: 110px;
-    font-weight: bold;
-    background-color: #2E2E2E;
-    color: #E82830;
-}
-
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left > p 
-{
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
-    margin-top: 27px;
-}
-
-
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden
-{
-    float:left;
-    width: 39%;
-    height: 110px;
-        border-top: 0.5px initial #333;
-    border-bottom: 0.5px initial #333;
-}
-
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden > p:nth-child(1){
-    font-weight:bold;
-}
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right
-{
-    float:left;
-    width: 46%;
-    height: 110px;
-        border-top: 0.5px initial #333;
-    border-bottom: 0.5px initial#333 ;
-}
-body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right > form > input
-{
+    body > div:nth-child(2) > section.detail-left {
         float: left;
-    margin-top: 27px;
-    margin-left: 10px;
-    margin-right: 10px;
-    vertical-align: middle;
-        border-top: 1px initial #333;
-    border-bottom: 1px initial #333;
+        width: 55%;
+        height: 100%;
+        margin-left: 105px;
+        background-color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
+
+        body > div:nth-child(2) > section.detail-left > div.detail-image {
+            float: left;
+            width: 25%;
+            height: 300px;
+            margin-bottom: 5px;
+        }
+
+        body > div:nth-child(2) > section.detail-left > div.details {
+            float: left;
+            width: 75%;
+            /* margin-left: -1px; */
+            padding-left: 41px;
+            /* padding: 10px; */
+            margin-bottom: 5px;
+            height: 300px;
+        }
+
 }
 
 
-body > div:nth-child(2) > section.detail-right
-{
+
+body > div:nth-child(2) > section.detail-left > div.voorstellingen {
+    float: left;
+    width: 100%;
+}
+
+    body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling {
+        float: left;
+        width: 100%;
+        height: 110px;
+        margin-bottom: 5px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+    }
+
+        body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left {
+            float: left;
+            width: 15%;
+            height: 110px;
+            font-weight: bold;
+            background-color: #2E2E2E;
+            color: #E82830;
+        }
+
+            body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left > p {
+                text-align: center;
+                vertical-align: middle;
+                line-height: 50px;
+                margin-top: 27px;
+            }
+
+
+        body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden {
+            float: left;
+            width: 39%;
+            height: 110px;
+            border-top: 0.5px initial #333;
+            border-bottom: 0.5px initial #333;
+        }
+
+            body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden > p:nth-child(1) {
+                font-weight: bold;
+            }
+
+        body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right {
+            float: left;
+            width: 46%;
+            height: 110px;
+            border-top: 0.5px initial #333;
+            border-bottom: 0.5px initial#333;
+        }
+
+            body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right > form > input {
+                float: left;
+                margin-top: 27px;
+                margin-left: 10px;
+                margin-right: 10px;
+                vertical-align: middle;
+                border-top: 1px initial #333;
+                border-bottom: 1px initial #333;
+            }
+
+
+body > div:nth-child(2) > section.detail-right {
     float: left;
     width: 35%;
     height: 100%;
     background-color: #999;
 }
 
+/* Homepage link weergave*/
+.Homepagelink {
+    color: #fff;
+    text-decoration: none;
+}
 
+    .Homepagelink:hover,
+    .home-img-top:focus {
+        color: #E82830;
+        text-decoration: none;
+    }
+
+section {
+    margin-bottom: 300px;
+}
