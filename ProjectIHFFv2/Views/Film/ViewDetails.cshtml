@@ -31,11 +31,11 @@
             <p>Ticket: @v.Event.prijs</p>
         </div>
         <div class="voorstelling-right">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("ViewDetails", "Film", FormMethod.Post, new { eventId = @v.EventId }))
             {
-                @Html.TextBoxFor(c => c.AantalPersonen, new { @type = "number", @style = "width:50px" });
-                <input type="submit" id="@v.EventId" name="Cart" class="btn btn-view" value="Add to cart" formaction="AddToCart" formmethod="post" />
-    <input type="submit" id="@v.EventId" name="Wishlist" class="btn btn-view"  value="Add to wishlist" formaction="AddToWishlist" formmethod="post" />
+                @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number"} );
+                <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart"  />
+    <input type="submit" id="wishlist" name="submit" class="btn btn-view"  value="Add to wishlist"  />
             }
         </div>
     </div>

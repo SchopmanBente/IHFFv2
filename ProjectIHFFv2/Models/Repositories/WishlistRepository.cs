@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectIHFFv2.Models;
 
-namespace ProjectIHFFv2.Models.Repositories
+namespace ProjectIHFFv2.Models
 {
     public class WishlistRepository : Controller //:controller zodat de session gebruikt kan worden.
     {
@@ -121,7 +121,7 @@ namespace ProjectIHFFv2.Models.Repositories
             }
         }
 
-        public void AddToWishlist(Event item, int aantal, DateTime tijd)
+        public void AddToWishlist(Event item, int aantal, DateTime tijd,List<WishlistItem> items)
         {
             //voeg item toe aan session die een lijst van wishlistmodels bevat.
             WishlistItem wishlistItem = new WishlistItem();
@@ -134,7 +134,8 @@ namespace ProjectIHFFv2.Models.Repositories
             wishlistItem.naam = item.naam;
             wishlistItem.prijs = item.prijs * aantal;
             wishlistItem.type = item.type;
-            List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
+            List<WishlistItem> wishlist = items;
+            //List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
             wishlist.Add(wishlistItem);
         }
 
