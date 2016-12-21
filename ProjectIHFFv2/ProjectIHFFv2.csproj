@@ -173,11 +173,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\CulturePresentationModel.cs" />
-=======
     <Compile Include="Models\CartPresentationModel.cs" />
->>>>>>> 8b7867bbc104496d90fa66362ffe5e9eed21ccb7
     <Compile Include="Models\Cultuuritem.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
