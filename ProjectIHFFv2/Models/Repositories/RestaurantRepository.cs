@@ -60,5 +60,12 @@ namespace ProjectIHFFv2.Models
             return items.AsEnumerable();
         }
 
+        public IEnumerable<Event> GetAllMaaltijdenForDetail(string naam)
+        {
+            IQueryable<Event> maaltijden = ctx.Event.Where(r => r.naam == naam).OrderBy(e => e.begin_datumtijd);
+
+            return maaltijden; 
+        }
+
     }
 }

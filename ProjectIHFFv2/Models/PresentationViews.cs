@@ -15,7 +15,7 @@ namespace ProjectIHFFv2.Models
         private RestaurantRepository restaurantRepository = new RestaurantRepository();
         private LocatieRepository locatieRepository = new LocatieRepository();
         private WishlistRepository wishlistRepository = new WishlistRepository();
-      
+
 
         public IEnumerable<FilmOverviewPresentationModel> GetAllFilmsForDay(DateTime day)
         {
@@ -24,7 +24,7 @@ namespace ProjectIHFFv2.Models
             foreach (Film f in movies)
             {
                 Locatie locatie = locatieRepository.GetById(f.Event.Locatie.id);
-                FilmOverviewPresentationModel moviePresentation = new FilmOverviewPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd,locatie, f.Event.beschrijving);
+                FilmOverviewPresentationModel moviePresentation = new FilmOverviewPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, locatie, f.Event.beschrijving);
                 moviePresentations.Add(moviePresentation);
             }
             return moviePresentations.AsEnumerable();
@@ -51,15 +51,18 @@ namespace ProjectIHFFv2.Models
             //Haal culturele activiteiten op
             IEnumerable<Cultuuritem> cultuurActiviteiten = cultuurRepository.GetRandomCultuurItems();
             //Creer een model
-            FilmDetailPresentationModel model = new FilmDetailPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.trailer_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving, cultuurActiviteiten,voorstellingenFilm);
+            FilmDetailPresentationModel model = new FilmDetailPresentationModel(f.EventId, f.naam, f.Event.afbeelding_url, f.trailer_url, f.Event.begin_datumtijd, f.Event.eind_datumtijd, f.Event.Locatie.naam, f.Event.Locatie.zaal, f.Event.beschrijving, cultuurActiviteiten, voorstellingenFilm);
             return model;
         }
 
         public RestaurantDetailPresentationModel GetRestaurantDetails(int id)
         {
             List<Film> films = (List<Film>)filmRepository.GetRandomFilms();
+
             Event Event = restaurantRepository.GetRestaurantByid(id);
-            RestaurantDetailPresentationModel model = new RestaurantDetailPresentationModel(films, Event);
+            IEnumerable<Event> allemaaltijden = restaurantRepository.GetAllMaaltijdenForDetail(Event.naam);
+
+            RestaurantDetailPresentationModel model = new RestaurantDetailPresentationModel(films, Event, allemaaltijden.ToList());
 
             return model;
 
@@ -70,21 +73,23 @@ namespace ProjectIHFFv2.Models
             Special s = specialRepository.GetSpecialById(id);
             IEnumerable<Event> restaurants = restaurantRepository.GetRandomRestaurants();
             Locatie locatie = locatieRepository.GetById(s.Event.Locatie.id);
-            SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId,(double)s.Event.prijs,s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
+            SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId, (double)s.Event.prijs, s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
             return special;
         }
 
-        public void AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items) 
+        public void AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items)
         {
-            Event gebeurtenis = eventRepository.GetById(eventId); 
-            wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen, (DateTime)gebeurtenis.begin_datumtijd,items);
+            Event gebeurtenis = eventRepository.GetById(eventId);
+            wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen, (DateTime)gebeurtenis.begin_datumtijd, items);
 
         }
 
         public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)
-        {
+        {  
             Event gebeurtenis = eventRepository.GetById(eventId);
-            cartRepository.AddEventToCart(gebeurtenis, aantalPersonen, items);
+        
+                cartRepository.AddEventToCart(gebeurtenis, aantalPersonen, items);
+
         }
 
         public IEnumerable<RestaurantOverviewPresentationModel> GetAllRestaurantsByLocation(string locatie)
@@ -92,25 +97,27 @@ namespace ProjectIHFFv2.Models
             IEnumerable<Event> restaurants = restaurantRepository.GetRestaurantsByPlaatsnaam(locatie);
 
             List<RestaurantOverviewPresentationModel> resPresentLijst = new List<RestaurantOverviewPresentationModel>();
-            
-            foreach(Event r in restaurants)
+
+            foreach (Event r in restaurants)
             {
                 RestaurantOverviewPresentationModel resOverviewModel = new RestaurantOverviewPresentationModel(r);
-                resPresentLijst.Add(resOverviewModel); 
+                resPresentLijst.Add(resOverviewModel);
             }
 
-            return resPresentLijst.AsEnumerable(); 
+            return resPresentLijst.AsEnumerable();
         }
 
         public CartPresentationModel FillPresentationModel(List<ShoppingCartItem> Items)
         {
-            double totaalPrijs = cartRepository.GetTotaalPrijs(Items); 
+            double totaalPrijs = cartRepository.GetTotaalPrijs(Items);
             CartPresentationModel Model = new CartPresentationModel(Items, totaalPrijs);
 
-            return Model; 
+            return Model;
 
         }
+
+      
     }
 
-   
+
 }

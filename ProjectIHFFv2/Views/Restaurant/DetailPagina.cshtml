@@ -3,18 +3,49 @@
 @model RestaurantDetailPresentationModel
 
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Index", "Index" , "Home") > @Html.ActionLink("Restaurants "+Model.Event.Locatie.plaats, Model.Event.Locatie.plaats, "Restaurant") > @Html.ActionLink(Model.Event.naam, "DetailPagina", "Restaurant", new { id = @Model.Event.EventId }, null) </p>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Index", "Home") > @Html.ActionLink("Restaurants " + Model.Event.Locatie.plaats, Model.Event.Locatie.plaats, "Restaurant") > @Html.ActionLink(Model.Event.naam, "DetailPagina", "Restaurant", new { id = @Model.Event.EventId }, null) </p>
     <h1>@Model.Event.naam</h1>
 </header>
 
 <section style="background-color:white;">
     <div>
-        <img src="@Model.Event.afbeelding_url" />
+        <img width="400" height="400" src="@Model.Event.afbeelding_url" />
     </div>
 
 
 
     <p>@Model.Event.beschrijving</p>
+    <select>
+        @foreach (Event e in Model.Maaltijden)
+        {
+            <option value="@e.EventId">
+
+                @if (e.eind_datumtijd.Value.Hour <= 17)
+                {
+                    <p>  Lunch: @e.begin_datumtijd.Value.ToString("dd-MM") @e.begin_datumtijd.Value.DayOfWeek.ToString() @e.begin_datumtijd.Value.ToShortTimeString() - @e.eind_datumtijd.Value.ToShortTimeString() </p>
+                }
+                else
+                {
+                    <p> Diner:  @e.begin_datumtijd.Value.ToString("dd-MM") @e.begin_datumtijd.Value.DayOfWeek.ToString() @e.begin_datumtijd.Value.ToShortTimeString() - @e.eind_datumtijd.Value.ToShortTimeString() </p>
+                }
+            </option>
+        }
+    </select>
+   
+    
+        <div class="voorstelling-right">
+            @using (Html.BeginForm("DetailPagina", "Restaurant", FormMethod.Post))
+            {
+                @Html.Hidden("eventid", @Model.Event.EventId);
+                @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number" });
+                <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
+                <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
+                @Html.ValidationMessage("NoAmount"); 
+            }
+
+        </div>
+    
+
 
 </section>
 

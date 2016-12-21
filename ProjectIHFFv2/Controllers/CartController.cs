@@ -16,6 +16,9 @@ namespace ProjectIHFFv2.Controllers
         {
             List<ShoppingCartItem> lijst = HaalCartSessieOp();
 
+           
+
+         
             CartPresentationModel Model = presentation.FillPresentationModel(lijst); 
 
 
