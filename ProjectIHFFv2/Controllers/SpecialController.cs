@@ -51,6 +51,65 @@ namespace ProjectIHFFv2.Controllers
             return View(special);
         }
 
+        [HttpPost]
+        public ActionResult ViewDetails(int eventid, int qty, string submit)
+        {
+            if (ModelState.IsValid)
+            {
+                if (qty > 0)
+                {
+                    switch (submit)
+                    {
+                        case "Add to wishlist":
+                            List<WishlistItem> items = HaalWishlistSessieOp();
+                            presentation.AddToWishlist(qty, eventid, items);
+                            return RedirectToAction("Index", "Wishlist");
+                        case "Add to cart":
+                            List<ShoppingCartItem> cartItems = HaalCartSessieOp();
+                            presentation.AddToCart(qty, eventid, cartItems);
+                            return RedirectToAction("Index", "Cart");
+                        default:
+                            return View();
+                    }
+
+                }
+
+                return View();
+            }
+            return View();
+        }
+
+        private List<ShoppingCartItem> HaalCartSessieOp()
+        {
+            if (Session["cart"] == null)
+            {
+                List<ShoppingCartItem> items = new List<ShoppingCartItem>();
+                Session["cart"] = items;
+                return items;
+            }
+            else
+            {
+                var cart = Session["cart"] as List<ShoppingCartItem>;
+                List<ShoppingCartItem> items = (List<ShoppingCartItem>)cart;
+                return items;
+            }
+        }
+
+        private List<WishlistItem> HaalWishlistSessieOp()
+        {
+            if (Session["wishlist"] == null)
+            {
+                List<WishlistItem> items = new List<WishlistItem>();
+                Session["wishlist"] = items;
+                return items;
+            }
+            else
+            {
+                var wishlist = Session["wishlist"] as List<WishlistItem>;
+                List<WishlistItem> items = (List<WishlistItem>)wishlist;
+                return items;
+            }
+        }
 
 	}
 }

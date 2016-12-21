@@ -34,5 +34,10 @@ namespace ProjectIHFFv2.Controllers
             CulturePresentationModel cultuurPresentatieModel = new CulturePresentationModel(cultuurItem, randomCultuurItems, randomFilms);
             return View(cultuurPresentatieModel);
         }
+
+        public ActionResult ViewRoute()
+        {
+            return View();
+        }
     }
 }

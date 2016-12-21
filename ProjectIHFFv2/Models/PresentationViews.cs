@@ -101,5 +101,16 @@ namespace ProjectIHFFv2.Models
 
             return resPresentLijst.AsEnumerable(); 
         }
+
+        public CartPresentationModel FillPresentationModel(List<ShoppingCartItem> Items)
+        {
+            double totaalPrijs = cartRepository.GetTotaalPrijs(Items); 
+            CartPresentationModel Model = new CartPresentationModel(Items, totaalPrijs);
+
+            return Model; 
+
+        }
     }
+
+   
 }

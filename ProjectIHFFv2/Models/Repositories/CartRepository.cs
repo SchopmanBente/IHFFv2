@@ -15,5 +15,23 @@ namespace ProjectIHFFv2.Models
             ShoppingCartItem item = new ShoppingCartItem(gebeuren, aantalPersonen, prijs);
             cartItems.Add(item);
         }
+
+ 
+
+        public double GetTotaalPrijs(List <ShoppingCartItem> items)
+        { 
+            double totaalPrijs = 0; 
+
+            foreach(ShoppingCartItem i in items)
+            {
+                totaalPrijs = totaalPrijs + i.Prijs; 
+            }
+
+            return totaalPrijs; 
+        }
+
+   
+
+     
     }
 }

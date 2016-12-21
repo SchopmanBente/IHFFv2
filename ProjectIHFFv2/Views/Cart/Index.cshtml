@@ -1,0 +1,21 @@
+﻿@using ProjectIHFFv2.Models
+
+@model CartPresentationModel
+
+
+@foreach (ShoppingCartItem i in Model.Items)
+{
+    <article>
+        <h2>@i.Gebeurtenis.naam</h2>
+      <img src="@i.Gebeurtenis.afbeelding_url" />
+
+        <ul>
+            <li>
+                <p><b>Aantal Personen</b>: @i.AantalPersonen</p>
+            </li>
+                <li><b>@i.Gebeurtenis.Locatie.naam</b>: @i.Gebeurtenis.Locatie.zaal </li>
+        </ul>
+
+         
+    </article>
+}
