@@ -53,21 +53,21 @@ namespace ProjectIHFFv2.Controllers
         }
 
         [HttpPost]
-        public ActionResult ViewDetails(int eventId, int qty, string submit)
+        public ActionResult ViewDetails(int eventid, int qty, string submit)
         {
             if (ModelState.IsValid)
             {
-                if (qty > 0)
+               if (qty > 0)
                 {
                     switch (submit)
                     {
                         case "Add to wishlist":
                             List<WishlistItem> items = HaalWishlistSessieOp();
-                            presentation.AddToWishlist(qty, eventId, items);
+                            presentation.AddToWishlist(qty, eventid, items);
                             return RedirectToAction("Index", "Wishlist");
                         case "Add to cart":
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();
-                            presentation.AddToCart(qty, eventId, cartItems);
+                            presentation.AddToCart(qty, eventid, cartItems);
                             return RedirectToAction("Index", "Cart");
                         default:
                             return View();

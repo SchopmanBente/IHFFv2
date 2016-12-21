@@ -163,7 +163,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
-    <Compile Include="Controllers\CultuurController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -280,6 +279,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\map.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -334,6 +334,8 @@
     <Content Include="Views\Culture\music.cshtml" />
     <Content Include="Views\Shared\_CultureTypeSelection.cshtml" />
     <Content Include="Views\Culture\ViewDetails.cshtml" />
+    <Content Include="Views\Culture\ViewRoute.cshtml" />
+    <Content Include="Views\Shared\_RouteGenerator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

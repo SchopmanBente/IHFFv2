@@ -31,5 +31,10 @@ namespace ProjectIHFFv2.Controllers
             Cultuuritem cultuurPresentationModel = cultuurRepository.GetCultuurItem(id);
             return View(cultuurPresentationModel);
         }
+
+        public ActionResult ViewRoute()
+        {
+            return View();
+        }
     }
 }
