@@ -28,6 +28,7 @@
                <div class="voorstelling-right">
                    @using (Html.BeginForm())
                    {
+                       @Html.Hidden("eventid", @Model.EventId);
                        @Html.TextBoxFor(c => c.AantalPersonen, new { @type = "number", @style = "width:50px" });
                        <input type="submit" id="@Model.EventId" name="Cart" class="btn btn-view" value="Add to cart" formaction="AddToCart" formmethod="post" />
                        <input type="submit" id="@Model.EventId" name="Wishlist" class="btn btn-view" value="Add to wishlist" formaction="AddToWishlist" formmethod="post" />
