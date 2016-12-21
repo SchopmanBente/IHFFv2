@@ -77,7 +77,7 @@ namespace ProjectIHFFv2.Models
         public void AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items) 
         {
             Event gebeurtenis = eventRepository.GetById(eventId); 
-            wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen, (DateTime)gebeurtenis.begin_datumtijd,items);
+            wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen,items);
 
         }
 

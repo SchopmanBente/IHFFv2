@@ -9,20 +9,10 @@ namespace ProjectIHFFv2.Models
 {
     public class WishlistRepository : Controller //:controller zodat de session gebruikt kan worden.
     {
-        string[,] gemaakteArray = new string[20, 20];
 
-        //Hier session of cookies pakken wanneer de 'database' aangeroepen wordt.
-        public List<WishlistItem> GetWishlist()
+        public List<WishlistItem> MakeWishlist( List<WishlistItem> meegekregenWishlist)
         {
-            List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
-            //pak uit de session of cookie alle dingen die aan die hieraan zijn toegevoegd.
-            return wishlist;
-        }
-
-        public List<WishlistItem> MakeWishlist()
-        {
-            List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
-            DateTime standaardTijd = new DateTime(2017, 1, 11, 11, 00, 00);
+            List<WishlistItem> wishlist = meegekregenWishlist;
             //MAAK EEN ARRAY MET COORDINATEN EN NEEM VAN DE COORDINAAT DE EERSTE WAARDE BOVENAAN EN DE EERSTE WAARDE LINKS. MAAK HIER EEN DATETIME VAN.
             string[,] tijdNavigatieArray = MakeTimeArray();
             int x = 0;
@@ -30,10 +20,10 @@ namespace ProjectIHFFv2.Models
             foreach (WishlistItem item in wishlist)
             {
                 string heleDatum = item.beginTijd.ToString();
-                string tijd = heleDatum.Substring(0, 8);
-                string datum = heleDatum.Substring(10, 14);
+                string tijd = heleDatum.Substring(0, 9);
+                string datum = heleDatum.Substring(10, 4);
 
-                while (x < 24) //30 kan vgm nog lager...
+                while (x <= 29)
                 {
                     if (tijd == tijdNavigatieArray[x, 0])
                     {
@@ -52,12 +42,15 @@ namespace ProjectIHFFv2.Models
                 }
 
                 //colspan berekenen
-                DateTime DatumTijd = Convert.ToDateTime(tijdNavigatieArray[0, item.yCoordinaat] + tijdNavigatieArray[item.xCoordinaat, 0]);
-                string tijdsduur = (item.eindTijd - item.beginTijd).ToString(); //krijg het verschil in tijd te zien.
-                int uren = Int32.Parse(tijdsduur.Substring(2));
-                int minuten = Int32.Parse(tijdsduur.Substring(4, 5));
-                int totaalminuten = (uren * 60) + minuten;
-                item.colspan = totaalminuten / 30;
+                if ((item.yCoordinaat != 0) && (item.xCoordinaat != 0))
+                {
+                    DateTime DatumTijd = Convert.ToDateTime(tijdNavigatieArray[0, item.yCoordinaat] + tijdNavigatieArray[item.xCoordinaat, 0]);
+                    string tijdsduur = (item.eindTijd - item.beginTijd).ToString(); //krijg het verschil in tijd te zien.
+                    int uren = Int32.Parse(tijdsduur.Substring(2));
+                    int minuten = Int32.Parse(tijdsduur.Substring(4, 5));
+                    int totaalminuten = (uren * 60) + minuten;
+                    item.colspan = totaalminuten / 30;
+                }
             }
 
             //Van alle tijden die er zijn is er nu een tijd ingevuld. Bij de tabelcreatie wordt een if (!null) gebruikt.
@@ -65,10 +58,9 @@ namespace ProjectIHFFv2.Models
             return wishlist;
         }
 
-        public string[,] MakeTimeArray() //maak array 1x
+        private string[,] MakeTimeArray() //maak array 1x
         {
-            if (gemaakteArray == null) //als deze array al een gemaakt is returnt hij de gemaakte array meteen.
-            {
+            string[,] gemaakteArray = new string[30, 6];
                 int x = 0;
                 int y = 0;
                 string tijd = "11:00";
@@ -88,13 +80,17 @@ namespace ProjectIHFFv2.Models
                         }
                         else
                         {
-                            gemaakteArray[x, y] = tijd;
+                            if (tijd == "24:00")
+                            {
+                                gemaakteArray[x, y] = "00:00";
+                            }
+                            gemaakteArray[x, y] = tijd;                           
                             tijd = uur.ToString() + ":30";
+                            
                         }
                     } //alle tijden zijn toegevoegd, nu de dagen nog.
 
-
-                    if (x == 24)
+                    if (x == 27)
                     {
                         gemaakteArray[0, 1] = "11/01/2017";
                         gemaakteArray[0, 2] = "12/01/2017";
@@ -106,14 +102,9 @@ namespace ProjectIHFFv2.Models
                 }
 
                 return gemaakteArray;
-            }
-            else
-            {
-                return gemaakteArray;
-            }
         }
 
-        public void AddToWishlist(Event item, int aantal,List<WishlistItem> items)
+        public void AddToWishlist(Event item, int aantal, List<WishlistItem> items)
         {
             //voeg item toe aan session die een lijst van wishlistmodels bevat.
             WishlistItem wishlistItem = new WishlistItem();
@@ -146,6 +137,7 @@ namespace ProjectIHFFv2.Models
         {
 
         }
+
 
     }
 }
