@@ -28,8 +28,11 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult ViewDetails(int id)
         {
-            Cultuuritem cultuurPresentationModel = cultuurRepository.GetCultuurItem(id);
-            return View(cultuurPresentationModel);
+            Cultuuritem cultuurItem = cultuurRepository.GetCultuurItem(id);
+            IEnumerable<Cultuuritem> randomCultuurItems = cultuurRepository.GetRandomCultuurItems();
+            IEnumerable<Film> randomFilms = cultuurRepository.GetRandomFilms();
+            CulturePresentationModel cultuurPresentatieModel = new CulturePresentationModel(cultuurItem, randomCultuurItems, randomFilms);
+            return View(cultuurPresentatieModel);
         }
 
         public ActionResult ViewRoute()

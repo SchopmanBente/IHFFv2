@@ -81,8 +81,7 @@ namespace ProjectIHFFv2.Models
         {
             Event gebeurtenis = eventRepository.GetById(eventId);
             wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen, (DateTime)gebeurtenis.begin_datumtijd, items);
-
-        }
+}
 
         public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)
         {  

@@ -438,10 +438,31 @@ body > div:nth-child(2) > header > nav > a.current
         margin: 0;
         padding: 0;
       }
+      body > div:nth-child(2) > #customfunction {
+          float: left;
+          width: 100%;
+          height: 100%;
+      }
+       body > div:nth-child(2) >#customfunction > div.routegenerator
+       {
+           float:left;
+           height: 100%;
+       }
+       body > div:nth-child(2) > section.route-generator > #left-panel 
+       {
+           float: left;
+
+       }
+      body > div:nth-child(2) > section > section.map
+      {
+          float: left;
+          width: 500px;
+          height:500px;
+      }
       #map {
         height: 100%;
         float: left;
-        width: 70%;
+        width: 100%;
         height: 100%;
       }
       #right-panel {
