@@ -21,12 +21,44 @@ namespace ProjectIHFFv2.Models
 
         public List<WishlistItem> MakeWishlist()
         {
-            List<WishlistItem> wishlist = new List<WishlistItem>();
+            List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
             DateTime standaardTijd = new DateTime(2017, 1, 11, 11, 00, 00);
             //MAAK EEN ARRAY MET COORDINATEN EN NEEM VAN DE COORDINAAT DE EERSTE WAARDE BOVENAAN EN DE EERSTE WAARDE LINKS. MAAK HIER EEN DATETIME VAN.
             string[,] tijdNavigatieArray = MakeTimeArray();
+            int x = 0;
+            int y = 0;
+            foreach (WishlistItem item in wishlist)
+            {
+                string heleDatum = item.beginTijd.ToString();
+                string tijd = heleDatum.Substring(0, 8);
+                string datum = heleDatum.Substring(10, 14);
 
+                while (x < 24) //30 kan vgm nog lager...
+                {
+                    if (tijd == tijdNavigatieArray[x, 0])
+                    {
+                        item.xCoordinaat = x;
+                    }
+                    x++;
+                }
 
+                while (y < 5)
+                {
+                    if (datum == tijdNavigatieArray[0, y])
+                    {
+                        item.yCoordinaat = y;
+                    }
+                    y++;
+                }
+
+                //colspan berekenen
+                DateTime DatumTijd = Convert.ToDateTime(tijdNavigatieArray[0, item.yCoordinaat] + tijdNavigatieArray[item.xCoordinaat, 0]);
+                string tijdsduur = (item.eindTijd - item.beginTijd).ToString(); //krijg het verschil in tijd te zien.
+                int uren = Int32.Parse(tijdsduur.Substring(2));
+                int minuten = Int32.Parse(tijdsduur.Substring(4, 5));
+                int totaalminuten = (uren * 60) + minuten;
+                item.colspan = totaalminuten / 30;
+            }
 
             //Van alle tijden die er zijn is er nu een tijd ingevuld. Bij de tabelcreatie wordt een if (!null) gebruikt.
 
@@ -37,49 +69,6 @@ namespace ProjectIHFFv2.Models
         {
             if (gemaakteArray == null) //als deze array al een gemaakt is returnt hij de gemaakte array meteen.
             {
-                gemaakteArray[1, 0] = "11:00";
-                gemaakteArray[2, 0] = "11:30";
-                gemaakteArray[3, 0] = "12:00";
-                gemaakteArray[4, 0] = "11:30";
-                gemaakteArray[5, 0] = "13:00";
-                gemaakteArray[6, 0] = "11:30";
-                gemaakteArray[7, 0] = "14:00";
-                gemaakteArray[8, 0] = "11:30";
-                gemaakteArray[9, 0] = "15:00";
-                gemaakteArray[10, 0] = "11:30";
-                gemaakteArray[11, 0] = "16:00";
-                gemaakteArray[12, 0] = "11:30";
-                gemaakteArray[13, 0] = "12:00";
-                gemaakteArray[14, 0] = "12:30";
-                gemaakteArray[15, 0] = "13:00";
-                gemaakteArray[16, 0] = "13:30";
-                gemaakteArray[17, 0] = "14:00";
-                gemaakteArray[18, 0] = "14:30";
-                gemaakteArray[19, 0] = "15:00";
-                gemaakteArray[20, 0] = "15:30";
-                gemaakteArray[21, 0] = "16:00";
-                gemaakteArray[22, 0] = "16:30";
-                gemaakteArray[23, 0] = "17:00";
-                gemaakteArray[24, 0] = "17:30";
-                gemaakteArray[25, 0] = "18:00";
-                gemaakteArray[26, 0] = "18:30";
-                gemaakteArray[27, 0] = "18:00";
-                gemaakteArray[28, 0] = "18:00";
-                gemaakteArray[29, 0] = "18:00";
-                gemaakteArray[30, 0] = "18:00";
-                gemaakteArray[31, 0] = "18:00";
-                gemaakteArray[32, 0] = "18:00";
-                gemaakteArray[33, 0] = "18:00";
-                gemaakteArray[34, 0] = "18:00";
-                gemaakteArray[35, 0] = "18:00";
-                gemaakteArray[36, 0] = "18:00";
-                gemaakteArray[37, 0] = "18:00";
-                gemaakteArray[38, 0] = "18:00";
-                gemaakteArray[39, 0] = "18:00";
-                gemaakteArray[25, 0] = "18:00";
-                gemaakteArray[25, 0] = "18:00";
-
-
                 int x = 0;
                 int y = 0;
                 string tijd = "11:00";
@@ -105,10 +94,13 @@ namespace ProjectIHFFv2.Models
                     } //alle tijden zijn toegevoegd, nu de dagen nog.
 
 
-
-
-                    if (y == 5)
+                    if (x == 24)
                     {
+                        gemaakteArray[0, 1] = "11/01/2017";
+                        gemaakteArray[0, 2] = "12/01/2017";
+                        gemaakteArray[0, 3] = "13/01/2017";
+                        gemaakteArray[0, 4] = "14/01/2017";
+                        gemaakteArray[0, 5] = "15/01/2017";
                         doorgaan = false;
                     }
                 }
@@ -121,12 +113,11 @@ namespace ProjectIHFFv2.Models
             }
         }
 
-        public void AddToWishlist(Event item, int aantal, DateTime tijd,List<WishlistItem> items)
+        public void AddToWishlist(Event item, int aantal,List<WishlistItem> items)
         {
             //voeg item toe aan session die een lijst van wishlistmodels bevat.
             WishlistItem wishlistItem = new WishlistItem();
             wishlistItem.aantal = aantal;
-            wishlistItem.EerstMogelijkeTijd = tijd;
             wishlistItem.beginTijd = item.begin_datumtijd;
             wishlistItem.eindTijd = item.eind_datumtijd;
             wishlistItem.EventId = item.EventId;

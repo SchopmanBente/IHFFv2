@@ -1,10 +1,21 @@
-﻿@{
+﻿@using ProjectIHFFv2.Models;
+@model List<WishlistItem>
+@{int x = 1;}
+@{int y = 1;}
+@{
     ViewBag.Title = "Index";
 }
+<header>
+    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Culture > @Html.ActionLink("Music", "Index", "Wishlist") </p>
+    <h1>Wishlist</h1>
+    @Html.ActionLink("Add another event", "Index", "Home", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Add all to cart", "Index", "Cart", null, new { @class = "btn btn-info" })
+</header>
 
-<h2>Your personal wishlist.</h2>
-@Html.ActionLink("Add another event", "Index", "Home", null, new { @class = "btn btn-info" })
-@Html.ActionLink("Add all to cart", "Index", "Cart", null, new { @class = "btn btn-info" })
+<section>
+
+
+</section>
 
 
 <table class="TabelCss">
@@ -14,19 +25,79 @@
         <th>22:30</th><th>23</th><th>23:30</th><th>00:00</th>
     </tr>
     <tr class="TabelRijCssOneven">
-        <td>Wednesday - 11/12</td><td></td><td></td>
+        <td>Wednesday - 11/12</td>
+        @foreach (WishlistItem item in Model)
+        {
+            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+            { @*Aantal personen en locatie er nog bij...*@
+                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            x++;
+        }
     </tr>
-    <tr>
+    <tr>@{y++;}
         <td>Thursday - 12/12</td>
+        @foreach (WishlistItem item in Model)
+        {
+            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+            { @*Aantal personen en locatie er nog bij...*@
+            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            x++;
+        }
     </tr>
-    <tr>
+    <tr>@{y++;}
         <td>Friday - 13/12</td>
+        @foreach (WishlistItem item in Model)
+        {
+            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+            { @*Aantal personen en locatie er nog bij...*@
+            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            x++;
+        }
     </tr>
-    <tr>
+    <tr>@{y++;}
         <td>Saturday - 14/12</td>
+        @foreach (WishlistItem item in Model)
+        {
+            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+            { @*Aantal personen en locatie er nog bij...*@
+            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            x++;
+        }
     </tr>
-    <tr>
+    <tr>@{y++;}
         <td>Sunday - 15/12</td>
+        @foreach (WishlistItem item in Model)
+        {
+            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+            { @*Aantal personen en locatie er nog bij...*@
+            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            x++;
+        }
     </tr>
 </table>
 

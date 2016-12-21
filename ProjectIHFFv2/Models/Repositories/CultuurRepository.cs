@@ -37,6 +37,31 @@ namespace ProjectIHFFv2.Models
 
         }
 
+        public IEnumerable<Film> GetRandomFilms()
+        {
+            Random rnd = new Random();
+            List<int> rndFilmid = new List<int>();
+            List<Film> films = new List<Film>();
+
+
+            while (films.Count < 5)
+            {
+                int optie = rnd.Next(0, 24);
+
+                if (!rndFilmid.Contains(optie))
+                {
+                    rndFilmid.Add(optie);
+
+                    Film film = ctx.Film.SingleOrDefault(f => f.EventId == optie);
+                    if (film != null && !films.Any(f => f.naam.Contains(film.naam)))
+                        films.Add(film);
+                }
+            }
+
+
+            return films.AsEnumerable();
+        }
+
         public IEnumerable<Cultuuritem> GetMonuments()
         {
             IQueryable<Cultuuritem> monuments = ctx.Cultuuritem.Where(c => c.soort == "Monument");
@@ -57,7 +82,6 @@ namespace ProjectIHFFv2.Models
 
         public Cultuuritem GetCultuurItem(int id)
         {
-            //Haal de cultuurItem op
             Cultuuritem cultuurItem = ctx.Cultuuritem.FirstOrDefault(x => x.id == id);
             return cultuurItem;
         }
