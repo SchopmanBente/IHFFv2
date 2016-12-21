@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\CultuurController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
@@ -173,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartPresentationModel.cs" />
     <Compile Include="Models\Cultuuritem.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
@@ -334,6 +336,7 @@
     <Content Include="Views\Culture\music.cshtml" />
     <Content Include="Views\Shared\_CultureTypeSelection.cshtml" />
     <Content Include="Views\Culture\ViewDetails.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
