@@ -76,19 +76,17 @@ namespace ProjectIHFFv2.Models
             SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId, (double)s.Event.prijs, s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
             return special;
         }
-
         public void AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items)
         {
-            Event gebeurtenis = eventRepository.GetById(eventId);
-            wishlistRepository.AddToWishlist(gebeurtenis, aantalPersonen, (DateTime)gebeurtenis.begin_datumtijd, items);
-}
+            Event gebeuren = eventRepository.GetById(eventId);
+            wishlistRepository.AddToWishlist(gebeuren, aantalPersonen, items);
+
+        }
 
         public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)
-        {  
+        {
             Event gebeurtenis = eventRepository.GetById(eventId);
-        
-                cartRepository.AddEventToCart(gebeurtenis, aantalPersonen, items);
-
+            cartRepository.AddEventToCart(gebeurtenis, aantalPersonen, items);
         }
 
         public IEnumerable<RestaurantOverviewPresentationModel> GetAllRestaurantsByLocation(string locatie)
