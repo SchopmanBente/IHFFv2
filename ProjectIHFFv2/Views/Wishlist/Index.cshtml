@@ -2,6 +2,7 @@
 @model List<WishlistItem>
 @{int x = 1;}
 @{int y = 1;}
+@{bool maxBereikt = false;}
 @{
     ViewBag.Title = "Index";
 }
@@ -17,7 +18,6 @@
 
 </section>
 
-
 <table class="TabelCss">
     <tr class ="TabelRijCssEven">
         <th> Datum </th><th>11</th><th>11:30</th><th>12</th><th>12:30</th><th>13</th><th>13:30</th><th>14</th><th>14:30</th><th>15</th><th>15:30</th><th>16</th>
@@ -26,79 +26,121 @@
     </tr>
     <tr class="TabelRijCssOneven">
         <td>Wednesday - 11/12</td>
-        @foreach (WishlistItem item in Model)
+        @while (!maxBereikt)
+            //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
         {
-            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
-            { @*Aantal personen en locatie er nog bij...*@
-                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
-            }
-            else
+            foreach (WishlistItem item in Model) //stel er zijn 10 items in...
             {
-                <td></td>
+                if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+                { @*Aantal personen en locatie er nog bij...*@
+                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd @item.eindTijd <br /> @item.</td>
+                }
+                else
+                {
+                    <td></td>
+                }
             }
             x++;
+            if (x == 28)
+            {
+                maxBereikt = true;
+                x = 1;
+            }
         }
     </tr>
-    <tr>@{y++;}
+    <tr>@{y++;} @{maxBereikt = false;}
         <td>Thursday - 12/12</td>
-        @foreach (WishlistItem item in Model)
+        @while (!maxBereikt)
         {
-            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
-            { @*Aantal personen en locatie er nog bij...*@
-            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
-            }
-            else
+            foreach (WishlistItem item in Model)
             {
-                <td></td>
+                if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+                { @*Aantal personen en locatie er nog bij...*@
+                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+                }
+                else
+                {
+                    <td></td>
+                }
             }
             x++;
+            if (x == 28)
+            {
+                maxBereikt = true;
+                x = 1;
+            }
         }
     </tr>
-    <tr>@{y++;}
+    <tr class="TabelRijCssOneven">
+        @{y++;} @{maxBereikt = false;}
         <td>Friday - 13/12</td>
-        @foreach (WishlistItem item in Model)
+        @while (!maxBereikt)
         {
-            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
-            { @*Aantal personen en locatie er nog bij...*@
-            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
-            }
-            else
+            foreach (WishlistItem item in Model)
             {
-                <td></td>
+                if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+                { @*Aantal personen en locatie er nog bij...*@
+                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+                }
+                else
+                {
+                    <td></td>
+                }
             }
             x++;
+            if (x == 28)
+            {
+                maxBereikt = true;
+                x = 1;
+            }
         }
     </tr>
-    <tr>@{y++;}
+    <tr>@{y++;} @{maxBereikt = false;}
         <td>Saturday - 14/12</td>
-        @foreach (WishlistItem item in Model)
+        @while (!maxBereikt)
         {
-            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
-            { @*Aantal personen en locatie er nog bij...*@
-            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
-            }
-            else
+            foreach (WishlistItem item in Model)
             {
-                <td></td>
+                if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+                { @*Aantal personen en locatie er nog bij...*@
+                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
+                }
+                else
+                {
+                    <td></td>
+                }
             }
             x++;
+            if (x == 28)
+            {
+                maxBereikt = true;
+                x = 1;
+            }
         }
     </tr>
-    <tr>@{y++;}
+    <tr class="TabelRijCssOneven">
+        @{y++;} @{maxBereikt = false;}
         <td>Sunday - 15/12</td>
-        @foreach (WishlistItem item in Model)
+        @while (!maxBereikt)
         {
-            if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
-            { @*Aantal personen en locatie er nog bij...*@
-            <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.</td>
-            }
-            else
+            foreach (WishlistItem item in Model)
             {
-                <td></td>
+                if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
+                { @*Aantal personen en locatie er nog bij...*@
+                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd  @item.eindTijd <br /> @item.aantal</td>
+                }
+                else
+                {
+                    <td></td>
+                }
             }
             x++;
+            if (x == 28)
+            {
+                maxBereikt = true;
+                x = 1;
+            }
         }
     </tr>
 </table>
-
 

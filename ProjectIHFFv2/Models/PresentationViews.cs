@@ -47,7 +47,7 @@ namespace ProjectIHFFv2.Models
             //Haal de film op
             Film f = filmRepository.GetById(id);
             //Haal de voorstellingen van de film op
-            IEnumerable<Film> voorstellingenFilm = filmRepository.GetAllEventsForDetail(f.naam);
+             IEnumerable<Film>   voorstellingenFilm = filmRepository.GetAllEventsForDetail(f.naam);
             //Haal culturele activiteiten op
             IEnumerable<Cultuuritem> cultuurActiviteiten = cultuurRepository.GetRandomCultuurItems();
             //Creer een model
@@ -80,7 +80,6 @@ namespace ProjectIHFFv2.Models
         {
             Event gebeuren = eventRepository.GetById(eventId);
             wishlistRepository.AddToWishlist(gebeuren, aantalPersonen, items);
-
         }
 
         public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)

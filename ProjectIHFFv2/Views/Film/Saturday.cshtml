@@ -8,10 +8,10 @@
     <h1>Saturday</h1>
     @Html.Partial("~\\views\\shared\\_MovieDaySelection.cshtml");
 </header>
-<section>
+<section class="overview">
     @foreach (FilmOverviewPresentationModel f in Model)
     {
-        <section>
+        <section class="film">
             <div class="film_image">
                 <img width="100" height="120" src="@f.AfbeeldingUrl" />
             </div>
