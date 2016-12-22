@@ -1,12 +1,12 @@
 ﻿<header>
     <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("monument", "Culture") > @Html.ActionLink("Generate route","ViewRoute","Culture") </p>
-    <h1>Generate shizzle</h1>
+    <h1>Create your personal route</h1>
 </header>
 <section id="customfunction">
     <div class="routegenerator">
         <div id="left-panel">
-            <div>
-                <b>Start:</b>
+            <div id="startselectie">
+                <p class="selectie">Start: <br /></p>
                 <select id="start">
                     <option value="Philharmonie, Haarlem,Lange Begijnestraat 11, 2011 HH Haarlem">Philharmonie, Haarlem</option>
                     <option value="Lange Begijnestraat 9, 2011 HH Haarlem">Toneelschuur,Haarlem</option>
@@ -19,9 +19,12 @@
                     <option value="Spaarne 96, 2011 CL Haarlem">Ratatouille Food & Wine, Haarlem</option>
                     <option value="Kerkplein 16A, 2061 JD Bloemendaal">Restaurant Terra, Bloemendaal </option>
                 </select>
-                <br>
-                <b>Waypoints:</b> <br>
-                <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
+            </div>
+            <div id="waypointselectie">
+                <p class="selectie">
+                    Waypoints:<br />
+                    <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> 
+                </p>             
                 <select multiple id="waypoints">
                     <option value="Spaarne 16, 2011 CH Haarlem">Teylers Museum, Haarlem</option>
                     <option value="Barteljorisstraat 19, 2011 RA Haarlem">Corrie Ten Boomhuis, Haarlem</option>
@@ -42,8 +45,10 @@
                     <option value="Zijlsingel 2, 2013 DN Haarlem">Patronaat,Haarlem</option>
                     <option value="Wilsonplein 23,2011 VG Haarlem">Stadschouwburg, Haarlem</option>
                 </select>
-                <br>
-                <b>End:</b>
+            </div>
+            <div id="eindselectie">
+
+                <p class="selectie">End: <br /></p>
                 <select id="end">
                     <option value="Lange Begijnestraat 11, 2011 HH Haarlem">Philharmonie, Haarlem</option>
                     <option value="Lange Begijnestraat 9, 2011 HH Haarlem">Toneelschuur,Haarlem</option>
@@ -56,8 +61,9 @@
                     <option value="Spaarne 96, 2011 CL Haarlem">Ratatouille Food & Wine, Haarlem</option>
                     <option value="Kerkplein 16A, 2061 JD Bloemendaal">Restaurant Terra, Bloemendaal </option>
                 </select>
-                <br>
-                <input type="submit" id="submit">
+            </div>
+            <div id="submitroute">
+                <input type="submit" id="submit" class="btn btn-info btn-view">
             </div>
         </div>
     </div>

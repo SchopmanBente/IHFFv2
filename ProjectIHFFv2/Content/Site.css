@@ -171,6 +171,11 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
+body > div:nth-child(2) > header 
+{
+    float: left;
+    margin-top:35px;
+}
 body > div:nth-child(2) > header > .dagselectie {
     border-radius: 20px;
     background-color: #2E2E2E;
@@ -409,73 +414,77 @@ section {
 }
 
 /*xxx*/
-body > div:nth-child(2) > header > nav > a.current
+body > div:nth-child(2) > header > nav > a.current ,
+body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse > ul > li > a.current
 {
     font-weight: bold;
     color: #E82830;    
 }
 
 /* map route generator*/
-    #right-panel {
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-
-      #right-panel select, #right-panel input {
-        font-size: 15px;
-      }
-
-      #right-panel select {
-        width: 100%;
-      }
-
-      #right-panel i {
-        font-size: 12px;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body > div:nth-child(2) > #customfunction {
-          float: left;
-          width: 100%;
-          height: 100%;
-      }
-       body > div:nth-child(2) >#customfunction > div.routegenerator
-       {
-           float:left;
-           height: 100%;
-       }
-       body > div:nth-child(2) > section.route-generator > #left-panel 
-       {
-           float: left;
-
-       }
-      body > div:nth-child(2) > section > section.map
-      {
-          float: left;
-          width: 500px;
-          height:500px;
-      }
-      #map {
-        height: 100%;
+body > div:nth-child(2) > #customfunction {
+    float: left;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+/*map route generator: selector*/
+body > div:nth-child(2) >#customfunction > div.routegenerator {
+    float: left;
+    height: 100%;
+    width: 27%;
+}
+#left-panel
+{
         float: left;
-        width: 100%;
-        height: 100%;
-      }
-      #right-panel {
-        margin: 20px;
-        border-width: 2px;
-        width: 20%;
-        height: 400px;
-        float: left;
-        text-align: left;
-        padding-top: 0;
-      }
-      #directions-panel {
-        margin-top: 10px;
-        background-color: #FFEE77;
-        padding: 10px;
-      }
+    margin: 10px 0px 0px 111px;
+}
+
+p.selectie 
+{
+    font-weight: bold;
+}
+
+#start , #end
+{
+    width: 17em;
+}
+
+#waypoints 
+{
+    height: 31em;
+    width: 17em;
+}
+
+#submitroute > input 
+{
+    margin-top: 10px;
+}
+/*route generator: map*/
+body > div:nth-child(2) > section > section.map {
+    float: left;
+    width: 35%;
+    height: 44em;
+    margin: 10px 0px 0px 0px;
+}
+
+#map 
+{
+    width: 100%;
+    height: 44em;
+    position: relative;
+    overflow: hidden;
+}
+/*route generator: directions*/
+#right-panel {
+    margin: 11px;
+    margin-top: 10;
+    width: 33%;
+    height: 44em;
+    float: left;
+    text-align: left;
+    padding-top: 0;
+    /* margin-top: 10px; */
+    overflow: scroll;
+    direction: ltr;
+}
