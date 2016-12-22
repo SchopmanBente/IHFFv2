@@ -319,7 +319,7 @@ body > div:nth-child(2) > section.detail-left > div.details
             height: 300px;
         }
 
-}
+
 
 
 
@@ -479,3 +479,18 @@ body > div:nth-child(2) > header > nav > a.current
         background-color: #FFEE77;
         padding: 10px;
       }
+
+    .winkelmandje
+    {
+        background-color:#fff;
+        float:left; 
+        margin-left:20px; 
+        width:15%; 
+
+    }
+
+    #winkelmandjeimg{
+        text-align:center; 
+        width:90%; 
+        margin-left:5%; 
+    }

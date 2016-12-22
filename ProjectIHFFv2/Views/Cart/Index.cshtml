@@ -5,9 +5,9 @@
 
 @foreach (ShoppingCartItem i in Model.Items)
 {
-    <article>
+    <article class="winkelmandje">
         <h2>@i.Gebeurtenis.naam</h2>
-      <img width="182" height="268" src="@i.Gebeurtenis.afbeelding_url" />
+      <img width="182" height="268" src="@i.Gebeurtenis.afbeelding_url" id="winkelmandjeimg"/>
 
         <ul>
             <li>
