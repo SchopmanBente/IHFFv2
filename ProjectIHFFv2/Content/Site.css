@@ -171,10 +171,14 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
+body > div:nth-child(2) > section
+ {
+        margin-top: 149px;
+        margin-bottom: 300px;
+}
 body > div:nth-child(2) > header 
 {
     float: left;
-    margin-top:35px;
 }
 body > div:nth-child(2) > header > .dagselectie {
     border-radius: 20px;
