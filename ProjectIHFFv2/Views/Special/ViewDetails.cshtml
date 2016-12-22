@@ -8,11 +8,13 @@
     <h1>@Model.Naam</h1>
 </header>
 <section class="detail-left">
-    <div class="detail-image">
-        <img src="@Model.AfbeeldingUrl" height="300" width="200" />
-    </div>
-    <div class="details">
-        <p>@Model.Beschrijving</p>
+    <div class="detailsummary">
+        <div class="detail-image">
+            <img src="@Model.AfbeeldingUrl" height="300" width="200" />
+        </div>
+        <div class="details">
+            <p>@Model.Beschrijving</p>
+        </div>
     </div>
         <div class="voorstellingen">
            <div class="voorstelling">
@@ -29,7 +31,7 @@
                    @using (Html.BeginForm("ViewDetails", "Special", FormMethod.Post))
                    {
                        @Html.Hidden("eventid", @Model.EventId);
-                       @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number" });
+                       @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number", @min = "1", @style = "width:50px" });
                        <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
                        <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
                    }

@@ -122,7 +122,7 @@ th {
     width: 28%;
     height: 300px;
     margin-top: 6px;
-    margin-bottom:300px; 
+    margin-bottom: 300px;
 }
 
 #image1 {
@@ -138,10 +138,10 @@ th {
     padding-left: 62px;
 }
 
-#image3{
-    position:relative;
-     width:101%; 
-     float: left; 
+#image3 {
+    position: relative;
+    width: 101%;
+    float: left;
 }
 
 #image1tekst {
@@ -156,10 +156,10 @@ th {
     left: 14%;
 }
 
-#image3tekst{
-    position:absolute; 
-    top: 90%; 
-    left: 0; 
+#image3tekst {
+    position: absolute;
+    top: 90%;
+    left: 0;
 }
 
 h2 span {
@@ -171,37 +171,38 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
-body > div:nth-child(2) > section
- {
-        margin-top: 149px;
-        margin-bottom: 300px;
-}
-body > div:nth-child(2) > header 
-{
-    float: left;
-}
-body > div:nth-child(2) > header > .dagselectie {
-    border-radius: 20px;
-    background-color: #2E2E2E;
-    height: 40px;
-    width: 787px;
-    margin: 25px 0px 0px 105px;
+body > div:nth-child(2) > section {
+    margin-top: 149px;
+    margin-bottom: 300px;
 }
 
-    body > div:nth-child(2) > header > .dagselectie > a {
-        font-family: 'Poppins', sans-serif;
-        font-weight: bold;
-        color: #FFF;
-        margin: 25px;
-        vertical-align: middle;
-        line-height: 3;
-        padding: 0px 20px 0px 20px;
-        text-decoration: none;
+body > div:nth-child(2) > header {
+    float: left;
+    width: 100%;
+}
+
+    body > div:nth-child(2) > header > .dagselectie {
+        border-radius: 20px;
+        background-color: #2E2E2E;
+        height: 40px;
+        width: 787px;
+        margin: 25px 0px 0px 105px;
     }
 
-        body > div:nth-child(2) > header > .dagselectie > a:hover {
-            color: #E82830;
+        body > div:nth-child(2) > header > .dagselectie > a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            color: #FFF;
+            margin: 25px;
+            vertical-align: middle;
+            line-height: 3;
+            padding: 0px 20px 0px 20px;
+            text-decoration: none;
         }
+
+            body > div:nth-child(2) > header > .dagselectie > a:hover {
+                color: #E82830;
+            }
 
 body > div:nth-child(2) > section > section {
     background-color: #fff;
@@ -269,56 +270,66 @@ body > div:nth-child(2) {
     width: 100%;
 }
 
-
-body > div:nth-child(2) > section.detail-left 
-{
-    float: left;
-    width: 55%;
-    height: 100%;
-    margin-left: 105px;  
-      background-color: #fff;
-    font-family: 'Poppins', sans-serif;
-}
-body > div:nth-child(2) > section.detail-left > div.detail-image
-{
-         float: left;
-    width: 25%;
-    height: 300px;
-    margin-bottom: 5px;
-     
-}
-
-
-body > div:nth-child(2) > section.detail-left > div.details
+body > div:nth-child(2) > section.detail
 {
      float: left;
-    width: 75%;
-    /* margin-left: -1px; */
-    padding-left: 41px;
-    /* padding: 10px; */
-    margin-bottom: 5px;
-    height: 300px;
+    margin: 0px;
+    min-height: 40em;
+    max-height: 50em;
+
 }
-     
 
-
-    body > div:nth-child(2) > section.detail-left {
-        float: left;
-        width: 55%;
-        height: 100%;
-        margin-left: 105px;
-        background-color: #fff;
-        font-family: 'Poppins', sans-serif;
+    body > div:nth-child(2) > section.detail >  section.detail-left {
+     float: left;
+    width: 55%;
+    min-height: 37em;
+    max-height: 47em;
+    margin-left: 105px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
     }
 
-        body > div:nth-child(2) > section.detail-left > div.detail-image {
+     body > div:nth-child(2) > section > section.detail-left > div 
+     {
+       overflow: hidden;
+    margin-bottom: 1em;
+            min-height: 8em;
+    max-height: 32em;
+    background-color: #fff;
+     }
+
+        body > div:nth-child(2) > section > section.detail-left > div > div.detail-image {
             float: left;
             width: 25%;
             height: 300px;
             margin-bottom: 5px;
         }
 
-        body > div:nth-child(2) > section.detail-left > div.details {
+
+        body > div:nth-child(2) > section > section.detail-left > div> div.details {
+            float: left;
+            width: 75%;
+            /* margin-left: -1px; */
+            padding-left: 41px;
+            /* padding: 10px; */
+            margin-bottom: 5px;
+            height: 300px;
+        }
+
+
+
+
+
+        body > div:nth-child(2) > section > section.detail-left > div.detail-image {
+            float: left;
+            width: 25%;
+            height: 300px;
+            margin-bottom: 5px;
+        }
+
+        body > div:nth-child(2) > section > section.detail-left > div.details {
             float: left;
             width: 75%;
             /* margin-left: -1px; */
@@ -332,21 +343,23 @@ body > div:nth-child(2) > section.detail-left > div.details
 
 
 
-body > div:nth-child(2) > section.detail-left > div.voorstellingen {
+body > div:nth-child(2) > section > section.detail-left > div.voorstellingen {
     float: left;
     width: 100%;
+    background-color: #fff;
+
 }
 
-    body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling {
+    body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling {
         float: left;
         width: 100%;
-        height: 110px;
+        height: 8em;
         margin-bottom: 5px;
         border-top: 1px solid #333;
         border-bottom: 1px solid #333;
     }
 
-        body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left {
+        body > div:nth-child(2) > section >section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left {
             float: left;
             width: 15%;
             height: 110px;
@@ -355,7 +368,7 @@ body > div:nth-child(2) > section.detail-left > div.voorstellingen {
             color: #E82830;
         }
 
-            body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left > p {
+            body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left > p {
                 text-align: center;
                 vertical-align: middle;
                 line-height: 50px;
@@ -363,7 +376,7 @@ body > div:nth-child(2) > section.detail-left > div.voorstellingen {
             }
 
 
-        body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden {
+        body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden {
             float: left;
             width: 39%;
             height: 110px;
@@ -371,11 +384,11 @@ body > div:nth-child(2) > section.detail-left > div.voorstellingen {
             border-bottom: 0.5px initial #333;
         }
 
-            body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden > p:nth-child(1) {
+            body > div:nth-child(2)  > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden > p:nth-child(1) {
                 font-weight: bold;
             }
 
-        body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right {
+        body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right {
             float: left;
             width: 46%;
             height: 110px;
@@ -383,7 +396,7 @@ body > div:nth-child(2) > section.detail-left > div.voorstellingen {
             border-bottom: 0.5px initial#333;
         }
 
-            body > div:nth-child(2) > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right > form > input {
+            body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right > form > input {
                 float: left;
                 margin-top: 27px;
                 margin-left: 10px;
@@ -394,12 +407,47 @@ body > div:nth-child(2) > section.detail-left > div.voorstellingen {
             }
 
 
-body > div:nth-child(2) > section.detail-right {
+body > div:nth-child(2) > section > section.detail-right {
+       margin-left: 10px;
+    background-color: #b3b3b3;
     float: left;
-    width: 35%;
-    height: 100%;
-    background-color: #999;
+    width: 30%;
+  min-height: 37em;
+    max-height: 47em;
+    margin-top: 0px;
 }
+
+    body > div:nth-child(2) >  section > section.detail-right > h3 {
+        color: #E82830;
+        font-weight: bold;
+        /* margin: 0 auto; */
+        text-align: center;
+    }
+
+    body > div:nth-child(2) > section > section.detail-right > section.cultuuritems {
+        float: left;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    body > div:nth-child(2) > section > section.detail-right > section > section {
+        /* margin: 0 auto; */
+        /* background-color: transparent; */
+        /* text-align: left; */
+        width: 100%;
+        /* float: left; */
+        /* height: 120px; */
+        margin: 0px 0px 0px 0px;
+        background-color: #b3b3b3;
+    }
+
+        body > div:nth-child(2) > section > section.detail-right > section > section > p {
+            margin-left: 38px;
+            margin-right: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            width: 80%;
+        }
 
 /* Homepage link weergave*/
 .Homepagelink {
@@ -418,11 +466,10 @@ section {
 }
 
 /*xxx*/
-body > div:nth-child(2) > header > nav > a.current ,
-body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse > ul > li > a.current
-{
+body > div:nth-child(2) > header > nav > a.current,
+body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse > ul > li > a.current {
     font-weight: bold;
-    color: #E82830;    
+    color: #E82830;
 }
 
 /* map route generator*/
@@ -432,36 +479,32 @@ body > div:nth-child(2) > #customfunction {
     height: 100%;
     font-family: 'Poppins', sans-serif;
 }
-/*map route generator: selector*/
-body > div:nth-child(2) >#customfunction > div.routegenerator {
-    float: left;
-    height: 100%;
-    width: 27%;
-}
-#left-panel
-{
+    /*map route generator: selector*/
+    body > div:nth-child(2) > #customfunction > div.routegenerator {
         float: left;
+        height: 100%;
+        width: 27%;
+    }
+
+#left-panel {
+    float: left;
     margin: 10px 0px 0px 111px;
 }
 
-p.selectie 
-{
+p.selectie {
     font-weight: bold;
 }
 
-#start , #end
-{
+#start, #end {
     width: 17em;
 }
 
-#waypoints 
-{
+#waypoints {
     height: 31em;
     width: 17em;
 }
 
-#submitroute > input 
-{
+#submitroute > input {
     margin-top: 10px;
 }
 /*route generator: map*/
@@ -472,8 +515,7 @@ body > div:nth-child(2) > section > section.map {
     margin: 10px 0px 0px 0px;
 }
 
-#map 
-{
+#map {
     width: 100%;
     height: 44em;
     position: relative;
