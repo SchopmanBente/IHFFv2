@@ -13,7 +13,12 @@ namespace ProjectIHFFv2.Models
         {
             double prijs = ((double)gebeuren.prijs * aantalPersonen);
             ShoppingCartItem item = new ShoppingCartItem(gebeuren, aantalPersonen, prijs);
-            cartItems.Add(item);
+            List<ShoppingCartItem> itemsInCart = cartItems;
+            if(!itemsInCart.Exists(i => i.Gebeurtenis.EventId == item.Gebeurtenis.EventId))
+            {
+                      cartItems.Add(item);
+            }
+      
         }
 
  
