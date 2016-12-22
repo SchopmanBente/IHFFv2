@@ -22,6 +22,13 @@ namespace ProjectIHFFv2.Controllers
             return View(Model); 
         }
 
+        public ActionResult Delete(int id)
+        {
+            presentation.VerwijderItem(id, HaalCartSessieOp());
+
+            return RedirectToAction("Index"); 
+        }
+
         private List<ShoppingCartItem> HaalCartSessieOp()
         {
             if (Session["cart"] == null)
