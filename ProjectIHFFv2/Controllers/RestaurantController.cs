@@ -50,6 +50,7 @@ namespace ProjectIHFFv2.Controllers
                         case "Add to cart":
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();
                             presentation.AddToCart(qty, eventid, cartItems);
+
                             return RedirectToAction("Index", "Cart");
                         default:
                             return View();

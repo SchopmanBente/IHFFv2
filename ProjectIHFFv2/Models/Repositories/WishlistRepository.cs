@@ -127,7 +127,10 @@ namespace ProjectIHFFv2.Models
             wishlistItem.type = item.type;
             List<WishlistItem> wishlist = items;
             //List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
-            wishlist.Add(wishlistItem);
+            if (!wishlist.Exists(w => w.EventId == item.EventId))
+            {
+                wishlist.Add(wishlistItem);
+            }
         }
 
         public void RemoveFromWishlist(WishlistItem item)
