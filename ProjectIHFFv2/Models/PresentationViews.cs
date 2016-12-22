@@ -80,7 +80,6 @@ namespace ProjectIHFFv2.Models
         {
             Event gebeuren = eventRepository.GetById(eventId);
             wishlistRepository.AddToWishlist(gebeuren, aantalPersonen, items);
-
         }
 
         public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)

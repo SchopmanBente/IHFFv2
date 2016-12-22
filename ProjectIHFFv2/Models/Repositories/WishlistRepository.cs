@@ -12,45 +12,46 @@ namespace ProjectIHFFv2.Models
 
         public List<WishlistItem> MakeWishlist( List<WishlistItem> meegekregenWishlist)
         {
+            //HIER OOK NOG CHECKEN OF BEPAALDE ITEMS AL BESTAAN! HIER EEN LIJST MEEGEVEN IS HIER HET NU VAN.
             List<WishlistItem> wishlist = meegekregenWishlist;
-            //MAAK EEN ARRAY MET COORDINATEN EN NEEM VAN DE COORDINAAT DE EERSTE WAARDE BOVENAAN EN DE EERSTE WAARDE LINKS. MAAK HIER EEN DATETIME VAN.
-            string[,] tijdNavigatieArray = MakeTimeArray();
-            int x = 0;
-            int y = 0;
+                string [,] tijdNavigatieArray = MakeTimeArray();
+
             foreach (WishlistItem item in wishlist) {
-                string heleDatum = item.beginTijd.HasValue ? item.beginTijd.Value.ToString("dd'/'MM'/'yyyy HH:mm") : "Datum is null";
-                string tijd = heleDatum.Substring(0, 10);
-                string datum = heleDatum.Substring(11, 5);
-
-                while (x <= 29)
+                int x = 0;
+                int y = 0;
+                string heleDatum = item.beginTijd.ToString("dd'/'MM'/'yyyy HH:mm");
+                string datum = heleDatum.Substring(0, 10);
+                string tijd = heleDatum.Substring(11, 5);
+                if (heleDatum != "Datum is null")
                 {
-                    if (tijd == tijdNavigatieArray[x, 0])
+                    while (x <= 29)
                     {
-                        item.xCoordinaat = x;
+                        if (tijd == tijdNavigatieArray[x, 0])
+                        {
+                            item.xCoordinaat = x;
+                        }
+                        x++;
                     }
-                    x++;
-                }
 
-                while (y < 5)
-                {
-                    if (datum == tijdNavigatieArray[0, y])
+                    while (y < 5)
                     {
-                        item.yCoordinaat = y;
+                        if (datum == tijdNavigatieArray[0, y])
+                        {
+                            item.yCoordinaat = y;
+                        }
+                        y++;
                     }
-                    y++;
-                }
 
-                //colspan berekenen
-                if ((item.yCoordinaat != 0) && (item.xCoordinaat != 0))
-                {
-                    DateTime DatumTijd = Convert.ToDateTime(tijdNavigatieArray[0, item.yCoordinaat] + tijdNavigatieArray[item.xCoordinaat, 0]);
-                    string tijdsduur = (item.eindTijd - item.beginTijd).ToString(); //krijg het verschil in tijd te zien.
-                    int uren = Int32.Parse(tijdsduur.Substring(2));
-                    int minuten = Int32.Parse(tijdsduur.Substring(4, 5));
-                    int totaalminuten = (uren * 60) + minuten;
-                    item.colspan = totaalminuten / 30;
-                }
-
+                    //colspan berekenen
+                    if ((item.yCoordinaat != 0) && (item.xCoordinaat != 0))
+                    {
+                        string tijdsduur = (item.eindTijd - item.beginTijd).ToString(); //krijg het verschil in tijd te zien.
+                        int uren = Int32.Parse(tijdsduur.Substring(0,2));
+                        int minuten = Int32.Parse(tijdsduur.Substring(3, 2));
+                        int totaalminuten = (uren * 60) + minuten;
+                        item.colspan = totaalminuten / 30;
+                    }
+                }//einde aan if (heleDatum == "Datum is null")
             }
 
             //Van alle tijden die er zijn is er nu een tijd ingevuld. Bij de tabelcreatie wordt een if (!null) gebruikt.
@@ -60,7 +61,8 @@ namespace ProjectIHFFv2.Models
 
         private string[,] MakeTimeArray() //maak array 1x
         {
-            string[,] gemaakteArray = new string[30, 6];
+            
+                 string[,] gemaakteArray = new string[30,6];
                 int x = 0;
                 int y = 0;
                 string tijd = "11:00";
@@ -100,17 +102,24 @@ namespace ProjectIHFFv2.Models
                         doorgaan = false;
                     }
                 }
-
                 return gemaakteArray;
         }
 
         public void AddToWishlist(Event item, int aantal, List<WishlistItem> items)
         {
+            foreach (WishlistItem bestaandItem in items)
+            {
+                //eindtijd > begintijd
+                if ((item.begin_datumtijd <= bestaandItem.beginTijd) || (item.begin_datumtijd >= bestaandItem.beginTijd) && )
+                {
+
+                }
+            }
             //voeg item toe aan session die een lijst van wishlistmodels bevat.
             WishlistItem wishlistItem = new WishlistItem();
             wishlistItem.aantal = aantal;
-            wishlistItem.beginTijd = item.begin_datumtijd;
-            wishlistItem.eindTijd = item.eind_datumtijd;
+            wishlistItem.beginTijd = item.begin_datumtijd.Value;
+            wishlistItem.eindTijd = item.eind_datumtijd.Value;
             wishlistItem.EventId = item.EventId;
             wishlistItem.locatieId = item.locatie_id;
             wishlistItem.naam = item.naam;

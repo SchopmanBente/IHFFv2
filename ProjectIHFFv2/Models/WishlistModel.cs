@@ -9,8 +9,8 @@ namespace ProjectIHFFv2.Models
     {
         public int EventId { get; set; }
         public string naam { get; set; }
-        public DateTime? beginTijd { get; set; }
-        public DateTime? eindTijd { get; set; }
+        public DateTime beginTijd { get; set; }
+        public DateTime eindTijd { get; set; }
         public double? prijs { get; set; }
         public int? locatieId { get; set; }
         public int type { get; set; }
