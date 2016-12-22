@@ -17,11 +17,10 @@ namespace ProjectIHFFv2.Models
             string[,] tijdNavigatieArray = MakeTimeArray();
             int x = 0;
             int y = 0;
-            foreach (WishlistItem item in wishlist)
-            {
-                string heleDatum = item.beginTijd.ToString();
-                string tijd = heleDatum.Substring(0, 9);
-                string datum = heleDatum.Substring(10, 4);
+            foreach (WishlistItem item in wishlist) {
+                string heleDatum = item.beginTijd.HasValue ? item.beginTijd.Value.ToString("dd'/'MM'/'yyyy HH:mm") : "Datum is null";
+                string tijd = heleDatum.Substring(0, 10);
+                string datum = heleDatum.Substring(11, 5);
 
                 while (x <= 29)
                 {
@@ -51,6 +50,7 @@ namespace ProjectIHFFv2.Models
                     int totaalminuten = (uren * 60) + minuten;
                     item.colspan = totaalminuten / 30;
                 }
+
             }
 
             //Van alle tijden die er zijn is er nu een tijd ingevuld. Bij de tabelcreatie wordt een if (!null) gebruikt.
