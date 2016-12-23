@@ -11,7 +11,7 @@ namespace ProjectIHFFv2.Models
 
         public IEnumerable<Special> GetAllForDay(DateTime dag)
         {
-            IQueryable<Special> specialsDay = ctx.Special.Where(x => x.Event.type == 3 && x.Event.begin_datumtijd.Value.Day == dag.Day).OrderBy(x => x.Event.begin_datumtijd);
+            IQueryable<Special> specialsDay = ctx.Special.Where(x => x.Event.type == 3 && x.Event.begin_datumtijd.Day == dag.Day).OrderBy(x => x.Event.begin_datumtijd);
             return specialsDay;
         }
 

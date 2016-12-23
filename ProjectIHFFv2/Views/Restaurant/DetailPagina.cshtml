@@ -20,13 +20,13 @@
         {
             <option value="@e.EventId">
 
-                @if (e.eind_datumtijd.Value.Hour <= 17)
+                @if (e.eind_datumtijd.Hour <= 17)
                 {
-                    <p>  Lunch: @e.begin_datumtijd.Value.ToString("dd-MM") @e.begin_datumtijd.Value.DayOfWeek.ToString() @e.begin_datumtijd.Value.ToShortTimeString() - @e.eind_datumtijd.Value.ToShortTimeString() </p>
+                    <p>  Lunch: @e.begin_datumtijd.ToString("dd-MM") @e.begin_datumtijd.DayOfWeek.ToString() @e.begin_datumtijd.ToShortTimeString() - @e.eind_datumtijd.ToShortTimeString() </p>
                 }
                 else
                 {
-                    <p> Diner:  @e.begin_datumtijd.Value.ToString("dd-MM") @e.begin_datumtijd.Value.DayOfWeek.ToString() @e.begin_datumtijd.Value.ToShortTimeString() - @e.eind_datumtijd.Value.ToShortTimeString() </p>
+                    <p> Diner:  @e.begin_datumtijd.ToString("dd-MM") @e.begin_datumtijd.DayOfWeek.ToString() @e.begin_datumtijd.ToShortTimeString() - @e.eind_datumtijd.ToShortTimeString() </p>
                 }
             </option>
         }

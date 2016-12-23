@@ -22,8 +22,8 @@ namespace ProjectIHFFv2.Models
         public int EventId { get; set; }
         public string naam { get; set; }
         public Nullable<double> prijs { get; set; }
-        public Nullable<System.DateTime> begin_datumtijd { get; set; }
-        public Nullable<System.DateTime> eind_datumtijd { get; set; }
+        public DateTime begin_datumtijd { get; set; }
+        public DateTime eind_datumtijd { get; set; }
         public Nullable<int> locatie_id { get; set; }
         public string beschrijving { get; set; }
         public string afbeelding_url { get; set; }

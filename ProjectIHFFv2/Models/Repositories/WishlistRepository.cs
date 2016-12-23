@@ -107,19 +107,19 @@ namespace ProjectIHFFv2.Models
 
         public void AddToWishlist(Event item, int aantal, List<WishlistItem> items)
         {
-            foreach (WishlistItem bestaandItem in items)
-            {
-                //eindtijd > begintijd
-                if ((item.begin_datumtijd <= bestaandItem.beginTijd) || (item.begin_datumtijd >= bestaandItem.beginTijd) && )
-                {
+            //foreach (WishlistItem bestaandItem in items)
+            //{
+            //    //eindtijd > begintijd
+            //    if ((item.begin_datumtijd <= bestaandItem.beginTijd) || (item.begin_datumtijd >= bestaandItem.beginTijd) && )
+            //    {
 
-                }
-            }
+            //    }
+            //}
             //voeg item toe aan session die een lijst van wishlistmodels bevat.
             WishlistItem wishlistItem = new WishlistItem();
             wishlistItem.aantal = aantal;
-            wishlistItem.beginTijd = item.begin_datumtijd.Value;
-            wishlistItem.eindTijd = item.eind_datumtijd.Value;
+            wishlistItem.beginTijd = item.begin_datumtijd;
+            wishlistItem.eindTijd = item.eind_datumtijd;
             wishlistItem.EventId = item.EventId;
             wishlistItem.locatieId = item.locatie_id;
             wishlistItem.naam = item.naam;

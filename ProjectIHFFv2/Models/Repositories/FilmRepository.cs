@@ -11,7 +11,7 @@ namespace ProjectIHFFv2.Models
 
         public IEnumerable<Film> GetAllForDay(DateTime dag)
         {
-            IQueryable<Film> filmsDay = ctx.Film.Where(x => x.Event.type == 0 && x.Event.begin_datumtijd.Value.Day == dag.Day).OrderBy(x => x.Event.begin_datumtijd);
+            IQueryable<Film> filmsDay = ctx.Film.Where(x => x.Event.type == 0 && x.Event.begin_datumtijd.Day == dag.Day).OrderBy(x => x.Event.begin_datumtijd);
             return filmsDay;
         }
 
