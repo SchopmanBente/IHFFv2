@@ -245,6 +245,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Cart.png" />
+    <Content Include="Content\Images\delete-icon.png" />
     <Content Include="Content\Images\Home1.png" />
     <Content Include="Content\Images\Home2.png" />
     <Content Include="Content\Images\Home3.png" />

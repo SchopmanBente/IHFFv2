@@ -21,7 +21,15 @@ namespace ProjectIHFFv2.Models
       
         }
 
- 
+        public List<ShoppingCartItem> RemoveFromCart(int id, List<ShoppingCartItem> sessie)
+        {
+            ShoppingCartItem teVerwijderen = sessie.Single(i => i.Gebeurtenis.EventId == id);
+            sessie.Remove(teVerwijderen);
+
+            return sessie; 
+        }
+
+
 
         public double GetTotaalPrijs(List <ShoppingCartItem> items)
         { 

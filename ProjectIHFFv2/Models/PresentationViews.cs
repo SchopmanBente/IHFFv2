@@ -90,6 +90,13 @@ namespace ProjectIHFFv2.Models
             
         }
 
+     public List<ShoppingCartItem> VerwijderItem(int id, List<ShoppingCartItem> lijst)
+        {
+           lijst = cartRepository.RemoveFromCart(id, lijst);
+
+            return lijst; 
+        }
+
         public IEnumerable<RestaurantOverviewPresentationModel> GetAllRestaurantsByLocation(string locatie)
         {
             IEnumerable<Event> restaurants = restaurantRepository.GetRestaurantsByPlaatsnaam(locatie);

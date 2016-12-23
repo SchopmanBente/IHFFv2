@@ -2,20 +2,50 @@
 
 @model CartPresentationModel
 
+@if (Model.Items.Count != 0)
+{<header style="margin-top:2%; float:initial;" >
+    <p class="breadcrumb">@Html.ActionLink("Index", "Index", "Home")  > @if (Model.Items.Last().Gebeurtenis.type == 0) { @Html.ActionLink("Films > ", "Wednesday", "Film")  @Html.ActionLink(Model.Items.Last().Gebeurtenis.naam + " > ", Model.Items.Last().Gebeurtenis.begin_datumtijd.Value.DayOfWeek.ToString(), "Film")} else if (Model.Items.Last().Gebeurtenis.type == 2) { @Html.ActionLink("Restaurants > ", "Haarlem", "Restaurant")   @Html.ActionLink(Model.Items.Last().Gebeurtenis.naam + " > ", Model.Items.Last().Gebeurtenis.Locatie.plaats, "Restaurant") } else {@Html.ActionLink("Specials > ", "Wednesday", "Special")  @Html.ActionLink(Model.Items.Last().Gebeurtenis.naam + " > ", "Wednesday", "Special") }
 
+    <h1>Shoppingcart</h1>
+    
+</header>
+}
+
+else
+{<h1 style="margin-top:4%;"> Your (for now) empty ShoppingCart</h1>
+}
 @foreach (ShoppingCartItem i in Model.Items)
 {
     <article class="winkelmandje">
+        <a href="@Url.Action("Delete", "Cart", new { id = i.Gebeurtenis.EventId})"> <img height="40" width="40" src="~/Content/Images/delete-icon.png" alt="Remove item from cart" /> </a>
         <h2>@i.Gebeurtenis.naam</h2>
       <img width="182" height="268" src="@i.Gebeurtenis.afbeelding_url" id="winkelmandjeimg"/>
 
         <ul>
+            <li>@i.Gebeurtenis.begin_datumtijd.Value.ToString("dd-MM HH:mm") tot @i.Gebeurtenis.eind_datumtijd.Value.ToString("HH:mm")</li>
             <li>
-                <p><b>Aantal Personen</b>: @i.AantalPersonen</p>
+                <p><b>Amount</b>: @i.AantalPersonen</p>
             </li>
-                <li><b>@i.Gebeurtenis.Locatie.naam</b>: @i.Gebeurtenis.Locatie.zaal </li>
+                <li><b>@i.Gebeurtenis.Locatie.naam</b> @i.Gebeurtenis.Locatie.zaal </li>
+
+            <li> @i.Gebeurtenis.Locatie.straat @i.Gebeurtenis.Locatie.huisnr @i.Gebeurtenis.Locatie.toevoeging @i.Gebeurtenis.Locatie.plaats</li>
         </ul>
 
          
     </article>
-}
+}    
+
+<div>
+    @using (Html.BeginForm("Index", "Cart", FormMethod.Post))
+    {
+
+      
+        <input type="submit" id="cart" name="Betaal" class="btn btn-view" value="Finalize reservation" />
+               
+    }
+</div>
+
+
+
+
+

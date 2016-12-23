@@ -558,6 +558,7 @@ p.selectie {
         float:left; 
         margin-left:20px; 
         width:15%; 
+        margin-top: 3%; 
 
     }
 
@@ -593,7 +594,7 @@ body > div:nth-child(2) > section > section.map {
 /*route generator: directions*/
 #right-panel {
     margin: 11px;
-    margin-top: 10;
+    margin-top: 10px;
     width: 33%;
     height: 44em;
     float: left;
