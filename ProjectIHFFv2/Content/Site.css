@@ -171,14 +171,23 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
-body > div:nth-child(2) > section {
-    margin-top: 149px;
+body > div:nth-child(2) > section.overview {
+    margin-top: 181px;
     margin-bottom: 300px;
 }
 
+body > div:nth-child(2) > section.overview > section.itemOverview
+{
+        /* margin: 0 auto; */
+    margin-bottom: 5px;
+    margin-left: 105px;
+    width: 80%;
+    background-color: #fff;
+}
 body > div:nth-child(2) > header {
     float: left;
     width: 100%;
+    margin-top: 35px;
 }
 
     body > div:nth-child(2) > header > .dagselectie {
@@ -203,14 +212,6 @@ body > div:nth-child(2) > header {
             body > div:nth-child(2) > header > .dagselectie > a:hover {
                 color: #E82830;
             }
-
-body > div:nth-child(2) > section > section {
-    background-color: #fff;
-    margin: 10px 0px 0px 105px;
-    width: 80%;
-    height: 120px;
-}
-
     body > div:nth-child(2) > section > section > .film_image {
         float: left;
         height: 120px;
@@ -265,34 +266,55 @@ body > div:nth-child(2) > section > section {
     }
 
 /* Detailpage */
-body > div:nth-child(2) {
-    float: left;
-    width: 100%;
-}
-
+/*
 body > div:nth-child(2) > section.detail
 {
-     float: left;
-    margin: 0px;
-    min-height: 40em;
-    max-height: 50em;
-
+         overflow: hidden;
+    padding-right: 330px;
 }
 
     body > div:nth-child(2) > section.detail >  section.detail-left {
      float: left;
-    width: 55%;
-    min-height: 37em;
-    max-height: 47em;
-    margin-left: 105px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    width: 84%;
     background-color: #fff;
-    font-family: 'Poppins', sans-serif;
+     margin: 10px 0px 0px 105px; 
     }
+  
+body > div:nth-child(2) > section > section.detail-right {
+       float: right;
+    margin-right: -330px;
+    width: 300px;
+}
 
-     body > div:nth-child(2) > section > section.detail-left > div 
-     {
+body > div:nth-child(2) > section > section.detail-left , body > div:nth-child(2) > section > section.detail-right {
+   
+        padding-bottom: 99999px;
+    margin-bottom: -99999px;
+}
+*/
+ body > div:nth-child(2) > section.detail {
+    padding-right: 330px;
+    overflow: hidden;
+}
+ body > div:nth-child(2) > section > section.detail-left  {
+        float: left;
+    width: 87%;
+    margin-left: 105px;
+    background-color: #fff;
+}
+ body > div:nth-child(2) > section > section.detail-right {
+   float: right;
+    margin-right: -280px;
+    width: 300px;
+    background-color: #b3b3b3;
+}
+ body > div:nth-child(2) > section > section.detail-left ,
+ body > div:nth-child(2) > section > section.detail-righy {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+}
+
+     body > div:nth-child(2) > section > section.detail-left > div  {
        overflow: hidden;
     margin-bottom: 1em;
             min-height: 8em;
@@ -406,17 +428,6 @@ body > div:nth-child(2) > section > section.detail-left > div.voorstellingen {
                 border-bottom: 1px initial #333;
             }
 
-
-body > div:nth-child(2) > section > section.detail-right {
-       margin-left: 10px;
-    background-color: #b3b3b3;
-    float: left;
-    width: 30%;
-  min-height: 37em;
-    max-height: 47em;
-    margin-top: 0px;
-}
-
     body > div:nth-child(2) >  section > section.detail-right > h3 {
         color: #E82830;
         font-weight: bold;
@@ -461,9 +472,7 @@ body > div:nth-child(2) > section > section.detail-right {
         text-decoration: none;
     }
 
-section {
-    margin-bottom: 300px;
-}
+
 
 /*xxx*/
 body > div:nth-child(2) > header > nav > a.current,
