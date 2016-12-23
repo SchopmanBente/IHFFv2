@@ -29,6 +29,16 @@ namespace ProjectIHFFv2.Controllers
             return RedirectToAction("Index"); 
         }
 
+        public ActionResult Betaal()
+        {
+            List<ShoppingCartItem> lijst = HaalCartSessieOp();
+
+            CartPresentationModel reservingen = presentation.FillPresentationModel(lijst);
+
+            CheckoutModel Model = new CheckoutModel(reservingen); 
+            return View(Model); 
+        }
+
         private List<ShoppingCartItem> HaalCartSessieOp()
         {
             if (Session["cart"] == null)
