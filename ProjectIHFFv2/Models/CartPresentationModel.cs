@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectIHFFv2.Models
 {
    public class CartPresentationModel
     {
         public List<ShoppingCartItem> Items { get; set; }
-        public double TotaalPrijs { get; set; }
+
+        
+        public double TotaalPrijs { get; }
         public CartPresentationModel()
         {
 
