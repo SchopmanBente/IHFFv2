@@ -12,35 +12,39 @@
 }
 
 else
-{<h1 style="margin-top:4%;"> Your (for now) empty ShoppingCart</h1>
+{<h1 style="margin-top:4%;"> Your (for now) empty Shoppingcart</h1>
 }
 @foreach (ShoppingCartItem i in Model.Items)
 {
     <article class="winkelmandje">
-        <a href="@Url.Action("Delete", "Cart", new { id = i.Gebeurtenis.EventId})"> <img height="40" width="40" src="~/Content/Images/delete-icon.png" alt="Remove item from cart" /> </a>
-        <h2>@i.Gebeurtenis.naam</h2>
+        <a href="@Url.Action("Delete", "Cart", new { id = i.Gebeurtenis.EventId})"> <img height="40" width="40" src="~/Content/Images/delete-icon.png" title="Remove item from cart" /> </a>
+        <h4>@i.Gebeurtenis.naam</h4>
       <img width="182" height="268" src="@i.Gebeurtenis.afbeelding_url" id="winkelmandjeimg"/>
 
-        <ul>
-            <li>@i.Gebeurtenis.begin_datumtijd.DayOfWeek @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm")</li>
-            <li>
-                <b>Amount</b>: @Html.TextBox("qty", @i.AantalPersonen, new { @type = "number", @style = "width:50px" }) @i.Gebeurtenis.prijs.Value.ToString("C2") @if (i.Gebeurtenis.type == 0)
-                { <p>pp</p> }
-               
-            </li>
-                <li><b>@i.Gebeurtenis.Locatie.naam</b> @i.Gebeurtenis.Locatie.zaal </li>
+    <!-- Hier moet de ul weer komen als het niet lukt-->
+    
+        @using (Html.BeginForm())
+        {
+           @Html.LabelFor( m => i.AantalPersonen)
+            @Html.TextBoxFor( m => i.AantalPersonen, new { @type = "number", @min = "1", @style = "width:40px" })
+            <br />
+            @Html.LabelFor(m => i.Prijs)
+            @Html.DisplayFor( m => i.Prijs) if(i.Gebeurtenis.type == 0 || i.Gebeurtenis.type == 3) { <text> per person</text> }
 
-            <li> @i.Gebeurtenis.Locatie.straat @i.Gebeurtenis.Locatie.huisnr @i.Gebeurtenis.Locatie.toevoeging @i.Gebeurtenis.Locatie.plaats</li>
-        </ul>
+        }
+        <p><b>Date:</b> @i.Gebeurtenis.begin_datumtijd.DayOfWeek @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm")</p>
+      
+        <p>@i.Gebeurtenis.Locatie.straat @i.Gebeurtenis.Locatie.huisnr @i.Gebeurtenis.Locatie.toevoeging @i.Gebeurtenis.Locatie.plaats</p>
 
-         
     </article>
 }    
+
+
 
 <div>
    
     
-    @Html.ActionLink("Proceed to checkout", "Betaal", "Cart", new { @class="btn btn-view"})
+    @Html.ActionLink("Proceed to checkout", "Betaal", "Cart", new { @class = "btn btn-view" })
 
      
 
