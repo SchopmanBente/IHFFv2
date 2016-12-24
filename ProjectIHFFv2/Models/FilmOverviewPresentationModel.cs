@@ -15,7 +15,7 @@ namespace ProjectIHFFv2.Models
         public Locatie EventLocatie { get; set; }
         public string Beschrijving { get; set; }
         
-        public FilmOverviewPresentationModel(int id, string naam,string afbeelding, DateTime? begindatum,DateTime? einddatum, Locatie locatie, string beschrijving)
+        public FilmOverviewPresentationModel(int id, string naam,string afbeelding, DateTime begindatum,DateTime einddatum, Locatie locatie, string beschrijving)
         {
             this.EventId = id;
             this.Naam = naam;
@@ -23,18 +23,18 @@ namespace ProjectIHFFv2.Models
             this.EventLocatie = locatie;
             this.Beschrijving = beschrijving.Substring(0,90);
             DateTime dag = new DateTime(2017, 8, 10, 0, 0, 0);
-            DateTime start = (DateTime)begindatum;
-            DateTime eind = (DateTime)einddatum;
+           /* DateTime begindatum = (DateTime)begindatum;
+            DateTime einddatum = (DateTime)einddatumdatum; */
 
-            if (start.Minute == dag.Minute)
-                this.BeginDatumTijd =  start.Day.ToString() + '-' +  start.Month.ToString() + '-' + start.Year.ToString() + " " + start.Hour.ToString() + ":00";
+            if (begindatum.Minute == dag.Minute)
+                this.BeginDatumTijd =  begindatum.Day.ToString() + '-' +  begindatum.Month.ToString() + '-' + begindatum.Year.ToString() + " " + begindatum.Hour.ToString() + ":00";
             else
-                this.BeginDatumTijd = start.Day.ToString() + '-' + start.Month.ToString() + '-' + start.Year.ToString() + " " + start.Hour.ToString() + ':' + start.Minute.ToString();
+                this.BeginDatumTijd = begindatum.Day.ToString() + '-' + begindatum.Month.ToString() + '-' + begindatum.Year.ToString() + " " + begindatum.Hour.ToString() + ':' + begindatum.Minute.ToString();
 
-            if (eind.Minute == dag.Minute)
-                this.EindDatumTijd = eind.Day.ToString() + '-' + eind.Month.ToString() + '-' + eind.Year.ToString() + " " + eind.Hour.ToString() + ":00";
+            if (einddatum.Minute == dag.Minute)
+                this.EindDatumTijd = einddatum.Day.ToString() + '-' + einddatum.Month.ToString() + '-' + einddatum.Year.ToString() + " " + einddatum.Hour.ToString() + ":00";
             else
-                this.BeginDatumTijd = eind.Day.ToString() + '-' + eind.Month.ToString() + '-' + eind.Year.ToString() + " " + eind.Hour.ToString() + ':' + eind.Minute.ToString();
+                this.EindDatumTijd = einddatum.Day.ToString() + '-' + einddatum.Month.ToString() + '-' + einddatum.Year.ToString() + " " + einddatum.Hour.ToString() + ':' + einddatum.Minute.ToString();
         }
     }
 }

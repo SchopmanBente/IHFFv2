@@ -46,10 +46,16 @@ namespace ProjectIHFFv2.Controllers
             return View(films);
         }
 
-        public ActionResult ViewDetails(int id)
+        public ActionResult ViewDetails(int? id)
         {
-            FilmDetailPresentationModel filmDetail = presentation.GetFilmDetails(id);
-            return View(filmDetail);
+            if (id != null)
+            {
+                int eventId = (int)id;
+                FilmDetailPresentationModel filmDetail = presentation.GetFilmDetails(eventId);
+                return View(filmDetail);
+            }
+                    
+           return RedirectToAction("Wednesday", "Film");
         }
 
         [HttpPost]
