@@ -15,7 +15,7 @@ namespace ProjectIHFFv2.Models
         public string EventLocatie { get; set; }
         public string Beschrijving { get; set; }
         
-        public SpecialOverviewPresentationModel(int id, double prijs,string naam,string spreker,string afbeelding, DateTime? begindatum, string locatienaam,string locatiezaal, string beschrijving)
+        public SpecialOverviewPresentationModel(int id,double prijs,string naam,string spreker,string afbeelding, DateTime? begindatum, string locatienaam,string locatiezaal, string beschrijving)
         {
             this.EventId = id;
             this.Naam = naam + " " + spreker;

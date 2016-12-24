@@ -10,6 +10,7 @@ namespace ProjectIHFFv2.Models
     {
         public int EventId { get; set; }
         public string Naam { get; set; }
+        public double Rating { get; set; }
         public string AfbeeldingUrl { get; set; }
         public string TrailerUrl { get; set; }
         public string EventLocatie { get; set; }
@@ -22,10 +23,11 @@ namespace ProjectIHFFv2.Models
         public int AantalPersonen { get; set; }
 
 
-        public FilmDetailPresentationModel(int id, string naam,string afbeelding, string trailer,DateTime? begindatum, DateTime? einddatum, string locatienaam,string locatiezaal, string beschrijving,  IEnumerable<Cultuuritem> activiteiten , IEnumerable<Film> voorstellingen)
+        public FilmDetailPresentationModel(int id, string naam,double rating,string afbeelding, string trailer,DateTime? begindatum, DateTime? einddatum, string locatienaam,string locatiezaal, string beschrijving,  IEnumerable<Cultuuritem> activiteiten , IEnumerable<Film> voorstellingen)
         {
             this.EventId = id;
             this.Naam = naam;
+            this.Rating = rating;
             this.AfbeeldingUrl = afbeelding;
             this.TrailerUrl = trailer;
             this.EventLocatie = locatienaam + " " + locatiezaal;

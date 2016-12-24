@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectIHFFv2.Models
 {
-    public class EventRepository
+    public class EventRepository : IEventRepository
     {
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
