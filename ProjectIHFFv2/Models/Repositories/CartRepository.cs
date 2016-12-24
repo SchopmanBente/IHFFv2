@@ -11,9 +11,22 @@ namespace ProjectIHFFv2.Models
 
         public void AddEventToCart(Event gebeuren, int aantalPersonen, List<ShoppingCartItem> cartItems)
         {
-            double prijs = ((double)gebeuren.prijs * aantalPersonen);
+            //Bepaal prijs voor event
+             double prijs;
+            //Als Event is een special of een film
+            if (gebeuren.type == 0 || gebeuren.type == 2)
+            {
+               prijs = ((double)gebeuren.prijs * aantalPersonen);
+            }
+             //Elk ander geval
+            else
+            {
+                prijs = (double)gebeuren.prijs;
+            }
+            //Maak een nieuw shoppingcartitem
             ShoppingCartItem item = new ShoppingCartItem(gebeuren, aantalPersonen, prijs);
             List<ShoppingCartItem> itemsInCart = cartItems;
+            //Als het item niet bestaat in de shoppingcart voeg toe.
             if(!itemsInCart.Exists(i => i.Gebeurtenis.EventId == item.Gebeurtenis.EventId))
             {
                       cartItems.Add(item);
