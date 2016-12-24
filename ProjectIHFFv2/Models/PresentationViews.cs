@@ -10,11 +10,11 @@ namespace ProjectIHFFv2.Models
         //Alle repositories
         private CultuurRepository cultuurRepository = new CultuurRepository();
         private CartRepository cartRepository = new CartRepository();
-        private EventRepository eventRepository = new EventRepository();
-        private FilmRepository filmRepository = new FilmRepository();
-        private SpecialRepository specialRepository = new SpecialRepository();
+        private IEventRepository eventRepository = new EventRepository();
+        private IFilmRepository filmRepository = new FilmRepository();
+        private ISpecialRepository specialRepository = new SpecialRepository();
         private RestaurantRepository restaurantRepository = new RestaurantRepository();
-        private LocatieRepository locatieRepository = new LocatieRepository();
+        private ILocatieRepository locatieRepository = new LocatieRepository();
         private WishlistRepository wishlistRepository = new WishlistRepository();
 
 

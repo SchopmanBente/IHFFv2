@@ -13,6 +13,10 @@ namespace ProjectIHFFv2.Controllers
         // GET: /Film/
         private PresentationViews presentation = new PresentationViews();
 
+        public ActionResult Index()
+        {
+            return RedirectToAction("Wednesday");
+        }
         //Wednesday - Sunday(): Haal alle films voor een dag op
         public ActionResult Wednesday()
         {

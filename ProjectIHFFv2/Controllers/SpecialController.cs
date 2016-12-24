@@ -13,6 +13,11 @@ namespace ProjectIHFFv2.Controllers
         // GET: /Special/
         private PresentationViews presentation = new PresentationViews();
 
+        public ActionResult Index()
+        {
+            return RedirectToAction("Wednesday");
+        }
+
         //Methode Wednesday() - Sunday(): Haal op basis van dag de specials op
         public ActionResult Wednesday()
         {
