@@ -19,6 +19,13 @@ namespace ProjectIHFFv2.Controllers
             return View(alleItems);
         }
 
+        
+        public ActionResult Delete(int id)
+        {
+            ctx.RemoveFromWishlist(id , HaalWishlistSessieOp());
+            return RedirectToAction("Index"); 
+        }
+
 
         private List<WishlistItem> HaalWishlistSessieOp()
         {

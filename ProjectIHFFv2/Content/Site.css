@@ -80,7 +80,12 @@ footer {
 }
 
 .wishlistItem {
-    background-color: black;
+    background-color: white;
+    color: black;
+}
+
+.deleteImageWishlist {
+    float: right;
 }
 
 .tableDivWrapper {
@@ -113,6 +118,8 @@ th {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+/* CSS voor programma samenstellen EIND*/
 
 .home-img-top {
     max-height: 500px;
