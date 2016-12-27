@@ -173,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\CulturePresentationModel.cs" />
     <Compile Include="Models\CartPresentationModel.cs" />
     <Compile Include="Models\Cultuuritem.cs">
@@ -216,6 +217,10 @@
     <Compile Include="Models\Repositories\CultuurRepository.cs" />
     <Compile Include="Models\Repositories\EventRepository.cs" />
     <Compile Include="Models\Repositories\FilmRepository.cs" />
+    <Compile Include="Models\Repositories\IEventRepository.cs" />
+    <Compile Include="Models\Repositories\IFilmRepository.cs" />
+    <Compile Include="Models\Repositories\ILocatieRepository.cs" />
+    <Compile Include="Models\Repositories\ISpecialRepository.cs" />
     <Compile Include="Models\Repositories\LocatieRepository.cs" />
     <Compile Include="Models\Repositories\RestaurantRepository.cs" />
     <Compile Include="Models\Repositories\SpecialRepository.cs" />
@@ -341,6 +346,8 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Culture\ViewRoute.cshtml" />
     <Content Include="Views\Shared\_RouteGenerator.cshtml" />
+    <Content Include="Views\Cart\Betaal.cshtml" />
+    <Content Include="Views\Shared\_WinkelmandStap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

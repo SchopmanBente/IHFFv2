@@ -1,0 +1,48 @@
+﻿@using ProjectIHFFv2.Models
+
+@model CheckoutModel
+<header style="margin-top:2%; float:initial;">
+    <h1> Checkout</h1>
+    @Html.Partial("~\\views\\shared\\_WinkelmandStap.cshtml")
+</header>
+
+<h2>Payment</h2>
+
+@foreach(ShoppingCartItem i in Model.Reserveringen.Items)
+{
+
+    <p> @i.Gebeurtenis.naam Amount: @i.AantalPersonen </p>
+}
+
+<h3> @Model.Reserveringen.TotaalPrijs.ToString("C2")</h3>
+
+<section>
+    @Html.ValidationSummary()
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(m => m.VoorNaam)
+        @Html.TextBoxFor(m => m.VoorNaam)
+
+        <br />
+
+        @Html.LabelFor(m => m.AchterNaam)
+        @Html.TextBoxFor(m => m.AchterNaam)
+
+        <br />
+
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email)
+
+        <br />
+
+        @Html.LabelFor(m => m.BevestigEmail)
+        @Html.TextBoxFor(m => m.BevestigEmail)
+
+        <br />
+
+        @Html.LabelFor(m=> m.TelefoonNummer)
+        @Html.TextBoxFor(m => m.TelefoonNummer)
+
+        <input type="submit" value="Confirm" />
+    }
+</section>

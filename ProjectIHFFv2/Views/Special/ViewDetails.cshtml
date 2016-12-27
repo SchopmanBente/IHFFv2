@@ -7,48 +7,58 @@
     <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("Woensdag", "Special") > @Html.ActionLink("View Details", "ViewDetails", "Special", new { id = @Model.EventId }, null) </p>
     <h1>@Model.Naam</h1>
 </header>
-<section class="detail-left">
-    <div class="detailsummary">
-        <div class="detail-image">
-            <img src="@Model.AfbeeldingUrl" height="300" width="200" />
+<section class="detail">
+    <section class="detail-left col">
+        <div class="detailsummary">
+            <div class="detail-image">
+                <img src="@Model.AfbeeldingUrl" height="350" width="250" />
+            </div>
+            <div class="details">
+                <p>@Model.Beschrijving</p>
+            </div>
         </div>
-        <div class="details">
-            <p>@Model.Beschrijving</p>
-        </div>
-    </div>
         <div class="voorstellingen">
-           <div class="voorstelling">
-               <div class="voorstelling-left">
-                   <p>@Model.BeginDatumTijd.Day-@Model.BeginDatumTijd.Month-@Model.BeginDatumTijd.Year @Model.BeginDatumTijd.Hour:@Model.BeginDatumTijd.Minute</p>
-               </div>
-               <div class="voorstelling-midden">
-                   <p>@Model.BeginDatumTijd - @Model.EindDatumTijd</p>
-                   <p>@Model.EventLocatie.naam @Model.EventLocatie.zaal </p>
-                   <p>@Model.EventLocatie.straat @Model.EventLocatie.huisnr @Model.EventLocatie.plaats</p>
-                   <p>Ticket: @Model.Prijs</p>
-               </div>
-               <div class="voorstelling-right">
-                   @using (Html.BeginForm("ViewDetails", "Special", FormMethod.Post))
-                   {
-                       @Html.Hidden("eventid", @Model.EventId);
-                       @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number", @min = "1", @style = "width:50px" });
-                       <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
-                       <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
-                   }
-               </div>
-           </div>
-           
+            <div class="voorstelling">
+                <div class="voorstelling-left">
+                    <p>@Model.BeginDatumTijd.Day-@Model.BeginDatumTijd.Month-@Model.BeginDatumTijd.Year @Model.BeginDatumTijd.Hour:@Model.BeginDatumTijd.Minute</p>
+                </div>
+                <div class="voorstelling-midden">
+                    <p>@Model.BeginDatumTijd - @Model.EindDatumTijd</p>
+                    <p>@Model.EventLocatie.naam @Model.EventLocatie.zaal </p>
+                    <p>@Model.EventLocatie.straat @Model.EventLocatie.huisnr @Model.EventLocatie.plaats</p>
+                    <p>Ticket: @Model.Prijs</p>
+                </div>
+                <div class="voorstelling-right">
+                    @using (Html.BeginForm("ViewDetails", "Special", FormMethod.Post))
+                    {
+                        @Html.Hidden("eventid", @Model.EventId);
+                        @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number", @min = "1", @style = "width:50px" });
+                        <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
+                        <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
+                    }
+                </div>
+            </div>
+
         </div>
-</section>
-<section class="detail-right">
-    <h3>Discover delicious food..</h3>
-    @foreach (var r in Model.Restaurants)
-    {
-        <section class="cultuuritem">
-            <img src="@r.afbeelding_url" />
-            <p>@r.naam</p>
-            <p>@r.beschrijving</p>
-            @Html.ActionLink("View", "DetailPagina", "Restaurant", new { id = @r.EventId }, new { @class = "btn btn-info" })
+    </section>
+    <section class="detail-right col">
+        <h3>Discover delicious food..</h3>
+        <section class="cultuuritems">
+            @foreach (var r in Model.Restaurants)
+            {
+                <section class="cultuuritem">
+                    <p>
+                        <b>@r.naam</b>
+                        <br />
+                        @r.beschrijving.Substring(0, 50);
+                    </p>
+                    <div class="linkshizzle">
+                        @Html.ActionLink("View", "DetailPagina", "Restaurant", new { id = @r.EventId }, new { @class = "btn btn-info btn-link" })
+                    </div>
+
+                </section>
+            }
         </section>
-    }
+    </section>
 </section>
+

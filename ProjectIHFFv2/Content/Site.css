@@ -50,7 +50,7 @@ footer {
     padding-top: 7px;
     padding-bottom: 7px;
     min-width: 1000px;
-    position: fixed;
+   /* position: fixed; */
     bottom: 0;
     width: 100%;
 }
@@ -183,14 +183,24 @@ h2 span {
     padding: 10px;
 }
 /* Overview */
-body > div:nth-child(2) > section {
-    margin-top: 149px;
+body > div:nth-child(2) > section.overview {
+    margin-top: 181px;
     margin-bottom: 300px;
 }
+
+    body > div:nth-child(2) > section.overview > section.itemOverview {
+        /* margin: 0 auto; */
+        margin-bottom: 5px;
+        margin-left: 105px;
+        width: 80%;
+        background-color: #fff;
+        height: 130px;
+    }
 
 body > div:nth-child(2) > header {
     float: left;
     width: 100%;
+    margin-top: 35px;
 }
 
     body > div:nth-child(2) > header > .dagselectie {
@@ -216,48 +226,39 @@ body > div:nth-child(2) > header {
                 color: #E82830;
             }
 
-body > div:nth-child(2) > section > section {
-    background-color: #fff;
-    margin: 10px 0px 0px 105px;
-    width: 80%;
-    height: 120px;
+body > div:nth-child(2) > section > section > .film_image {
+    float: left;
 }
 
-    body > div:nth-child(2) > section > section > .film_image {
-        float: left;
-        height: 120px;
-    }
+body > div:nth-child(2) > section > section > .film_text {
+    text-align: left;
+    display: block;
+    margin: auto;
+    width: 75%;
+}
 
-    body > div:nth-child(2) > section > section > .film_text {
-        text-align: left;
-        display: block;
-        margin: auto;
-        width: 75%;
-        height: 120px;
-    }
+body > div:nth-child(2) > section > section > .film_text {
+    position: relative;
+}
 
-    body > div:nth-child(2) > section > section > .film_text {
-        position: relative;
-    }
+body > div:nth-child(2) > section > section > div.film_text > header {
+    padding-top: 5px;
+    height: 90px;
+}
 
-    body > div:nth-child(2) > section > section > div.film_text > header {
-        padding-top: 5px;
-        height: 70px;
-    }
+body > div:nth-child(2) > section > section > .film_text > .beschrijving {
+    padding-bottom: 5px;
+    height: 50px;
+}
 
-    body > div:nth-child(2) > section > section > .film_text > .beschrijving {
-        padding-bottom: 5px;
-        height: 50px;
-    }
-
-    body > div:nth-child(2) > section > section > .film_text > .item-button {
-        position: absolute;
-        float: right;
-        top: 45px;
-        bottom: 30px;
-        left: 800px;
-        right: 100px;
-    }
+body > div:nth-child(2) > section > section > .film_text > .item-button {
+    position: absolute;
+    float: right;
+    top: 45px;
+    bottom: 30px;
+    left: 800px;
+    right: 100px;
+}
 
 .btn-view {
     background-color: #E82830;
@@ -277,40 +278,64 @@ body > div:nth-child(2) > section > section {
     }
 
 /* Detailpage */
-body > div:nth-child(2) {
-    float: left;
-    width: 100%;
-}
-
+/*
 body > div:nth-child(2) > section.detail
 {
-     float: left;
-    margin: 0px;
-    min-height: 40em;
-    max-height: 50em;
-
+         overflow: hidden;
+    padding-right: 330px;
 }
 
     body > div:nth-child(2) > section.detail >  section.detail-left {
      float: left;
-    width: 55%;
-    min-height: 37em;
-    max-height: 47em;
-    margin-left: 105px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    width: 84%;
     background-color: #fff;
-    font-family: 'Poppins', sans-serif;
+     margin: 10px 0px 0px 105px; 
     }
+  
+body > div:nth-child(2) > section > section.detail-right {
+       float: right;
+    margin-right: -330px;
+    width: 300px;
+}
 
-     body > div:nth-child(2) > section > section.detail-left > div 
-     {
-       overflow: hidden;
-    margin-bottom: 1em;
-            min-height: 8em;
-    max-height: 32em;
+body > div:nth-child(2) > section > section.detail-left , body > div:nth-child(2) > section > section.detail-right {
+   
+        padding-bottom: 99999px;
+    margin-bottom: -99999px;
+}
+*/
+body > div:nth-child(2) > section.detail {
+    padding-right: 330px;
+    overflow: hidden;
+}
+
+body > div:nth-child(2) > section > section.detail-left {
+    float: left;
+    width: 87%;
+    margin-left: 105px;
     background-color: #fff;
-     }
+}
+
+body > div:nth-child(2) > section > section.detail-right {
+    float: right;
+    margin-right: -280px;
+    width: 300px;
+    background-color: #b3b3b3;
+}
+
+body > div:nth-child(2) > section > section.detail-left,
+body > div:nth-child(2) > section > section.detail-right {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+}
+
+    body > div:nth-child(2) > section > section.detail-left > div {
+        overflow: hidden;
+        margin-bottom: 1em;
+        min-height: 8em;
+        max-height: 32em;
+        background-color: #fff;
+    }
 
         body > div:nth-child(2) > section > section.detail-left > div > div.detail-image {
             float: left;
@@ -320,7 +345,7 @@ body > div:nth-child(2) > section.detail
         }
 
 
-        body > div:nth-child(2) > section > section.detail-left > div> div.details {
+        body > div:nth-child(2) > section > section.detail-left > div > div.details {
             float: left;
             width: 75%;
             /* margin-left: -1px; */
@@ -355,112 +380,119 @@ body > div:nth-child(2) > section.detail
 
 
 
-body > div:nth-child(2) > section > section.detail-left > div.voorstellingen {
-    float: left;
-    width: 100%;
-    background-color: #fff;
-
-}
-
-    body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling {
-        float: left;
-        width: 100%;
-        height: 8em;
-        margin-bottom: 5px;
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #333;
-    }
-
-        body > div:nth-child(2) > section >section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left {
+        body > div:nth-child(2) > section > section.detail-left > div.voorstellingen {
             float: left;
-            width: 15%;
-            height: 110px;
-            font-weight: bold;
-            background-color: #2E2E2E;
-            color: #E82830;
+            width: 100%;
+            background-color: #fff;
         }
 
-            body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left > p {
-                text-align: center;
-                vertical-align: middle;
-                line-height: 50px;
-                margin-top: 27px;
-            }
-
-
-        body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden {
-            float: left;
-            width: 39%;
-            height: 110px;
-            border-top: 0.5px initial #333;
-            border-bottom: 0.5px initial #333;
-        }
-
-            body > div:nth-child(2)  > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden > p:nth-child(1) {
-                font-weight: bold;
-            }
-
-        body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right {
-            float: left;
-            width: 46%;
-            height: 110px;
-            border-top: 0.5px initial #333;
-            border-bottom: 0.5px initial#333;
-        }
-
-            body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right > form > input {
+            body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling {
                 float: left;
-                margin-top: 27px;
-                margin-left: 10px;
-                margin-right: 10px;
-                vertical-align: middle;
-                border-top: 1px initial #333;
-                border-bottom: 1px initial #333;
+                width: 100%;
+                height: 8em;
+                margin-bottom: 5px;
+                border-top: 1px solid #333;
+                border-bottom: 1px solid #333;
             }
 
+                body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left {
+                    float: left;
+                    width: 15%;
+                    height: 110px;
+                    font-weight: bold;
+                    background-color: #2E2E2E;
+                    color: #E82830;
+                }
 
-body > div:nth-child(2) > section > section.detail-right {
-       margin-left: 10px;
-    background-color: #b3b3b3;
-    float: left;
-    width: 30%;
-  min-height: 37em;
-    max-height: 47em;
-    margin-top: 0px;
-}
+                    body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-left > p {
+                        text-align: center;
+                        vertical-align: middle;
+                        line-height: 50px;
+                        margin-top: 27px;
+                    }
 
-    body > div:nth-child(2) >  section > section.detail-right > h3 {
+
+                body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden {
+                    float: left;
+                    width: 39%;
+                    height: 110px;
+                    border-top: 0.5px initial #333;
+                    border-bottom: 0.5px initial #333;
+                }
+
+                    body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-midden > p:nth-child(1) {
+                        font-weight: bold;
+                    }
+
+                body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right {
+                    float: left;
+                    width: 46%;
+                    height: 110px;
+                    border-top: 0.5px initial #333;
+                    border-bottom: 0.5px initial#333;
+                }
+
+                    body > div:nth-child(2) > section > section.detail-left > div.voorstellingen > div.voorstelling > div.voorstelling-right > form > input {
+                        float: left;
+                        margin-top: 27px;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        vertical-align: middle;
+                        border-top: 1px initial #333;
+                        border-bottom: 1px initial #333;
+                    }
+
+    body > div:nth-child(2) > section > section.detail-right > h3 {
         color: #E82830;
         font-weight: bold;
         /* margin: 0 auto; */
         text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
-
-    body > div:nth-child(2) > section > section.detail-right > section.cultuuritems {
+/*Cultuur & Restaurants cross-selling*/
+    body > div:nth-child(2) > section > section.detail-right > section.cultuuritems
+     {
         float: left;
         margin: 0 auto;
         width: 100%;
     }
 
-    body > div:nth-child(2) > section > section.detail-right > section > section {
-        /* margin: 0 auto; */
-        /* background-color: transparent; */
-        /* text-align: left; */
-        width: 100%;
-        /* float: left; */
-        /* height: 120px; */
-        margin: 0px 0px 0px 0px;
-        background-color: #b3b3b3;
-    }
-
-        body > div:nth-child(2) > section > section.detail-right > section > section > p {
-            margin-left: 38px;
-            margin-right: 0px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-            width: 80%;
+        body > div:nth-child(2) > section > section.detail-right > section.cultuuritems > section.cultuuritem 
+         {
+            width: 100%;
+            margin: 5px 5px 40px 0px;
+            background-color: #b3b3b3;
         }
 
+    body > div:nth-child(2) > section > section.detail-right > section > section > p {
+        margin-left: 38px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 80%;
+    }
+
+    body > div:nth-child(2) > section > section.detail-right.col > section.cultuuritems > section.cultuuritem > div {
+        float: right;
+        margin-right: 40px;
+        margin-bottom: 5px;
+    }
+
+.btn-link {
+    float: right;
+    background-color: #fffde9;
+    border-color: #ccc;
+    color: #000;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.btn-link:hover
+{
+    background-color: #000;
+    color: #fffde9;
+}
 /* Homepage link weergave*/
 .Homepagelink {
     color: #fff;
@@ -473,9 +505,7 @@ body > div:nth-child(2) > section > section.detail-right {
         text-decoration: none;
     }
 
-section {
-    margin-bottom: 300px;
-}
+
 
 /*xxx*/
 body > div:nth-child(2) > header > nav > a.current,
@@ -514,74 +544,75 @@ p.selectie {
 
 
 
-      #right-panel i {
-        font-size: 12px;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body > div:nth-child(2) > #customfunction {
-          float: left;
-          width: 100%;
-          height: 100%;
-      }
-       body > div:nth-child(2) >#customfunction > div.routegenerator
-       {
-           float:left;
-           height: 100%;
-       }
-       body > div:nth-child(2) > section.route-generator > #left-panel 
-       {
-           float: left;
+#right-panel i {
+    font-size: 12px;
+}
 
-       }
-      body > div:nth-child(2) > section > section.map
-      {
-          float: left;
-          width: 500px;
-          height:500px;
-      }
-      #map {
-        height: 100%;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+    body > div:nth-child(2) > #customfunction {
         float: left;
         width: 100%;
         height: 100%;
-      }
-      #right-panel {
-        margin: 20px;
-        border-width: 2px;
-        width: 20%;
-        height: 400px;
+    }
+
+        body > div:nth-child(2) > #customfunction > div.routegenerator {
+            float: left;
+            height: 100%;
+        }
+
+    body > div:nth-child(2) > section.route-generator > #left-panel {
         float: left;
-        text-align: left;
-        padding-top: 0;
-      }
-      #directions-panel {
-        margin-top: 10px;
-        background-color: #FFEE77;
-        padding: 10px;
-      }
-
-    .winkelmandje
-    {
-        background-color:#fff;
-        float:left; 
-        margin-left:20px; 
-        width:15%; 
-        margin-top: 3%; 
-
     }
 
-    #winkelmandjeimg{
-        text-align:center; 
-        width:90%; 
-        margin-left:5%; 
+    body > div:nth-child(2) > section > section.map {
+        float: left;
+        width: 500px;
+        height: 500px;
     }
 
-#waypoints 
-{
+#map {
+    height: 100%;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+#right-panel {
+    margin: 20px;
+    border-width: 2px;
+    width: 20%;
+    height: 400px;
+    float: left;
+    text-align: left;
+    padding-top: 0;
+}
+
+#directions-panel {
+    margin-top: 10px;
+    background-color: #FFEE77;
+    padding: 10px;
+}
+
+.winkelmandje {
+    background-color: #fff;
+    float: left;
+    margin-left: 20px;
+    width: 15%;
+    margin-top: 3%;
+}
+
+#winkelmandjeimg {
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+}
+
+#waypoints {
     height: 31em;
     width: 17em;
 }
@@ -616,4 +647,3 @@ body > div:nth-child(2) > section > section.map {
     overflow: scroll;
     direction: ltr;
 }
-

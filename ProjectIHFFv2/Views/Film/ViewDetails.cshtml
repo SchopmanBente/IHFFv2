@@ -12,10 +12,11 @@
     <section class="detail-left col">
         <div class="detailsummary">
             <div class="detail-image">
-                <img src="@Model.AfbeeldingUrl" height="300" width="200" />
+                <img src="@Model.AfbeeldingUrl" height="350" width="250" />
             </div>
             <div class="details">
                 <p>@Model.Beschrijving</p>
+                <p>IMDB-rating: @Model.Rating.ToString()</p>
                 <iframe id="trailer" width="300" height="200" src="@Model.TrailerUrl" frameborder="0" allowfullscreen></iframe>
             </div>
             </div>
@@ -58,7 +59,7 @@
                         @c.beschrijving.Substring(0, 50)
                     </p>
                     <div class="linkshizzle">
-                        @Html.ActionLink("View", "ViewDetails", "Cultuur", new { id = @c.id }, new { @class = "btn btn-view btn-info" })
+                        @Html.ActionLink("View", "ViewDetails", "Culture", new { id = @c.id }, new { @class = "btn btn-link btn-info" })
                     </div>
                 </section>
         }

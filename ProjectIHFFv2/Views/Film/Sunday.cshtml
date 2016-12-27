@@ -11,13 +11,14 @@
 <section class="overview">
     @foreach (FilmOverviewPresentationModel f in Model)
     {
-        <section class="film">
+        <section class="itemOverview">
             <div class="film_image">
-                <img width="100" height="120" src="@f.AfbeeldingUrl" />
+                <img width="100" height="130" src="@f.AfbeeldingUrl" />
             </div>
             <div class="film_text">
                 <header class="head-item">
                     <h3 class="headergegeven">@f.Naam</h3>
+                    <h4 class="headergegeven"> IMDB-rating: @f.Rating.ToString()</h4>
                     <h4 class="headergegeven">@f.BeginDatumTijd - @f.EindDatumTijd at @f.EventLocatie.naam @f.EventLocatie.zaal</h4>
                 </header>
                 <p class="beschrijving">
@@ -32,3 +33,4 @@
     }
 
 </section>
+

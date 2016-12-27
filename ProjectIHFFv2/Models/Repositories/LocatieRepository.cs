@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectIHFFv2.Models
 {
-    public class LocatieRepository
+    public class LocatieRepository : ILocatieRepository
     {
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
