@@ -11,8 +11,8 @@ namespace ProjectIHFFv2.Models
     {
         public List<ShoppingCartItem> Items { get; set; }
 
-        
-        public double TotaalPrijs { get; }
+
+        public double TotaalPrijs { get; set; }
         public CartPresentationModel()
         {
 

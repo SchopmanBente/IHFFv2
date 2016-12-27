@@ -10,7 +10,7 @@
     <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Culture > @Html.ActionLink("Music", "Index", "Wishlist") </p>
     <h1>Wishlist</h1>
     @Html.ActionLink("Add another event", "Index", "Home", null, new { @class = "btn btn-info" })
-    @Html.ActionLink("Add all to cart", "Index", "Cart", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Add wishlist to cart", "Index", "Cart", null, new { @class = "btn btn-info" })
 </header>
 
 <section>
@@ -20,12 +20,12 @@
 <div class="tableDivWrapper">
 <table class="TabelCss">
     <tr class ="TabelRijCssEven">
-        <th> Datum </th><th>11</th><th>11:30</th><th>12</th><th>12:30</th><th>13</th><th>13:30</th><th>14</th><th>14:30</th><th>15</th><th>15:30</th><th>16</th>
-        <th>16:30</th><th>17</th><th>17:30</th><th>18</th><th>18:30</th><th>19</th><th>19:30</th><th>20</th><th>20:30</th><th>21</th><th>21:30</th><th>22</th>
-        <th>22:30</th><th>23</th><th>23:30</th><th>00:00</th>
+        <th> Datum </th><th>11:00</th><th>11:30</th><th>12:00</th><th>12:30</th><th>13:00</th><th>13:30</th><th>14:00</th><th>14:30</th><th>15:00</th><th>15:30</th><th>16:00</th>
+        <th>16:30</th><th>17:00</th><th>17:30</th><th>18:00</th><th>18:30</th><th>19:00</th><th>19:30</th><th>20:00</th><th>20:30</th><th>21:00</th><th>21:30</th><th>22:00</th>
+        <th>22:30</th><th>23:00</th><th>23:30</th><th>00:00</th>
     </tr>
     <tr class="TabelRijCssOneven">
-        <th>Wednesday - 11/12</th>
+        <th>Wednesday - 11/01</th>
         @while (!maxBereikt)
             //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
         {
@@ -34,7 +34,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd @item.eindTijd <br /> @item.</td>
+                    <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist"height="20" width="20" src="~/Content/Images/delete-icon.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br />Aantal tickets: @item.aantal</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -53,7 +53,7 @@
         }
     </tr>
     <tr>@{y++;} @{maxBereikt = false;}
-        <th>Thursday - 12/12</th>
+        <th>Thursday - 12/01</th>
         @while (!maxBereikt)
         //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
         {
@@ -62,7 +62,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd @item.eindTijd <br /> @item.</td>
+    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -82,7 +82,7 @@
     </tr>
     <tr class="TabelRijCssOneven">
         @{y++;} @{maxBereikt = false;}
-        <th>Friday - 13/12</th>
+        <th>Friday - 13/01</th>
         @while (!maxBereikt)
         //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
         {
@@ -91,7 +91,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd @item.eindTijd <br /> @item.</td>
+    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -110,7 +110,7 @@
         }
     </tr>
     <tr>@{y++;} @{maxBereikt = false;}
-        <th>Saturday - 14/12</th>
+        <th>Saturday - 14/01</th>
         @while (!maxBereikt)
         //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
         {
@@ -119,7 +119,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd @item.eindTijd <br /> @item.</td>
+    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -139,7 +139,7 @@
     </tr>
     <tr class="TabelRijCssOneven">
         @{y++;} @{maxBereikt = false;}
-        <th>Sunday - 15/12</th>
+        <th>Sunday - 15/01</th>
         @while (!maxBereikt)
         //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
         {
@@ -148,7 +148,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-                <td colspan="@item.colspan">@item.naam <br /> @item.beginTijd @item.eindTijd <br /> @item.</td>
+    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }

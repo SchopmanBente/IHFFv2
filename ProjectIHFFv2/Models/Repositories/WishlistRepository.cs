@@ -47,16 +47,10 @@ namespace ProjectIHFFv2.Models
             }
         }
 
-        public void RemoveFromWishlist(WishlistItem item)
+        public void RemoveFromWishlist(int id, List<WishlistItem> wishlistSession)
         {
-            List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
-            foreach (WishlistItem wishlistItem in wishlist)
-            {
-                if (wishlistItem.EventId == item.EventId)
-                {
-                    wishlist.Remove(wishlistItem);
-                }
-            }
+            WishlistItem teVerwijderen = wishlistSession.Single(i => i.EventId == id);
+            wishlistSession.Remove(teVerwijderen);
         }
 
         public void EditWishtlist(WishlistItem item)
@@ -89,7 +83,7 @@ namespace ProjectIHFFv2.Models
                         x++;
                     }
 
-                    while (y < 5)
+                    while (y < 6)
                     {
                         if (datum == tijdNavigatieArray[0, y])
                         {
