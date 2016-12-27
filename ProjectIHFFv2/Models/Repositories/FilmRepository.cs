@@ -19,7 +19,7 @@ namespace ProjectIHFFv2.Models
         //Haal alle voorstellingen van een event met de naam x op
         public IEnumerable<Film> GetAllEventsForDetail(string naam)
         {
-            IQueryable<Film> voorstellingen = ctx.Film.Where(x => x.Event.type == 0 && x.Event.naam == naam);
+            IQueryable<Film> voorstellingen = ctx.Film.Where(x => x.Event.type == 0 && x.Event.naam == naam).OrderBy(x => x.Event.begin_datumtijd);
             return voorstellingen;
         }
 
