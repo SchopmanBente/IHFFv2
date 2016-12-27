@@ -75,26 +75,38 @@ footer {
 
 /* CSS voor programma samenstellen START*/
 .TabelCss {
-    width: 100%;
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.wishlistItem {
+    background-color: black;
+}
+
+.tableDivWrapper {
+  width: 1600px;
+  height: 500px;
+  overflow: scroll;
 }
 
 .TabelKolomCss {
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 5px;
 }
 
 .TabelRijCssOneven {
     border: 1px solid black;
     border-collapse: collapse;
     background-color: grey;
+    padding: 5px;
 }
 
 .TabelRijCssEven {
     border: 1px solid black;
     border-collapse: collapse;
     background-color: white;
+    padding: 5px;
 }
 
 th {
