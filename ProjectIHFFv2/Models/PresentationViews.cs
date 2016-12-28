@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace ProjectIHFFv2.Models
@@ -55,7 +56,18 @@ namespace ProjectIHFFv2.Models
             //Haal de film op
             Film f = filmRepository.GetById(id);
             //Haal de voorstellingen van de film op
-             IEnumerable<Film>   voorstellingenFilm = filmRepository.GetAllEventsForDetail(f.naam);
+            string filmNaam;
+            if (f.naam != "THX1138")
+            {
+               var newString = string.Join(" ", Regex.Split(f.naam, @"(?:\r\n|\n|\r)"));
+               filmNaam = newString.TrimStart();
+            }
+            else
+            {
+                filmNaam = "THX 1138";
+            }
+            
+             IEnumerable<Film>   voorstellingenFilm = filmRepository.GetAllEventsForDetail(filmNaam);
             //Haal culturele activiteiten op
             IEnumerable<Cultuuritem> cultuurActiviteiten = cultuurRepository.GetRandomCultuurItems();
             //Creer een model

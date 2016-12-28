@@ -67,12 +67,13 @@ namespace ProjectIHFFv2.Controllers
         }
 
         [HttpPost]
-        public ActionResult ViewDetails(int eventid, int qty, string submit)
+        public ActionResult ViewDetails(int eventid, int? qty, string submit)
         {
             if (ModelState.IsValid)
             {
                if (qty > 0)
                 {
+                   int aantal = (int)qty;
                    //Onderzoek welke knop is ingedrukt
                     switch (submit)
                     {
@@ -80,23 +81,26 @@ namespace ProjectIHFFv2.Controllers
                             //Haal de list op uit de sessie
                             List<WishlistItem> items = HaalWishlistSessieOp();
                             //Voeg dit item ook toe aan de sessie
-                            presentation.AddToWishlist(qty, eventid, items);
+                            presentation.AddToWishlist(aantal, eventid, items);
                             return RedirectToAction("Index", "Wishlist");
                         case "Add to cart":
                             //Haal de list<ShoppingCartItems> op uit de sessie
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();
                             //Voeg het item toe aan de sessie
-                            presentation.AddToCart(qty, eventid, cartItems);
+                            presentation.AddToCart(aantal, eventid, cartItems);
                             return RedirectToAction("Index", "Cart");
-                        default:
-                            return View();
                     }
       
                 }
-
-                return View();
+               else
+               {
+                   FilmDetailPresentationModel filmDetail = presentation.GetFilmDetails(eventid);
+                   return View(filmDetail);
+               }
+             
             }
-            return View();
+            FilmDetailPresentationModel filmD = presentation.GetFilmDetails(eventid);
+            return View(filmD);
         }
 
         private List<ShoppingCartItem> HaalCartSessieOp()

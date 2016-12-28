@@ -66,12 +66,13 @@ namespace ProjectIHFFv2.Controllers
         }
 
         [HttpPost]
-        public ActionResult ViewDetails(int eventid, int qty, string submit)
+        public ActionResult ViewDetails(int eventid, int? qty, string submit)
         {
             if (ModelState.IsValid)
             {
                 if (qty > 0)
                 {
+                    int aantal = (int)qty;
                     //Onderzoek welke knop is ingedrukt
                     switch (submit)
                     {
@@ -79,22 +80,27 @@ namespace ProjectIHFFv2.Controllers
                             //Haal alle items die in de wishlist staan op
                             List<WishlistItem> items = HaalWishlistSessieOp();
                             //Voeg toe aan wishlist
-                            presentation.AddToWishlist(qty, eventid, items);
+                            presentation.AddToWishlist(aantal, eventid, items);
                             return RedirectToAction("Index", "Wishlist");
                         case "Add to cart":
                             //Haal alle items die in de cart staan op
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();
                             //Voeg toe aan de cart
-                            presentation.AddToCart(qty, eventid, cartItems);
+                            presentation.AddToCart(aantal, eventid, cartItems);
                             return RedirectToAction("Index", "Cart");
                         
                     }
 
                 }
-
-                return View();
+                else
+                {
+                    SpecialDetailPresentationModel special = presentation.GetSpecialDetails(eventid);
+                    return View(special);
+                }
+                
             }
-            return View();
+            SpecialDetailPresentationModel s = presentation.GetSpecialDetails(eventid);
+            return View(s);
         }
 
         private List<ShoppingCartItem> HaalCartSessieOp()
