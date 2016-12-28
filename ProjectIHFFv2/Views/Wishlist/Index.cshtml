@@ -10,7 +10,7 @@
     <p class="breadcrumb">@Html.ActionLink("Index", "Home") > Culture > @Html.ActionLink("Music", "Index", "Wishlist") </p>
     <h1>Wishlist</h1>
     @Html.ActionLink("Add another event", "Index", "Home", null, new { @class = "btn btn-info" })
-    @Html.ActionLink("Add wishlist to cart", "Index", "Cart", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Add all items to cart", "AddToCart", "Wishlist", null, new { @class = "btn btn-info" })
 </header>
 
 <section>
@@ -45,7 +45,7 @@
             }
             
             x++;
-            if (x == 26)
+            if (x == 28)
             {
                 maxBereikt = true;
                 x = 1;
@@ -62,7 +62,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
+                <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br />Aantal tickets: @item.aantal</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -91,7 +91,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
+                <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br />Aantal tickets: @item.aantal</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -119,7 +119,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
+                <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br />Aantal tickets: @item.aantal</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
@@ -148,7 +148,7 @@
             {
                 if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                 { @*Aantal personen en locatie er nog bij...*@
-    <td colspan="@item.colspan" class="wishlistItem">@item.naam <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br /> @item.</td>
+                <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br />Aantal tickets: @item.aantal</td>
                     x = x + item.colspan - 1;
                     algedaan = true;
                 }
