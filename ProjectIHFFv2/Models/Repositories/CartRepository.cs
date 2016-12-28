@@ -12,17 +12,7 @@ namespace ProjectIHFFv2.Models
         public void AddEventToCart(Event gebeuren, int aantalPersonen, List<ShoppingCartItem> cartItems)
         {
             //Bepaal prijs voor event
-             double prijs;
-            //Als Event is een special of een film
-            if (gebeuren.type == 0 || gebeuren.type == 2)
-            {
-               prijs = ((double)gebeuren.prijs * aantalPersonen);
-            }
-             //Elk ander geval
-            else
-            {
-                prijs = (double)gebeuren.prijs;
-            }
+             double prijs =  (double)gebeuren.prijs;
             //Maak een nieuw shoppingcartitem
             ShoppingCartItem item = new ShoppingCartItem(gebeuren, aantalPersonen, prijs);
             List<ShoppingCartItem> itemsInCart = cartItems;
