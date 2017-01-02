@@ -23,13 +23,13 @@ else
 
     <!-- Hier moet de ul weer komen als het niet lukt-->
     
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Index", "Cart", FormMethod.Post , new { id = "editform" }))
         {
            @Html.LabelFor( m => i.AantalPersonen)
-            @Html.TextBoxFor( m => i.AantalPersonen, new { @type = "number", @min = "1", @style = "width:40px" })
+            @Html.DisplayFor( m => i.AantalPersonen, new { @type = "number", @min = "1", @style = "width:40px" })
             <br />
             @Html.LabelFor(m => i.Prijs)
-            @Html.DisplayFor( m => i.Prijs) if(i.Gebeurtenis.type == 0 || i.Gebeurtenis.type == 3) { <text> per person</text> }
+            @Html.DisplayFor( m => i.Prijs) if(i.Gebeurtenis.type == 0 || i.Gebeurtenis.type == 3) { }
 
         }
         <p><b>Date:</b> @i.Gebeurtenis.begin_datumtijd.DayOfWeek @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm")</p>
@@ -39,17 +39,8 @@ else
     </article>
 }    
 
+@Html.ActionLink("Proceed to checkout", "Betaal", "Index", new { @class = "btn btn-view" })
 
-
-<div>
-   
-    
-    @Html.ActionLink("Proceed to checkout", "Betaal", "Cart", new { @class = "btn btn-view" })
-
-     
-
-    
-</div>
 
 
 

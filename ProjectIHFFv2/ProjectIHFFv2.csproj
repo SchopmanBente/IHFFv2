@@ -348,6 +348,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cultuur\" />
+    <Folder Include="Views\Extern\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

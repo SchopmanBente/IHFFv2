@@ -14,7 +14,7 @@ namespace ProjectIHFFv2.Models
             //Bepaal prijs voor event
              double prijs;
             //Als Event is een special of een film
-            if (gebeuren.type == 0 || gebeuren.type == 2)
+            if (gebeuren.type == 0 || gebeuren.type == 3)
             {
                prijs = ((double)gebeuren.prijs * aantalPersonen);
             }

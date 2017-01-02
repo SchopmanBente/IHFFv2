@@ -22,6 +22,9 @@ namespace ProjectIHFFv2.Controllers
             return View(Model); 
         }
 
+       
+
+
         public ActionResult Delete(int id)
         {
             presentation.VerwijderItem(id, HaalCartSessieOp());
@@ -37,6 +40,19 @@ namespace ProjectIHFFv2.Controllers
 
             CheckoutModel Model = new CheckoutModel(reservingen); 
             return View(Model); 
+        }
+
+        [HttpPost]
+        public ActionResult Betaal(CheckoutModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                // redirect naar betaalpagina
+                RedirectToAction("Index", "Home"); 
+            }
+
+
+            return View("Betaal");
         }
 
         private List<ShoppingCartItem> HaalCartSessieOp()

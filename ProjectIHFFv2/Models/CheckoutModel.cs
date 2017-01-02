@@ -36,6 +36,8 @@ namespace ProjectIHFFv2.Models
         [Display(Name = "Phone number")]
         public string TelefoonNummer { get; set; }
 
+
+        public CheckoutModel() { }
         public CheckoutModel(CartPresentationModel model)
         {
             Reserveringen = model; 
