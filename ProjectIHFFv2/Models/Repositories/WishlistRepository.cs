@@ -12,22 +12,25 @@ namespace ProjectIHFFv2.Models
 
         public void AddToWishlist(Event item, int aantal, List<WishlistItem> items)
         {
-            int aantalFalse = 0; //houdt bij hoeveel keer er false is teruggegeven op de vraag: Is de datum en tijd al in gebruik?
+            int aantalTrue = 0; //houdt bij hoeveel keer er false is teruggegeven op de vraag: Is de datum en tijd al in gebruik?
             foreach (WishlistItem bestaandItem in items)
             {
                 if (bestaandItem.beginTijd.Day == item.begin_datumtijd.Day) //deze if heeft geen else, ga als false gewoon naar de volgende bestaandItem
                 {
-                    if ((item.eind_datumtijd <= bestaandItem.beginTijd && item.eind_datumtijd > bestaandItem.beginTijd) || (item.eind_datumtijd <= bestaandItem.beginTijd && bestaandItem.eindTijd < item.begin_datumtijd)) //check of de tijd al in gebruik is, als dat zo is wordt er false ge returnt.
+                    if (item.begin_datumtijd >= bestaandItem.eindTijd || item.eind_datumtijd <= bestaandItem.beginTijd) //check of de tijd al in gebruik is, als dat zo is wordt er false ge returnt.
                     {
-                        aantalFalse++;
+                        aantalTrue++;
                     }
+                }
+                else
+                {
+                    aantalTrue++; //De tijd kan niet in gebruik zijn wanneer het op een andere dag is...
                 }
             }
 
-            WishlistItem wishlistItem = new WishlistItem();
-            List<WishlistItem> wishlist = items;
-
-            if (aantalFalse == 0) {
+            if (aantalTrue == items.Count)
+            {
+                WishlistItem wishlistItem = new WishlistItem();
                 wishlistItem.aantal = aantal;
                 wishlistItem.beginTijd = item.begin_datumtijd;
                 wishlistItem.eindTijd = item.eind_datumtijd;
@@ -36,32 +39,21 @@ namespace ProjectIHFFv2.Models
                 wishlistItem.naam = item.naam;
                 wishlistItem.prijs = item.prijs * aantal;
                 wishlistItem.type = item.type;
+                if (!items.Exists(w => w.EventId == item.EventId))
+                {
+                    items.Add(wishlistItem);
+                }
             }
             else
             {
                 //zeg dat het toevoegen niet kan...
             }
-            if (!wishlist.Exists(w => w.EventId == item.EventId))
-            {
-                wishlist.Add(wishlistItem);
-            }
         }
 
-        public void RemoveFromWishlist(WishlistItem item)
+        public void RemoveFromWishlist(int id, List<WishlistItem> wishlistSession)
         {
-            List<WishlistItem> wishlist = Session["wishlist"] as List<WishlistItem>;
-            foreach (WishlistItem wishlistItem in wishlist)
-            {
-                if (wishlistItem.EventId == item.EventId)
-                {
-                    wishlist.Remove(wishlistItem);
-                }
-            }
-        }
-
-        public void EditWishtlist(WishlistItem item)
-        {
-
+            WishlistItem teVerwijderen = wishlistSession.Single(i => i.EventId == id);
+            wishlistSession.Remove(teVerwijderen);
         }
 
 
@@ -89,7 +81,7 @@ namespace ProjectIHFFv2.Models
                         x++;
                     }
 
-                    while (y < 5)
+                    while (y < 6)
                     {
                         if (datum == tijdNavigatieArray[0, y])
                         {

@@ -14,7 +14,7 @@ namespace ProjectIHFFv2.Models
         public double? prijs { get; set; }
         public int? locatieId { get; set; }
         public int type { get; set; }
-        public double? aantal { get; set; }
+        public int aantal { get; set; }
         public int xCoordinaat { get; set; }
         public int yCoordinaat { get; set; }
         public int colspan { get; set; }

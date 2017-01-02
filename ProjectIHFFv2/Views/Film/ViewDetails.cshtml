@@ -12,10 +12,11 @@
     <section class="detail-left col">
         <div class="detailsummary">
             <div class="detail-image">
-                <img src="@Model.AfbeeldingUrl" height="300" width="200" />
+                <img src="@Model.AfbeeldingUrl" height="350" width="250" />
             </div>
             <div class="details">
                 <p>@Model.Beschrijving</p>
+                <p>IMDB-rating: @Model.Rating.ToString()</p>
                 <iframe id="trailer" width="300" height="200" src="@Model.TrailerUrl" frameborder="0" allowfullscreen></iframe>
             </div>
             </div>
@@ -24,7 +25,7 @@
                 {
                     <div class="voorstelling">
                         <div class="voorstelling-left">
-                            <p>@v.Event.begin_datumtijd.Day @v.Event.begin_datumtijd.Month-@v.Event.begin_datumtijd.Year- @v.Event.begin_datumtijd.Hour:@v.Event.begin_datumtijd.Minute</p>
+                            <p>@v.Event.begin_datumtijd</p>
                         </div>
                         <div class="voorstelling-midden">
                             <p>@v.Event.begin_datumtijd - @v.Event.eind_datumtijd</p>
@@ -36,7 +37,7 @@
                             @using (Html.BeginForm("ViewDetails", "Film", FormMethod.Post))
                             {
                                 @Html.Hidden("eventid", @v.EventId);
-                                @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number", @min = "1", @style = "width:50px" });
+                                @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number", @min = "1", @style = "width:50px", required = "required" });
                                 <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
                                 <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
                                 @Html.ValidationSummary();

@@ -9,16 +9,18 @@ namespace ProjectIHFFv2.Models
     {
         public int EventId { get; set; }
         public string Naam { get; set; }
+        public double Rating { get; set; }
         public string AfbeeldingUrl { get; set; }
         public string BeginDatumTijd { get; set; }
         public string EindDatumTijd { get; set; }
         public Locatie EventLocatie { get; set; }
         public string Beschrijving { get; set; }
         
-        public FilmOverviewPresentationModel(int id, string naam,string afbeelding, DateTime begindatum,DateTime einddatum, Locatie locatie, string beschrijving)
+        public FilmOverviewPresentationModel(int id, string naam,double rating,string afbeelding, DateTime begindatum,DateTime einddatum, Locatie locatie, string beschrijving)
         {
             this.EventId = id;
             this.Naam = naam;
+            this.Rating = rating;
             this.AfbeeldingUrl = afbeelding;
             this.EventLocatie = locatie;
             this.Beschrijving = beschrijving.Substring(0,90);

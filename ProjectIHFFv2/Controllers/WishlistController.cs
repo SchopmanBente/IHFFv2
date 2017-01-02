@@ -9,14 +9,55 @@ namespace ProjectIHFFv2.Controllers
 {
     public class WishlistController : Controller
     {
-        WishlistRepository ctx = new WishlistRepository();
+        CartRepository cartRepository = new CartRepository();
+        WishlistRepository wishlistRepository = new WishlistRepository();
+        iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
         public ActionResult Index()
         {
             //Session["wishlist"] = new List<WishlistItem>(); //session is aangemaakt als 'wishlist'.
             List<WishlistItem> sessionItems = HaalWishlistSessieOp();
-            List<WishlistItem> alleItems = ctx.MakeWishlist(sessionItems);
+            List<WishlistItem> alleItems = wishlistRepository.MakeWishlist(sessionItems);
             return View(alleItems);
+        }
+
+        
+        public ActionResult Delete(int id)
+        {
+            wishlistRepository.RemoveFromWishlist(id , HaalWishlistSessieOp());
+            return RedirectToAction("Index"); 
+        }
+
+        public ActionResult AddToCart()
+        {
+            //DEZE CODE NETJES MAKEN, DIT IS VIES
+            List<ShoppingCartItem> cartSession = HaalCartSessieOp();
+            List<WishlistItem> wishlistSession = HaalWishlistSessieOp();
+            foreach (WishlistItem item in wishlistSession)
+            {
+                Event toeTeVoegenEvent = ctx.Event.FirstOrDefault(x => x.EventId == item.EventId);
+                cartRepository.AddEventToCart(toeTeVoegenEvent, item.aantal, cartSession);
+            }
+            return RedirectToAction("Index", "Cart");
+        }
+
+        private List<ShoppingCartItem> HaalCartSessieOp()
+        {
+            //Bekijk of de sessie bestaat
+            if (Session["cart"] == null)
+            {
+                //Maak een sessie aan met een lege lijst ShoppingCartItems
+                List<ShoppingCartItem> items = new List<ShoppingCartItem>();
+                Session["cart"] = items;
+                return items;
+            }
+            else
+            {
+                //Haal de informatie op uit de bestaande sessie
+                var cart = Session["cart"] as List<ShoppingCartItem>;
+                List<ShoppingCartItem> items = (List<ShoppingCartItem>)cart;
+                return items;
+            }
         }
 
 

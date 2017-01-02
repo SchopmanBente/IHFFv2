@@ -50,7 +50,7 @@ footer {
     padding-top: 7px;
     padding-bottom: 7px;
     min-width: 1000px;
-    position: fixed;
+   /* position: fixed; */
     bottom: 0;
     width: 100%;
 }
@@ -75,32 +75,51 @@ footer {
 
 /* CSS voor programma samenstellen START*/
 .TabelCss {
-    width: 100%;
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.wishlistItem {
+    background-color: white;
+    color: black;
+}
+
+.deleteImageWishlist {
+    float: right;
+}
+
+.tableDivWrapper {
+  width: 1600px;
+  height: 500px;
+  overflow: scroll;
 }
 
 .TabelKolomCss {
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 5px;
 }
 
 .TabelRijCssOneven {
     border: 1px solid black;
     border-collapse: collapse;
     background-color: grey;
+    padding: 5px;
 }
 
 .TabelRijCssEven {
     border: 1px solid black;
     border-collapse: collapse;
     background-color: white;
+    padding: 5px;
 }
 
 th {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+/* CSS voor programma samenstellen EIND*/
 
 .home-img-top {
     max-height: 500px;
@@ -182,6 +201,7 @@ body > div:nth-child(2) > section.overview {
         margin-left: 105px;
         width: 80%;
         background-color: #fff;
+        height: 130px;
     }
 
 body > div:nth-child(2) > header {
@@ -215,7 +235,6 @@ body > div:nth-child(2) > header {
 
 body > div:nth-child(2) > section > section > .film_image {
     float: left;
-    height: 120px;
 }
 
 body > div:nth-child(2) > section > section > .film_text {
@@ -223,7 +242,6 @@ body > div:nth-child(2) > section > section > .film_text {
     display: block;
     margin: auto;
     width: 75%;
-    height: 120px;
 }
 
 body > div:nth-child(2) > section > section > .film_text {
@@ -232,7 +250,7 @@ body > div:nth-child(2) > section > section > .film_text {
 
 body > div:nth-child(2) > section > section > div.film_text > header {
     padding-top: 5px;
-    height: 70px;
+    height: 90px;
 }
 
 body > div:nth-child(2) > section > section > .film_text > .beschrijving {
@@ -439,14 +457,16 @@ body > div:nth-child(2) > section > section.detail-right {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-
-    body > div:nth-child(2) > section > section.detail-right > section.cultuuritems {
+/*Cultuur & Restaurants cross-selling*/
+    body > div:nth-child(2) > section > section.detail-right > section.cultuuritems
+     {
         float: left;
         margin: 0 auto;
         width: 100%;
     }
 
-        body > div:nth-child(2) > section > section.detail-right > section.cultuuritems > section.cultuuritem {
+        body > div:nth-child(2) > section > section.detail-right > section.cultuuritems > section.cultuuritem 
+         {
             width: 100%;
             margin: 5px 5px 40px 0px;
             background-color: #b3b3b3;

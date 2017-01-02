@@ -23,6 +23,8 @@ namespace ProjectIHFFv2.Models
             {
                 prijs = (double)gebeuren.prijs;
             }
+
+             double prijs =  (double)gebeuren.prijs;
             //Maak een nieuw shoppingcartitem
             ShoppingCartItem item = new ShoppingCartItem(gebeuren, aantalPersonen, prijs);
             List<ShoppingCartItem> itemsInCart = cartItems;
