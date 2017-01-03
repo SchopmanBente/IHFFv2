@@ -46,7 +46,7 @@ namespace ProjectIHFFv2.Models
             }
             else
             {
-                //zeg dat het toevoegen niet kan...
+                ModelState.AddModelError(string.Empty, "The time you tried to add is already in use.");
             }
         }
 
@@ -72,7 +72,7 @@ namespace ProjectIHFFv2.Models
                 string tijd = heleDatum.Substring(11, 5);
                 if (heleDatum != "Datum is null")
                 {
-                    while (x <= 29)
+                    while (x < 28)
                     {
                         if (tijd == tijdNavigatieArray[x, 0])
                         {
@@ -102,14 +102,14 @@ namespace ProjectIHFFv2.Models
                 }//einde aan if (heleDatum == "Datum is null")
             }
 
-            //Van alle tijden die er zijn is er nu een tijd ingevuld. Bij de tabelcreatie wordt een if (!null) gebruikt.
+            //Van alle tijden die er zijn is er nu een tijd ingevuld.
 
             return wishlist;
         }
 
         private string[,] MakeTimeArray() //maak array 1x
         {
-            string[,] gemaakteArray = new string[30, 6];
+            string[,] gemaakteArray = new string[28, 6];
             int x = 0;
             int y = 0;
             string tijd = "11:00";
