@@ -1,0 +1,37 @@
+﻿@using ProjectIHFFv2.Models; 
+
+
+@model CheckoutModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Externe betaal pagina</title>
+</head>
+<body>
+    <h1>External checkout page</h1>
+    <div> 
+        <h2> your Order: </h2>
+        @foreach(ShoppingCartItem m in Model.Reserveringen.Items)
+        {
+            <p> @m.Gebeurtenis.naam</p>
+            <br />
+        }
+
+        <h2> Total: @Model.Reserveringen.TotaalPrijs.ToString("C2")</h2>
+
+        <select>
+            <option><p>IDeal</p></option>
+            <option><p>CreditCard</p></option>
+            <option><p>PayPal</p></option>
+        </select>
+
+        @Html.ActionLink("Confirm payment", "Afgerond", "Cart", Model, null)
+    </div>
+</body>
+</html>

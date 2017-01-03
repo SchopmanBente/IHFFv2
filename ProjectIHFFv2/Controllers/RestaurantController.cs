@@ -14,6 +14,7 @@ namespace ProjectIHFFv2.Controllers
         // GET: Restaurant
         public ActionResult Bloemendaal()
         {
+            //haal alle restaurants adhv locatie op
             IEnumerable<RestaurantOverviewPresentationModel> resb = presentation.GetAllRestaurantsByLocation("Bloemendaal");
 
             return View(resb);
@@ -21,6 +22,7 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult Haarlem()
         {
+            //haal alle restaurants adhv locatie op
             IEnumerable<RestaurantOverviewPresentationModel> resh = presentation.GetAllRestaurantsByLocation("Haarlem");
 
             return View(resh);
@@ -29,7 +31,8 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult DetailPagina(int id)
         {
-
+            
+            //Vul detailpagina met juiste gegevens adhv id van geselecteerde restaurant
             RestaurantDetailPresentationModel restaurant = presentation.GetRestaurantDetails(id);
             return View(restaurant);
         }
@@ -58,8 +61,8 @@ namespace ProjectIHFFv2.Controllers
                 }
 
                 else
-                {
-                    ModelState.AddModelError("NoAmount", "Selecteer het aantal personen.");
+                { // zorgt dat er een error wordt gegeven als er geen correct aantal is geselecteerd
+                    ModelState.AddModelError("NoAmount", "No amount selected.");
                     return View(presentation.GetRestaurantDetails(eventid)); 
                 }
             }
@@ -72,12 +75,13 @@ namespace ProjectIHFFv2.Controllers
         {
             if (Session["cart"] == null)
             {
+                //Maak nieuwe sessie aan als deze nog niet bestaat
                 List<ShoppingCartItem> items = new List<ShoppingCartItem>();
                 Session["cart"] = items;
                 return items;
             }
             else
-            {
+            { // haal sessie op als deze all bestaat (!= null)
                 var cart = Session["cart"] as List<ShoppingCartItem>;
                 List<ShoppingCartItem> items = (List<ShoppingCartItem>)cart;
                 return items;
@@ -87,12 +91,13 @@ namespace ProjectIHFFv2.Controllers
         {
             if (Session["wishlist"] == null)
             {
+                //zie bovenstaande methode
                 List<WishlistItem> items = new List<WishlistItem>();
                 Session["wishlist"] = items;
                 return items;
             }
             else
-            {
+            {   //zie bovenstaande methode
                 var wishlist = Session["wishlist"] as List<WishlistItem>;
                 List<WishlistItem> items = (List<WishlistItem>)wishlist;
                 return items;

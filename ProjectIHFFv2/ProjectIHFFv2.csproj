@@ -173,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Bezoeker.cs" />
     <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\CulturePresentationModel.cs" />
     <Compile Include="Models\CartPresentationModel.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Models\Repositories\CultuurRepository.cs" />
     <Compile Include="Models\Repositories\EventRepository.cs" />
     <Compile Include="Models\Repositories\FilmRepository.cs" />
+    <Compile Include="Models\Repositories\ICartRepository.cs" />
     <Compile Include="Models\Repositories\IEventRepository.cs" />
     <Compile Include="Models\Repositories\IFilmRepository.cs" />
     <Compile Include="Models\Repositories\ILocatieRepository.cs" />
@@ -228,6 +230,7 @@
     <Compile Include="Models\Reservering.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReserveringModel.cs" />
     <Compile Include="Models\RestaurantDetailPresentationModel.cs" />
     <Compile Include="Models\RestaurantOverviewPresentationModel.cs" />
     <Compile Include="Models\ShoppingCartItem.cs" />
@@ -348,11 +351,12 @@
     <Content Include="Views\Shared\_RouteGenerator.cshtml" />
     <Content Include="Views\Cart\Betaal.cshtml" />
     <Content Include="Views\Shared\_WinkelmandStap.cshtml" />
+    <Content Include="Views\Cart\ExterneBetaalpagina.cshtml" />
+    <Content Include="Views\Cart\Afgerond.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cultuur\" />
-    <Folder Include="Views\Extern\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
