@@ -8,48 +8,41 @@
     <p class="breadcrumb">@Html.ActionLink("Home", "Index", "Home") > @Html.ActionLink("Museum", "museum", "Culture") > @Html.ActionLink(@Model.cultuuritem.naam, "ViewDetails", "Culture", new { id = @Model.cultuuritem.id }, null) </p>
     <h1>@Model.cultuuritem.naam</h1>
 </header>
-<section class="detail-left">
-    <div class="detail-image">
-        <img src="" height="300" width="200" />
-        @*@model.cultuuritem.afbeeldingurl in de src=""*@
-    </div>
-    <div class="details">
-        <p>@Model.cultuuritem.beschrijving</p>
-    </div>
-
-    <div class="voorstellingen">
-        @foreach (var v in Model.filmVoorstellingen)
-        {
-            <div class="voorstelling">
-                <div class="voorstelling-left">
-                    <p>@v.Event.begin_datumtijd.Day @v.Event.begin_datumtijd.Month-@v.Event.begin_datumtijd.Year- @v.Event.begin_datumtijd.Hour:@v.Event.begin_datumtijd.Minute</p>
-                </div>
-                <div class="voorstelling-midden">
-                    <p>@v.Event.begin_datumtijd - @v.Event.eind_datumtijd</p>
-                    <p>@v.Event.Locatie.naam @v.Event.Locatie.zaal </p>
-                    <p>@v.Event.Locatie.straat @v.Event.Locatie.huisnr @v.Event.Locatie.plaats</p>
-                    <p>Ticket: @v.Event.prijs</p>
-                </div>
-                <div class="voorstelling-right">
-                    @using (Html.BeginForm("ViewDetails", "Film", FormMethod.Post, new { eventId = @v.EventId }))
-                    {
-                        <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart"  />
-                        <input type="submit" id="wishlist" name="submit" class="btn btn-view"  value="Add to wishlist"  />
-                    }
-                </div>
+<section class="detail">
+    <section class="detail-left col">
+        <div class="detailsummary">
+            <div class="detail-image">
+                <img src="@*@Model.cultuuritem.afbeeldingurl*@" height="350" width="250" />
             </div>
-        }
-    </div>
-
-</section>
-<section class="detail-right">
-    <h3>Discover Haarlem's Culture</h3>
-    @foreach (var c in Model.CultuurItems)
-    {
-        <section class="cultuuritem">
-            <p>@c.naam</p>
-            <p>@c.beschrijving</p>
-            @Html.ActionLink("View", "ViewDetails", "Culture", new { id = @c.id }, new { @class = "btn btn-info" })
+            <div class="details">
+                <br />
+                <p>@Model.cultuuritem.beschrijving</p>
+                <br/>
+                <p>Location: @Model.cultuuritem.straatnaam @Model.cultuuritem.huisnr@Model.cultuuritem.toevoeging, @Model.cultuuritem.locatie</p>
+                <p>Zipcode: @Model.cultuuritem.postcode</p>
+            </div>
+        </div>
+    </section> 
+    <section class="detail-right col">
+        <h3>Discover Haarlem's Culture</h3>
+        <section class="cultuuritems">
+            @foreach (var c in Model.CultuurItems)
+            {
+                <section class="cultuuritem">
+                    <p>
+                        <b>@c.naam</b> <br />
+                        @c.beschrijving.Substring(0, 50)
+                    </p>
+                    <div class="linkshizzle">
+                        @Html.ActionLink("View", "ViewDetails", "Culture", new { id = @c.id }, new { @class = "btn btn-link btn-info" })
+                    </div>
+                </section>
+            }
         </section>
-    }
+    </section>
 </section>
+
+
+
+
+

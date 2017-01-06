@@ -98,10 +98,10 @@ footer {
 }
 
 .wishlistItem {
-    background-color: white;
+    background-color: black;
     border: 1px solid black;
     padding: 5px;
-    color: black;
+    color: white;
 }
 
 .deleteImageWishlist {
@@ -117,16 +117,16 @@ footer {
 .TabelRijCssOneven {
     border: 1px solid black;
     border-collapse: collapse;
-    background-color: #666666;
-    color: red;
+    background-color: #e8e8e8;
+    color: black;
     padding: 5px;
 }
 
 .TabelRijCssEven {
     border: 1px solid black;
     border-collapse: collapse;
-    background-color: #404040;
-    color: red;
+    background-color: #ffffff;
+    color: black;
     padding: 5px;
 }
 
