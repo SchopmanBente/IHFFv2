@@ -2,47 +2,62 @@
 
 @model CheckoutModel
 <header style="margin-top:2%; float:initial;">
-    <h1> Checkout</h1>
+    <p class="breadcrumb">Step 2/3</p>
+    <h1 style="margin-top:5px;">2. Payment</h1>
     @Html.Partial("~\\views\\shared\\_WinkelmandStap.cshtml")
 </header>
 
-<h2>Payment</h2>
 
+<h2 style="margin-left:7%;"> Items:</h2>
 @foreach(ShoppingCartItem i in Model.Reserveringen.Items)
 {
 
-    <p> @i.Gebeurtenis.naam Amount: @i.AantalPersonen </p>
+    <p style="margin-left:7%;"> @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b> </p>
 }
 
-<h3> @Model.Reserveringen.TotaalPrijs.ToString("C2")</h3>
+<h3 style="margin-left:7%;"> Total: @Model.Reserveringen.TotaalPrijs.ToString("C2")</h3>
 
-<section>
-    @Html.ValidationSummary()
+<section style="margin-bottom:300px;">
+    
     @using (Html.BeginForm())
     {
-        @Html.LabelFor(m => m.VoorNaam)
-        @Html.TextBoxFor(m => m.VoorNaam)
+        @Html.ValidationSummary()
+        <fieldset id="checkout">
+            @Html.LabelFor(m => m.VoorNaam)
+            @Html.TextBoxFor(m => m.VoorNaam)
+           
 
-        <br />
+            <br />
 
-        @Html.LabelFor(m => m.AchterNaam)
-        @Html.TextBoxFor(m => m.AchterNaam)
+            @Html.LabelFor(m => m.AchterNaam)
+            @Html.TextBoxFor(m => m.AchterNaam)
 
-        <br />
+            <br />
 
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email)
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email)
 
-        <br />
+            <br />
 
-        @Html.LabelFor(m => m.BevestigEmail)
-        @Html.TextBoxFor(m => m.BevestigEmail)
+            @Html.LabelFor(m => m.BevestigEmail)
+            @Html.TextBoxFor(m => m.BevestigEmail)
 
-        <br />
+            <br />
 
-        @Html.LabelFor(m=> m.TelefoonNummer)
-        @Html.TextBoxFor(m => m.TelefoonNummer)
+            @Html.LabelFor(m => m.TelefoonNummer)
+            @Html.TextBoxFor(m => m.TelefoonNummer)
 
-        <input type="submit" value="Confirm" />
+            @for (int i = 0; i < Model.Reserveringen.Items.Count; i++)
+            {
+                @Html.HiddenFor(m => m.Reserveringen.Items[i].AantalPersonen)
+                @Html.HiddenFor(m => m.Reserveringen.Items[i].Gebeurtenis.EventId)
+                @Html.HiddenFor(m => m.Reserveringen.Items[i].Prijs)
+
+            }
+
+            <br />
+
+            <input type="submit" value="Confirm" class="btn btn-view" />
+        </fieldset>
     }
 </section>

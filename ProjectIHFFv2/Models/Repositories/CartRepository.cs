@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ProjectIHFFv2.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace ProjectIHFFv2.Models
 {
-    public class CartRepository
+    public class CartRepository : ICartRepository
     {
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
@@ -37,8 +38,10 @@ namespace ProjectIHFFv2.Models
         }
 
         public List<ShoppingCartItem> RemoveFromCart(int id, List<ShoppingCartItem> sessie)
-        {
+        { //bepaal te verwijderen event adhv eventid
             ShoppingCartItem teVerwijderen = sessie.Single(i => i.Gebeurtenis.EventId == id);
+
+            //verwijder event
             sessie.Remove(teVerwijderen);
 
             return sessie; 
@@ -51,15 +54,47 @@ namespace ProjectIHFFv2.Models
             double totaalPrijs = 0; 
 
             foreach(ShoppingCartItem i in items)
-            {
+            {  //zorgt dat als het event een restaurant niet elke persoon reserveringskosten hoeft te betalen
+                if(i.Gebeurtenis.type == 2)
                 totaalPrijs = totaalPrijs + i.Prijs; 
+               //zorgt dat als het event geen restaurant is er voor elke persoon moet worden betaald. 
+                else
+                totaalPrijs = totaalPrijs + (i.Prijs*i.AantalPersonen); 
             }
 
             return totaalPrijs; 
         }
 
    
+        public void AddKlant(Bezoeker bezoeker)
+        {
+            //voeg een klant die heeft betaald toe aan de db
+            ctx.Klant.Add(bezoeker);
+            ctx.SaveChanges();
 
-     
+        }
+
+        public void AddReservering(ReserveringModel reservering)
+        { // voegt een reservering toe zodat capaciteit kan worden aangepast
+
+            ctx.Reservering.Add(reservering);
+            ctx.SaveChanges(); 
+        }
+
+        public bool BestaandeKlant(string email)
+        {
+            bool bestaat = ctx.Klant.Any(k => k.emailadres.Equals(email));
+
+            return bestaat; 
+        }
+
+        public ReserveringModel CheckoutToReservation( Bezoeker bezoeker)
+        {
+            //combineer een klant met reservering MAAR HOE IN DE DB??????
+
+            ReserveringModel res = new ReserveringModel(bezoeker.id, DateTime.Now, true, false);
+
+            return res; 
+        }
     }
 }

@@ -7,18 +7,21 @@
     <h1>@Model.Event.naam</h1>
 </header>
 
-<section style="background-color:white;">
-    <div>
-        <img width="400" height="400" src="@Model.Event.afbeelding_url" />
-    </div>
+<section class="detail">
 
-
-
-    <p>@Model.Event.beschrijving</p>
-    
-   
-    
-        <div class="voorstelling-right">
+    <section class="detail-left col">
+        <div class="detailsummary">
+            <div class="detail-image">
+                <img src="@Model.Event.afbeelding_url" height="350" width="250" />
+            </div>
+            <div class="details">
+                <p>@Model.Event.beschrijving</p>
+                @if (Model.Event.rating != null)
+                {  <p>rating: @Model.Event.rating.ToString()</p>}
+               
+            </div>
+        </div>
+        <div class="voorstellingen">
             @using (Html.BeginForm("DetailPagina", "Restaurant", FormMethod.Post))
             {
                 <select name="eventid">
@@ -37,22 +40,30 @@
                         </option>
                     }
                 </select>
-               @Html.Hidden("eventid", @Model.Event.EventId);
+                @Html.Hidden("eventid", @Model.Event.EventId);
                 @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number" });
                 <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
                 <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
-                @Html.ValidationMessage("NoAmount"); 
+                @Html.ValidationMessage("NoAmount");
             }
-
         </div>
-    
 
-
+    </section>
+    <section class="detail-right col">
+        <h3>After dinner movies</h3>
+        <section class="cultuuritems">
+            @foreach (var f in Model.Films)
+            {
+                <section class="cultuuritem">
+                    <p>
+                        <b>@f.naam</b> <br />
+                        @f.Event.beschrijving.Substring(0, 50) <text>...</text>
+                    </p>
+                    <div class="linkshizzle">
+                        @Html.ActionLink("View", "ViewDetails", "Film", new { id = @f.Event.EventId }, new { @class = "btn btn-link btn-info" })
+                    </div>
+                </section>
+            }
+        </section>
+    </section>
 </section>
-
-<article>
-    @foreach (Film f in Model.Films)
-    {
-        <img width="182" height="268" src="@f.Event.afbeelding_url" style="margin-bottom:300px;" />
-    }
-</article>

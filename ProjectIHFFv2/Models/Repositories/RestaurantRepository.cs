@@ -15,10 +15,13 @@ namespace ProjectIHFFv2.Models
 
 
         public IEnumerable<Event> GetRestaurantsByPlaatsnaam(string plaatsnaam)
-        {
+        {   //dag word gezet op de eerste dag van het festival
             DateTime dag = new DateTime(2017, 1, 11);
+
+            //haal alle events op adhv plaatsnaam
             IEnumerable<Event> res = ctx.Event.Where(r => r.type == 2 && r.Locatie.plaats == plaatsnaam);
 
+            //Maak opgehaalde events uniek zodat er een unieke lijst van events wordt weergeven
             IEnumerable<Event> resU = res.DistinctBy(e => e.naam); 
            // IEnumerable<Event> resBl = ctx.Event.DistinctBy(r => r.naam) ; 
               
@@ -62,6 +65,7 @@ namespace ProjectIHFFv2.Models
 
         public IEnumerable<Event> GetAllMaaltijdenForDetail(string naam)
         {
+            //haal alle mogelijke eet tijden op om te weergeven in detailpagina
             IQueryable<Event> maaltijden = ctx.Event.Where(r => r.naam == naam).OrderBy(e => e.begin_datumtijd);
 
             return maaltijden; 
