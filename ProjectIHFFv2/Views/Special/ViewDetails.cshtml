@@ -35,6 +35,7 @@
                         @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number", @min = "1", @style = "width:50px", required = "required" });
                         <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
                         <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
+                        @Html.ValidationSummary();
                     }
                 </div>
             </div>
