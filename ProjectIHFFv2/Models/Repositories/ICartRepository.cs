@@ -15,10 +15,14 @@ namespace ProjectIHFFv2.Models.Repositories
 
         double GetTotaalPrijs(List<ShoppingCartItem> items);
 
-        void AddKlant(Bezoeker bezoeker);
+        void AddKlant(Klant klant);
 
-        void AddReservering(ReserveringModel reservering);
+        string GenerateOphaalCode();
 
-        bool BestaandeKlant(string email); 
+        int GetKlantId(Klant klant); 
+
+        bool BestaandeKlant(string email);
+
+        void AddReservering(int klantId);
     }
 }

@@ -173,7 +173,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bezoeker.cs" />
     <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\CulturePresentationModel.cs" />
     <Compile Include="Models\CartPresentationModel.cs" />
@@ -230,7 +229,6 @@
     <Compile Include="Models\Reservering.cs">
       <DependentUpon>IHFFModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ReserveringModel.cs" />
     <Compile Include="Models\RestaurantDetailPresentationModel.cs" />
     <Compile Include="Models\RestaurantOverviewPresentationModel.cs" />
     <Compile Include="Models\ShoppingCartItem.cs" />

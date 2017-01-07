@@ -29,7 +29,7 @@ namespace ProjectIHFFv2.Models
              
         }
 
-        public Event GetRestaurantByid(int id)
+        public Event GetRestaurantByid(int? id)
         {
             Event restaurant = ctx.Event.FirstOrDefault(r => r.EventId == id);
 

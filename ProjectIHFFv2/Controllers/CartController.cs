@@ -77,9 +77,12 @@ namespace ProjectIHFFv2.Controllers
             bool bestaat = rep.BestaandeKlant(model.Email); 
 
             if(!bestaat)
-            {
-                Bezoeker klant = new Bezoeker(model.VoorNaam, model.AchterNaam, model.Email, model.TelefoonNummer);
-                rep.AddKlant(klant); 
+            {   //maak nieuwe klant in db
+                Klant klant = new Klant(model.Email, model.VoorNaam, model.AchterNaam, model.TelefoonNummer);
+                rep.AddKlant(klant);
+                // haal aangemaakte klantid en maak reservering
+                int klantid = rep.GetKlantId(klant);
+                rep.AddReservering(klantid); 
             }
 
             

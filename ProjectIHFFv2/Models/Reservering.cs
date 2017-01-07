@@ -18,7 +18,13 @@ namespace ProjectIHFFv2.Models
         {
             this.Klant_reservering = new HashSet<Klant_reservering>();
         }
-    
+        public Reservering(int klantid, string ophaalcode, bool is_betaald, bool is_geannuleerd)
+        {
+            this.klantid = klantid;
+            this.ophaalcode = ophaalcode;
+            this.is_betaald = is_betaald;
+            this.is_geannuleerd = is_geannuleerd;
+        }    
         public int id { get; set; }
         public int klantid { get; set; }
         public Nullable<bool> is_betaald { get; set; }
