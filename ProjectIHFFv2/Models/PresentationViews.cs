@@ -101,12 +101,13 @@ namespace ProjectIHFFv2.Models
             SpecialDetailPresentationModel special = new SpecialDetailPresentationModel(s.EventId, (double)s.Event.prijs,s.Event.naam, s.Event.Special.spreker, s.Event.afbeelding_url, s.Event.begin_datumtijd, s.Event.eind_datumtijd, locatie, s.Event.beschrijving, restaurants);
             return special;
         }
-        public void AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items)
+        public bool AddToWishlist(int aantalPersonen, int eventId, List<WishlistItem> items)
         {
             //Haal het event op uit de eventrepository
             Event gebeuren = eventRepository.GetById(eventId);
             //Voeg het toe aan de wishlistRepository
-            wishlistRepository.AddToWishlist(gebeuren, aantalPersonen, items);
+            bool isGelukt = wishlistRepository.AddToWishlist(gebeuren, aantalPersonen, items);
+            return isGelukt;
         }
 
         public void AddToCart(int aantalPersonen, int eventId, List<ShoppingCartItem> items)

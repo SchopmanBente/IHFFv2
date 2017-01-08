@@ -13,11 +13,18 @@ namespace ProjectIHFFv2.Controllers
         WishlistRepository wishlistRepository = new WishlistRepository();
         iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
-        public ActionResult Index()
+        public ActionResult Index(bool? isToevoegenGelukt) //bool? omdat deze link ook direct aangeroepen kan worden, deze exception is opgevangen.
         {
-            //Session["wishlist"] = new List<WishlistItem>(); //session is aangemaakt als 'wishlist'.
             List<WishlistItem> sessionItems = HaalWishlistSessieOp();
             List<WishlistItem> alleItems = wishlistRepository.MakeWishlist(sessionItems);
+            if (isToevoegenGelukt == true)
+            {
+                TempData["isToevoegenGelukt"] = "true";
+            }
+            else if (isToevoegenGelukt == false)
+            {
+                TempData["isToevoegenGelukt"] = "false";
+            }
             return View(alleItems);
         }
 

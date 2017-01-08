@@ -48,8 +48,8 @@ namespace ProjectIHFFv2.Controllers
                     {
                         case "Add to wishlist":
                             List<WishlistItem> items = HaalWishlistSessieOp();
-                            presentation.AddToWishlist(qty, eventid, items);
-                            return RedirectToAction("Index", "Wishlist");
+                            bool isGelukt = presentation.AddToWishlist(qty, eventid, items);
+                            return RedirectToAction("Index", "Wishlist", new { isToevoegenGelukt = isGelukt});
                         case "Add to cart":
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();
                             presentation.AddToCart(qty, eventid, cartItems);

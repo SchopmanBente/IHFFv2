@@ -10,7 +10,7 @@ namespace ProjectIHFFv2.Models
     public class WishlistRepository : Controller //:controller zodat de session gebruikt kan worden.
     {
 
-        public void AddToWishlist(Event item, int aantal, List<WishlistItem> items)
+        public bool AddToWishlist(Event item, int aantal, List<WishlistItem> items)
         {
             int aantalTrue = 0; //houdt bij hoeveel keer er false is teruggegeven op de vraag: Is de datum en tijd al in gebruik?
             foreach (WishlistItem bestaandItem in items)
@@ -42,20 +42,22 @@ namespace ProjectIHFFv2.Models
                 if (!items.Exists(w => w.EventId == item.EventId))
                 {
                     items.Add(wishlistItem);
+                    return true;
                 }
+                return false;
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "The time you tried to add is already in use.");
+                return false;
             }
         }
+
 
         public void RemoveFromWishlist(int id, List<WishlistItem> wishlistSession)
         {
             WishlistItem teVerwijderen = wishlistSession.Single(i => i.EventId == id);
             wishlistSession.Remove(teVerwijderen);
         }
-
 
         public List<WishlistItem> MakeWishlist(List<WishlistItem> meegekregenWishlist)
         {
