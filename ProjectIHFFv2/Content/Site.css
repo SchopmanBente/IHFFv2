@@ -37,6 +37,7 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-errors {
     color: #b94a48;
+    float: left;
 }
 
 .validation-summary-valid {
@@ -301,35 +302,10 @@ body > div:nth-child(2) > section > section > .film_text > .item-button {
     }
 
 /* Detailpage */
-/*
-body > div:nth-child(2) > section.detail
-{
-         overflow: hidden;
-    padding-right: 330px;
-}
-
-    body > div:nth-child(2) > section.detail >  section.detail-left {
-     float: left;
-    width: 84%;
-    background-color: #fff;
-     margin: 10px 0px 0px 105px; 
-    }
-  
-body > div:nth-child(2) > section > section.detail-right {
-       float: right;
-    margin-right: -330px;
-    width: 300px;
-}
-
-body > div:nth-child(2) > section > section.detail-left , body > div:nth-child(2) > section > section.detail-right {
-   
-        padding-bottom: 99999px;
-    margin-bottom: -99999px;
-}
-*/
 body > div:nth-child(2) > section.detail {
     padding-right: 330px;
     overflow: hidden;
+    margin-bottom: 300px;
 }
 
 body > div:nth-child(2) > section > section.detail-left {
