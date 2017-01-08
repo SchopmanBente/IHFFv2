@@ -25,5 +25,6 @@ namespace ProjectIHFFv2.Models
         public string locatie { get; set; }
         public Nullable<System.DateTime> openinsstarttijd { get; set; }
         public Nullable<System.DateTime> openingeindtijd { get; set; }
+        public string afbeelding_url { get; set; }
     }
 }
