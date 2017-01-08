@@ -66,6 +66,27 @@ namespace ProjectIHFFv2.Models
             return totaalPrijs; 
         }
 
+        public AfgerondeBestelling CheckoutToBestelling(CheckoutModel checkout)
+        {
+            Klant klant = new Klant(checkout.Email, checkout.VoorNaam, checkout.AchterNaam, checkout.TelefoonNummer);
+            List<ShoppingCartItem> lijst = new List<ShoppingCartItem>();
+            foreach (ShoppingCartItem e in checkout.Reserveringen.Items)
+            {
+               lijst.Add(e);
+            }
+
+            //Order lijst bij datum 
+            lijst.OrderBy(c => c.Gebeurtenis.begin_datumtijd);
+
+            
+            AfgerondeBestelling Bestelling = new AfgerondeBestelling(klant, lijst); 
+            
+
+            
+
+            return Bestelling; 
+        }
+
    
         public void AddKlant(Klant klant)
         {
@@ -96,11 +117,11 @@ namespace ProjectIHFFv2.Models
             ctx.Reservering.Add(reservering);
             ctx.SaveChanges(); 
         }
-        public void KoppelKlantReservering(int klantId, CheckoutModel model)
+        public void KoppelKlantReservering(int klantId, AfgerondeBestelling Bestelling)
         { // Maak voor elk bestelde event een Klant-reservering in de database
 
             int reserveringsId = GetReserveringId(klantId); 
-            foreach( ShoppingCartItem i in model.Reserveringen.Items)
+            foreach( ShoppingCartItem i in Bestelling.Events)
             {
                 Klant_reservering kl = new Klant_reservering(reserveringsId, i.Gebeurtenis.EventId, i.Gebeurtenis.prijs, i.AantalPersonen);
                 ctx.Klant_reservering.Add(kl);
@@ -121,6 +142,13 @@ namespace ProjectIHFFv2.Models
             Reservering res = ctx.Reservering.OrderByDescending(r => r.besteldatum).FirstOrDefault(r => r.klantid == klantId);
 
             return res.id;
+        }
+
+        public string GetOphaalCode(int reserveringId)
+        {
+            string code = ctx.Reservering.Where(c => c.id == reserveringId).Select(c => c.ophaalcode).SingleOrDefault(); 
+
+            return code; 
         }
    
     }

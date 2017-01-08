@@ -48,7 +48,7 @@ namespace ProjectIHFFv2.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (qty > 0)
+                if (qty > 0 && qty < 20)
                 {
                     switch (submit)
                     {
@@ -68,7 +68,7 @@ namespace ProjectIHFFv2.Controllers
 
                 else
                 { // zorgt dat er een error wordt gegeven als er geen correct aantal is geselecteerd
-                    ModelState.AddModelError("NoAmount", "No amount selected.");
+                    ModelState.AddModelError("NoAmount", "Wrong amount selected.");
                     return View(presentation.GetRestaurantDetails(eventid)); 
                 }
             }

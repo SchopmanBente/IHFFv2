@@ -290,6 +290,7 @@ body > div:nth-child(2) > section > section > .film_text > .item-button {
     border-radius: 20px;
     border-color: #E82830;
     font-weight: bold;
+   
 }
 
 
@@ -657,4 +658,40 @@ body > div:nth-child(2) > section > section.map {
     margin-left:7%; 
 }
 
+.confirmation-p
+{
+    margin-left:7%; 
+}
 
+.afgerond-section
+{
+    background-color:white; 
+    margin-left: 7%;
+    width: 62%;
+    margin-bottom:300px; 
+}
+
+#scheiding-afgerond
+{   margin-left:5%; 
+    margin-right:5%;
+    color:#2E2E2E; 
+    border-color:#2E2E2E;
+}
+
+.btn-cart {
+    background-color: #E82830;
+    color: #fff;
+    border-radius: 20px;
+    border-color: #E82830;
+    font-weight: bold;
+   position:absolute; 
+}
+
+
+    .btn-cart:hover,
+    .btn-cart:focus {
+        background-color: #fff;
+        border-color: #E82830;
+        color: #E82830;
+        font-weight: bold;
+    }

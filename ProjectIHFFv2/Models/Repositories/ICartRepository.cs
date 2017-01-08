@@ -25,6 +25,10 @@ namespace ProjectIHFFv2.Models.Repositories
 
         void AddReservering(int klantId);
 
-        void KoppelKlantReservering(int klantId, CheckoutModel model);
+        void KoppelKlantReservering(int klantId, AfgerondeBestelling Bestelling);
+        AfgerondeBestelling CheckoutToBestelling(CheckoutModel checkout);
+
+        int GetReserveringId(int klantId);
+        string GetOphaalCode(int reserveringId);
     }
 }

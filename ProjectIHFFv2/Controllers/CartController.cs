@@ -45,8 +45,13 @@ namespace ProjectIHFFv2.Controllers
             //vul checkoutmodel met juiste events
             CartPresentationModel reservingen = presentation.FillPresentationModel(lijst);
 
-            CheckoutModel Model = new CheckoutModel(reservingen); 
-            return View(Model); 
+            CheckoutModel Model = new CheckoutModel(reservingen);
+
+            if (Model.Reserveringen.Items.Count > 0 && Model.Email != "")
+                return View(Model);
+
+            else
+                return RedirectToAction("Index", "Home"); 
         }
 
         [HttpPost]
@@ -77,41 +82,48 @@ namespace ProjectIHFFv2.Controllers
         [HttpPost]
         public ActionResult ExterneBetaalpagina(CheckoutModel model, int? leeg)
         {
+            
 
-            model.Reserveringen.Items = HaalCartSessieOp();
-            model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items);
             return RedirectToAction("Afgerond", model);
-            //hier word het model leeg
         }
 
         public ActionResult Afgerond(CheckoutModel model)
         {
-            model.Reserveringen.Items = HaalCartSessieOp();
-            model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items); 
-            
-            bool bestaat = rep.BestaandeKlant(model.Email);
+            List<ShoppingCartItem> lijst = HaalCartSessieOp();
+
+            //vul checkoutmodel met juiste events
+            CartPresentationModel reservingen = presentation.FillPresentationModel(lijst);
+            //vul model opnieuw met juiste reserveringen
+            model.Reserveringen = reservingen; 
+
+            //maak er een afgeronde bestelling van
+            AfgerondeBestelling Bestelling = rep.CheckoutToBestelling(model);
+
+            bool bestaat = rep.BestaandeKlant(Bestelling.Klant.emailadres);
 
             if (!bestaat)
             {   //maak nieuwe klant in db
-                Klant klant = new Klant(model.Email, model.VoorNaam, model.AchterNaam, model.TelefoonNummer);
-                rep.AddKlant(klant);
+               
+                rep.AddKlant(Bestelling.Klant);
                 // haal aangemaakte klantid en maak reservering
-                int klantid = rep.GetKlantId(model.Email);
+                int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
                 rep.AddReservering(klantid);
                 // creeëer koppeling tussen reservering en klant in db
-                rep.KoppelKlantReservering(klantid, model);
+                rep.KoppelKlantReservering(klantid, Bestelling);
 
-                return View();
+                //voeg de gegenereerde ophaalcode toe aan de bestelling voor weergave op de view
+                Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
+                return View(Bestelling);
             }
 
             else
             {
-                int klantid = rep.GetKlantId(model.Email);
+                int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
                 rep.AddReservering(klantid);
                 // creeëer koppeling tussen reservering en klant in db
-                rep.KoppelKlantReservering(klantid, model);
-
-                return View();
+                rep.KoppelKlantReservering(klantid, Bestelling);
+                Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
+                return View(Bestelling);
             }
              
         }

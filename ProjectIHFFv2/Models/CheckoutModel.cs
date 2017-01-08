@@ -38,6 +38,7 @@ namespace ProjectIHFFv2.Models
 
         public string BevestigEmail { get; set; }
 
+        [Required]
         [Display(Name = "Phone number")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string TelefoonNummer { get; set; }
