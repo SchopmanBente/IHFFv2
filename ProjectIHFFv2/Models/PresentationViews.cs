@@ -75,7 +75,7 @@ namespace ProjectIHFFv2.Models
             return model;
         }
 
-        public RestaurantDetailPresentationModel GetRestaurantDetails(int id)
+        public RestaurantDetailPresentationModel GetRestaurantDetails(int? id)
         {
             List<Film> films = (List<Film>)filmRepository.GetRandomFilms();
 

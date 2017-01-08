@@ -23,10 +23,10 @@
         </div>
         <div class="voorstellingen">
             @using (Html.BeginForm("DetailPagina", "Restaurant", FormMethod.Post))
-            {
+            { <tekst> Lunch/Diner Date:</tekst>
                 <select name="eventid">
                     @foreach (Event e in Model.Maaltijden)
-                    {
+                    {  
                         <option value="@e.EventId">
 
                             @if (e.eind_datumtijd.Hour <= 17)
@@ -41,6 +41,7 @@
                     }
                 </select>
                 @Html.Hidden("eventid", @Model.Event.EventId);
+                <tekst> Amount: </tekst>
                 @Html.TextBox("qty", @Model.AantalPersonen, new { @type = "number" });
                 <input type="submit" id="cart" name="submit" class="btn btn-view" value="Add to cart" />
                 <input type="submit" id="wishlist" name="submit" class="btn btn-view" value="Add to wishlist" />
@@ -57,7 +58,7 @@
                 <section class="cultuuritem">
                     <p>
                         <b>@f.naam</b> <br />
-                        @f.Event.beschrijving.Substring(0, 50) <text>...</text>
+                        @f.Event.beschrijving.Substring(0, 50)<text>...</text>
                     </p>
                     <div class="linkshizzle">
                         @Html.ActionLink("View", "ViewDetails", "Film", new { id = @f.Event.EventId }, new { @class = "btn btn-link btn-info" })

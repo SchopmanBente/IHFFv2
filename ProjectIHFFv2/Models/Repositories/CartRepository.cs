@@ -9,7 +9,8 @@ namespace ProjectIHFFv2.Models
     public class CartRepository : ICartRepository
     {
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
-
+        // voor ophaalcode
+        Random ran = new Random();
         public void AddEventToCart(Event gebeuren, int aantalPersonen, List<ShoppingCartItem> cartItems)
         {
             //Bepaal prijs voor event
@@ -66,35 +67,61 @@ namespace ProjectIHFFv2.Models
         }
 
    
-        public void AddKlant(Bezoeker bezoeker)
+        public void AddKlant(Klant klant)
         {
             //voeg een klant die heeft betaald toe aan de db
-            ctx.Klant.Add(bezoeker);
+            ctx.Klant.Add(klant);
             ctx.SaveChanges();
 
         }
 
-        public void AddReservering(ReserveringModel reservering)
-        { // voegt een reservering toe zodat capaciteit kan worden aangepast
+        public int GetKlantId(string email)
+        {
+            Klant klant = ctx.Klant.SingleOrDefault(k => k.emailadres == email);
 
+            return klant.id; 
+        }
+
+        public string GenerateOphaalCode()
+        { 
+            string input = "abcdefghijklmnopqrstuvwxyz0123456789";
+            var chars = Enumerable.Range(0, 7)
+                    .Select(x => input[ran.Next(0, input.Length)]);
+            return new string(chars.ToArray());
+        }
+
+        public void AddReservering(int klantId)
+        {
+            Reservering reservering = new Reservering(klantId, GenerateOphaalCode(), true, false);
             ctx.Reservering.Add(reservering);
             ctx.SaveChanges(); 
         }
+        public void KoppelKlantReservering(int klantId, CheckoutModel model)
+        { // Maak voor elk bestelde event een Klant-reservering in de database
+
+            int reserveringsId = GetReserveringId(klantId); 
+            foreach( ShoppingCartItem i in model.Reserveringen.Items)
+            {
+                Klant_reservering kl = new Klant_reservering(reserveringsId, i.Gebeurtenis.EventId, i.Gebeurtenis.prijs, i.AantalPersonen);
+                ctx.Klant_reservering.Add(kl);
+                ctx.SaveChanges(); 
+            }
+        }
 
         public bool BestaandeKlant(string email)
-        {
+        {   //kijk of klant record al bestaat adhv email adres
             bool bestaat = ctx.Klant.Any(k => k.emailadres.Equals(email));
 
             return bestaat; 
         }
 
-        public ReserveringModel CheckoutToReservation( Bezoeker bezoeker)
+        public int GetReserveringId(int klantId)
         {
-            //combineer een klant met reservering MAAR HOE IN DE DB??????
+            //haal laatste reservering uit db op adhv klantid
+            Reservering res = ctx.Reservering.OrderByDescending(r => r.besteldatum).FirstOrDefault(r => r.klantid == klantId);
 
-            ReserveringModel res = new ReserveringModel(bezoeker.id, DateTime.Now, true, false);
-
-            return res; 
+            return res.id;
         }
+   
     }
 }

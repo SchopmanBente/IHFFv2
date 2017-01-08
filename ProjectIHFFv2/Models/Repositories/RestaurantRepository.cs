@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectIHFFv2.Models;
+using ProjectIHFFv2.Models.Repositories;
 
 namespace ProjectIHFFv2.Models
 {
     
 
-    public class RestaurantRepository
+    public class RestaurantRepository : IRestaurantRepository
     {
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
@@ -29,7 +31,7 @@ namespace ProjectIHFFv2.Models
              
         }
 
-        public Event GetRestaurantByid(int id)
+        public Event GetRestaurantByid(int? id)
         {
             Event restaurant = ctx.Event.FirstOrDefault(r => r.EventId == id);
 

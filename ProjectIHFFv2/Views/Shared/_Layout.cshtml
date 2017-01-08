@@ -33,7 +33,8 @@
                     <li>@Html.ActionLink("Culture", "Monument", "Culture")</li>
                     <li>@Html.ActionLink("Discover Haarlem", "ViewRoute", "Culture")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <!-- @Html.Partial("_LoginPartial") -->
+                <a href="@Url.Action("Index", "Cart")"><img src="~/Content/Images/Cart.png" style="max-height:50px;"/></a>
             </div>
         </div>
     </div>

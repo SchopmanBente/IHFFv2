@@ -67,23 +67,53 @@ namespace ProjectIHFFv2.Controllers
             return RedirectToAction("Betaal");
         }
 
-        public ActionResult ExterneBetaalpagina()
+        public ActionResult ExterneBetaalpagina(CheckoutModel model)
         {
-            return View(); 
+
+            model.Reserveringen.Items = HaalCartSessieOp();
+            model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items);
+            return View(model); 
+        }
+        [HttpPost]
+        public ActionResult ExterneBetaalpagina(CheckoutModel model, int? leeg)
+        {
+
+            model.Reserveringen.Items = HaalCartSessieOp();
+            model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items);
+            return RedirectToAction("Afgerond", model);
+            //hier word het model leeg
         }
 
         public ActionResult Afgerond(CheckoutModel model)
         {
-            bool bestaat = rep.BestaandeKlant(model.Email); 
+            model.Reserveringen.Items = HaalCartSessieOp();
+            model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items); 
+            
+            bool bestaat = rep.BestaandeKlant(model.Email);
 
-            if(!bestaat)
-            {
-                Bezoeker klant = new Bezoeker(model.VoorNaam, model.AchterNaam, model.Email, model.TelefoonNummer);
-                rep.AddKlant(klant); 
+            if (!bestaat)
+            {   //maak nieuwe klant in db
+                Klant klant = new Klant(model.Email, model.VoorNaam, model.AchterNaam, model.TelefoonNummer);
+                rep.AddKlant(klant);
+                // haal aangemaakte klantid en maak reservering
+                int klantid = rep.GetKlantId(model.Email);
+                rep.AddReservering(klantid);
+                // creeëer koppeling tussen reservering en klant in db
+                rep.KoppelKlantReservering(klantid, model);
+
+                return View();
             }
 
-            
-            return View(); 
+            else
+            {
+                int klantid = rep.GetKlantId(model.Email);
+                rep.AddReservering(klantid);
+                // creeëer koppeling tussen reservering en klant in db
+                rep.KoppelKlantReservering(klantid, model);
+
+                return View();
+            }
+             
         }
 
         private List<ShoppingCartItem> HaalCartSessieOp()

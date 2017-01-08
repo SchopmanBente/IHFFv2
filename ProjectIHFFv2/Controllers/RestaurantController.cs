@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectIHFFv2.Models;
+using ProjectIHFFv2.Models.Repositories;
 
 namespace ProjectIHFFv2.Controllers
 {
     public class RestaurantController : Controller
     {
-        private RestaurantRepository resrep = new RestaurantRepository();
+        private IRestaurantRepository resrep = new RestaurantRepository();
         private PresentationViews presentation = new PresentationViews();
         // GET: Restaurant
         public ActionResult Bloemendaal()
@@ -29,12 +30,17 @@ namespace ProjectIHFFv2.Controllers
         }
 
 
-        public ActionResult DetailPagina(int id)
+        public ActionResult DetailPagina(int? id)
         {
-            
+            //als de id van een restaurant is en niet null
             //Vul detailpagina met juiste gegevens adhv id van geselecteerde restaurant
-            RestaurantDetailPresentationModel restaurant = presentation.GetRestaurantDetails(id);
-            return View(restaurant);
+            if (id != null && id >= 61 && id <= 127)
+            {
+                RestaurantDetailPresentationModel restaurant = presentation.GetRestaurantDetails(id);
+                return View(restaurant);
+            }
+            //als restaurant id niet bestaat
+           return RedirectToAction("Haarlem", "Restaurant"); 
         }
 
         [HttpPost]
