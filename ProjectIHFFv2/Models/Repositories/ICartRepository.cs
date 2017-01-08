@@ -19,10 +19,12 @@ namespace ProjectIHFFv2.Models.Repositories
 
         string GenerateOphaalCode();
 
-        int GetKlantId(Klant klant); 
+        int GetKlantId(string email); 
 
         bool BestaandeKlant(string email);
 
         void AddReservering(int klantId);
+
+        void KoppelKlantReservering(int klantId, CheckoutModel model);
     }
 }

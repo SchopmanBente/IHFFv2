@@ -30,8 +30,34 @@
             <option><p>CreditCard</p></option>
             <option><p>PayPal</p></option>
         </select>
+    
+        
+         @using (Html.BeginForm("ExterneBetaalPagina", "Cart", FormMethod.Post))
+         {
+      
+        <fieldset id="checkout">
+           
+            @Html.HiddenFor(m => m.VoorNaam)
 
-        @Html.ActionLink("Confirm payment", "Afgerond", "Cart", Model, null)
-    </div>
+            @Html.HiddenFor(m => m.AchterNaam)
+
+            @Html.HiddenFor(m => m.Email)
+            @Html.HiddenFor(m => m.BevestigEmail)
+            @Html.HiddenFor(m => m.TelefoonNummer)
+
+            @for(int i = 0; i < Model.Reserveringen.Items.Count; i++)
+            {
+                @Html.HiddenFor(m => m.Reserveringen.Items[i].AantalPersonen)
+                @Html.HiddenFor(m => m.Reserveringen.Items[i].Gebeurtenis.EventId)
+                @Html.HiddenFor(m => m.Reserveringen.Items[i].Prijs)
+
+            }
+
+            <br />
+
+            <input type="submit" value="Confirm" />
+        </fieldset>
+         }
+</div>
 </body>
 </html>

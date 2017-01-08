@@ -24,6 +24,7 @@ namespace ProjectIHFFv2.Models
             this.ophaalcode = ophaalcode;
             this.is_betaald = is_betaald;
             this.is_geannuleerd = is_geannuleerd;
+            this.besteldatum = DateTime.Now;
         }    
         public int id { get; set; }
         public int klantid { get; set; }

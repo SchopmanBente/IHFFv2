@@ -221,6 +221,7 @@
     <Compile Include="Models\Repositories\IEventRepository.cs" />
     <Compile Include="Models\Repositories\IFilmRepository.cs" />
     <Compile Include="Models\Repositories\ILocatieRepository.cs" />
+    <Compile Include="Models\Repositories\IRestaurantRepository.cs" />
     <Compile Include="Models\Repositories\ISpecialRepository.cs" />
     <Compile Include="Models\Repositories\LocatieRepository.cs" />
     <Compile Include="Models\Repositories\RestaurantRepository.cs" />

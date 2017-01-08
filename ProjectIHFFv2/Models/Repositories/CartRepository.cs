@@ -75,9 +75,9 @@ namespace ProjectIHFFv2.Models
 
         }
 
-        public int GetKlantId(Klant kl)
+        public int GetKlantId(string email)
         {
-            Klant klant = ctx.Klant.SingleOrDefault(k => k.emailadres == kl.emailadres);
+            Klant klant = ctx.Klant.SingleOrDefault(k => k.emailadres == email);
 
             return klant.id; 
         }
@@ -96,20 +96,32 @@ namespace ProjectIHFFv2.Models
             ctx.Reservering.Add(reservering);
             ctx.SaveChanges(); 
         }
-        public void KoppelKlantReservering(int klantId, Reservering reservering)
-        { // maak nieuwe reservering in db met bijbehorende klant id
+        public void KoppelKlantReservering(int klantId, CheckoutModel model)
+        { // Maak voor elk bestelde event een Klant-reservering in de database
 
-            ctx.Reservering.Add(reservering);
-            ctx.SaveChanges(); 
+            int reserveringsId = GetReserveringId(klantId); 
+            foreach( ShoppingCartItem i in model.Reserveringen.Items)
+            {
+                Klant_reservering kl = new Klant_reservering(reserveringsId, i.Gebeurtenis.EventId, i.Gebeurtenis.prijs, i.AantalPersonen);
+                ctx.Klant_reservering.Add(kl);
+                ctx.SaveChanges(); 
+            }
         }
 
         public bool BestaandeKlant(string email)
-        {
+        {   //kijk of klant record al bestaat adhv email adres
             bool bestaat = ctx.Klant.Any(k => k.emailadres.Equals(email));
 
             return bestaat; 
         }
 
+        public int GetReserveringId(int klantId)
+        {
+            //haal laatste reservering uit db op adhv klantid
+            Reservering res = ctx.Reservering.OrderByDescending(r => r.besteldatum).FirstOrDefault(r => r.klantid == klantId);
+
+            return res.id;
+        }
    
     }
 }
