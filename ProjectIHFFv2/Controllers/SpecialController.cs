@@ -80,8 +80,8 @@ namespace ProjectIHFFv2.Controllers
                             //Haal alle items die in de wishlist staan op
                             List<WishlistItem> items = HaalWishlistSessieOp();
                             //Voeg toe aan wishlist
-                            presentation.AddToWishlist(aantal, eventid, items);
-                            return RedirectToAction("Index", "Wishlist");
+                            bool isGelukt = presentation.AddToWishlist(aantal, eventid, items);
+                            return RedirectToAction("Index", "Wishlist", new { isToevoegenGelukt = isGelukt});
                         case "Add to cart":
                             //Haal alle items die in de cart staan op
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();

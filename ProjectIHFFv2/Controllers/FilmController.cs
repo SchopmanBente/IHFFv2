@@ -81,8 +81,8 @@ namespace ProjectIHFFv2.Controllers
                             //Haal de list op uit de sessie
                             List<WishlistItem> items = HaalWishlistSessieOp();
                             //Voeg dit item ook toe aan de sessie
-                            presentation.AddToWishlist(aantal, eventid, items);
-                            return RedirectToAction("Index", "Wishlist");
+                            bool isGelukt = presentation.AddToWishlist(aantal, eventid, items);
+                            return RedirectToAction("Index", "Wishlist", new { isToevoegenGelukt = isGelukt});
                         case "Add to cart":
                             //Haal de list<ShoppingCartItems> op uit de sessie
                             List<ShoppingCartItem> cartItems = HaalCartSessieOp();

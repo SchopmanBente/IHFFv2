@@ -13,14 +13,18 @@
     <h1>Wishlist</h1>
     @Html.ActionLink("Add another event", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
     @Html.ActionLink("Add all items to cart", "AddToCart", "Wishlist", null, new { @class = "btn btn-view" })
+    @if (TempData["isToevoegenGelukt"] != null)
+    {
+        if (TempData["isToevoegenGelukt"] == "true")
+        {
+            <p class="toevoegenGelukt">The item is succesfully added!</p>
+        }
+        else
+        {
+            <p class="toevoegenNietGelukt">The item is not added, the time is already in use.</p>
+        }
+    }
 </header>
-
-<section>
-
-        <p>@Html.ValidationSummary()</p>
-    
-
-</section>
 <table class="TabelCss">
     <tr class ="TabelRijCssEven">
         <th> Datum </th><th>11:00</th><th>11:30</th><th>12:00</th><th>12:30</th><th>13:00</th><th>13:30</th><th>14:00</th><th>14:30</th><th>15:00</th><th>15:30</th><th>16:00</th>
@@ -57,14 +61,13 @@
                 break;   
         }
             @while (!maxBereikt)
-            //IK KAN ALLE WHILE DINGEN DIE IK HIER HEB IN EEN FUNCTIE LATEN DOEN!! DOE DIT LATER NOG1!!!!!
             {
                 bool algedaan = false;
                 foreach (WishlistItem item in Model)
                 {
                     if ((item.xCoordinaat == x) && (item.yCoordinaat == y))
                     { @*Aantal personen en locatie er nog bij...*@
-                    <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon-inverted.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  tot en met @item.eindTijd.ToString("dd-MM HH:mm") <br />Aantal tickets: @item.aantal</td>
+                    <td colspan="@item.colspan" class="wishlistItem">@item.naam <a href="@Url.Action("Delete", "Wishlist", new { id = item.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon-inverted.png" title="Remove item from wishlist" /> </a> <br /> @item.beginTijd.ToString("dd-MM HH:mm")  till @item.eindTijd.ToString("dd-MM HH:mm") <br />Amount: @item.aantal</td>
                         x = x + item.colspan - 1;
                         algedaan = true;
                     }
