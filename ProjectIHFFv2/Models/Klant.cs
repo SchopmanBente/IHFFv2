@@ -18,6 +18,7 @@ namespace ProjectIHFFv2.Models
         {
             this.Reservering = new HashSet<Reservering>();
         }
+
         public Klant(string emailadres, string voornaam, string achternaam, string telefoonnummer)
         {
             this.emailadres = emailadres;
@@ -25,7 +26,6 @@ namespace ProjectIHFFv2.Models
             this.achternaam = achternaam;
             this.telefoonnummer = telefoonnummer; 
         }
-
     
         public int id { get; set; }
         public string emailadres { get; set; }

@@ -20,7 +20,7 @@ namespace ProjectIHFFv2.Models
         }
     
         public int id { get; set; }
-        public string capaciteit { get; set; }
+        public int capaciteit { get; set; }
         public string naam { get; set; }
         public string zaal { get; set; }
         public string straat { get; set; }

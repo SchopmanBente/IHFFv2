@@ -14,12 +14,13 @@ namespace ProjectIHFFv2.Models
     
     public partial class Klant_reservering
     {
+
         public Klant_reservering(int reservering_id, int event_id, double? prijs, int aantal_personen)
         {
             this.reservering_id = reservering_id;
             this.event_id = event_id;
             this.prijs = prijs;
-            this.aantal_personen = aantal_personen; 
+            this.aantal_personen = aantal_personen;
         }
         public int id { get; set; }
         public Nullable<int> reservering_id { get; set; }

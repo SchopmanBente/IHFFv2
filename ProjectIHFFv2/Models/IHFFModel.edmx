@@ -20,6 +20,7 @@
           <Property Name="locatie" Type="varchar" MaxLength="250" />
           <Property Name="openinsstarttijd" Type="datetime" />
           <Property Name="openingeindtijd" Type="datetime" />
+          <Property Name="afbeelding_url" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -48,7 +49,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="emailadres" Type="varchar" MaxLength="250" />
           <Property Name="voornaam" Type="varchar" MaxLength="250" />
           <Property Name="achternaam" Type="varchar" MaxLength="250" />
@@ -69,7 +70,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="capaciteit" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="capaciteit" Type="int" Nullable="false" />
           <Property Name="naam" Type="varchar" MaxLength="250" />
           <Property Name="zaal" Type="varchar" MaxLength="250" />
           <Property Name="straat" Type="varchar" MaxLength="250" />
@@ -252,6 +253,7 @@
           <Property Name="locatie" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="openinsstarttijd" Type="DateTime" Precision="3" />
           <Property Name="openingeindtijd" Type="DateTime" Precision="3" />
+          <Property Name="afbeelding_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -309,7 +311,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="capaciteit" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="capaciteit" Type="Int32" Nullable="false" />
           <Property Name="naam" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="zaal" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="straat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -496,6 +498,7 @@
           <EntitySetMapping Name="Cultuuritem">
             <EntityTypeMapping TypeName="iHFF1617S_A3Model.Cultuuritem">
               <MappingFragment StoreEntitySet="Cultuuritem">
+                <ScalarProperty Name="afbeelding_url" ColumnName="afbeelding_url" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="beschrijving" ColumnName="beschrijving" />
                 <ScalarProperty Name="soort" ColumnName="soort" />

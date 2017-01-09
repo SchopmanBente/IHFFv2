@@ -109,11 +109,18 @@ namespace ProjectIHFFv2.Controllers
                 int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
                 rep.AddReservering(klantid);
                 // creeëer koppeling tussen reservering en klant in db
-                rep.KoppelKlantReservering(klantid, Bestelling);
 
-                //voeg de gegenereerde ophaalcode toe aan de bestelling voor weergave op de view
-                Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
-                return View(Bestelling);
+                if (rep.KoppelKlantReservering(klantid, Bestelling))
+                {
+
+                    //voeg de gegenereerde ophaalcode toe aan de bestelling voor weergave op de view
+                    Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
+                    return View(Bestelling);
+                }
+
+                else
+                    ModelState.AddModelError(string.Empty, "Unfortunately the capacity is exceeded");
+                return View(Bestelling); 
             }
 
             else
