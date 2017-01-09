@@ -7,7 +7,7 @@
     @Html.Partial("~\\views\\shared\\_WinkelmandStap.cshtml")
 </header>
 
-@if (Model.Events.Count != 0)
+@if (Model.Events.Count > 0 &&ViewData.ModelState.IsValid)
 {
 <h1 style="margin-top:10px;"> Dear @Model.Klant.voornaam</h1>
 <h3 class="confirmation-p"> Your reservation is confirmed!</h3>
@@ -33,9 +33,15 @@
 
 </section>
 
-    
+
 }
 
+else if (!ViewData.ModelState.IsValid)
+{
+    <div style="font-size:30px">
+        @Html.ValidationMessage("")
+    </div>
+}
 else
 {
  <h1 style="margin-top:10px;"> Nothing to see here....</h1>

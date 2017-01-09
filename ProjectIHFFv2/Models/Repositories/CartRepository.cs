@@ -117,15 +117,11 @@ namespace ProjectIHFFv2.Models
             ctx.Reservering.Add(reservering);
             ctx.SaveChanges();
         }
-        public bool KoppelKlantReservering(int klantId, AfgerondeBestelling Bestelling)
+        public void KoppelKlantReservering(int klantId, AfgerondeBestelling Bestelling)
         { // Maak voor elk bestelde event een Klant-reservering in de database met reserveringId van de klant
 
             int reserveringsId = GetReserveringId(klantId);
 
-            bool veranderCapaciteit = ChangeCapacity(Bestelling);
-
-            if (veranderCapaciteit)
-            {
                 foreach (ShoppingCartItem i in Bestelling.Events)
                 {
                     Klant_reservering kl = new Klant_reservering(reserveringsId, i.Gebeurtenis.EventId, i.Gebeurtenis.prijs, i.AantalPersonen);
@@ -133,9 +129,9 @@ namespace ProjectIHFFv2.Models
 
                     ctx.SaveChanges();
                 }
-            }
+            
 
-            return veranderCapaciteit;
+           
         }
 
         public bool BestaandeKlant(string email)
@@ -161,38 +157,45 @@ namespace ProjectIHFFv2.Models
             return code;
         }
 
-        //     VERANDER DE CAPACITEIT IN DE DB ALS HET KAN EN ANDERS ERROR TERUGGEVEN MAAR TIJD IS SCHAARS.
+        //     VERANDER DE CAPACITEIT IN DE DB
         public bool ChangeCapacity(AfgerondeBestelling bestelling)
         {
-            bool Changegelukt = false; 
+            bool Changegelukt = false;
+
+            //verander voor elke reservering de capaciteit in de database
             foreach (ShoppingCartItem e in bestelling.Events)
             {
-                Locatie aantepassenLocatie = e.Gebeurtenis.Locatie;
-                Locatie locatie = ctx.Locatie.SingleOrDefault(c => c.id == aantepassenLocatie.id);
-
-                //als locatie gevonden is en de er is genoeg capaciteit
-                if (locatie != null)
+                //zet gelukt weer op false voor volgende item; 
+                Changegelukt = false; 
+                Locatie eventLocatie = e.Gebeurtenis.Locatie;
+                //haal huidige capaciteit op
+                int huidigecapaciteit = Convert.ToInt32(ctx.Locatie.Where(c => c.id == e.Gebeurtenis.Locatie.id).Select(c => c.capaciteit).SingleOrDefault());
+                //als huidige capaciteit groter of gelijk aan gewenste
+                if (huidigecapaciteit >= e.AantalPersonen)
                 {
-                    if (locatie.capaciteit >= e.AantalPersonen)
+
+
+                    try
                     {
-                         locatie.capaciteit = locatie.capaciteit - e.AantalPersonen;
+                        //probeer capaciteit aan te passen
+                        (from l in ctx.Locatie
+                         where l.id.Equals(eventLocatie.id)
+                         select l)
+                            .ToList()
+                            .ForEach(c => c.capaciteit = c.capaciteit - e.AantalPersonen);
 
-                        using (var dbCtx = new iHFF1617S_A3Entities1())
-                        {
-                            dbCtx.Entry(locatie).State = System.Data.Entity.EntityState.Modified;
+                        ctx.SaveChanges();
 
-                            dbCtx.SaveChanges(); 
-                        }
 
-                        Changegelukt = true; 
+                        Changegelukt = true;
                     }
-
-                    Changegelukt = false;
+                    catch { }
                 }
+            }
+            return Changegelukt;
 
-                Changegelukt = false;
-                  }
-            return Changegelukt; 
+
+
         }
 
     }

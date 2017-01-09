@@ -11,8 +11,8 @@ namespace ProjectIHFFv2.Controllers
     public class CartController : Controller
     {
         private PresentationViews presentation = new PresentationViews();
-        private ICartRepository rep = new CartRepository(); 
-        
+        private ICartRepository rep = new CartRepository();
+
         // GET: Cart
         public ActionResult Index()
         {
@@ -20,13 +20,13 @@ namespace ProjectIHFFv2.Controllers
             List<ShoppingCartItem> lijst = HaalCartSessieOp();
 
             //vul de pagina met event gegevens in de sessie
-           CartPresentationModel Model = presentation.FillPresentationModel(lijst); 
+            CartPresentationModel Model = presentation.FillPresentationModel(lijst);
 
 
-            return View(Model); 
+            return View(Model);
         }
 
-       
+
 
 
         public ActionResult Delete(int id)
@@ -34,7 +34,7 @@ namespace ProjectIHFFv2.Controllers
             //verwijder item uit sessie adhv eventid 
             presentation.VerwijderItem(id, HaalCartSessieOp());
 
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
         }
 
         public ActionResult Betaal()
@@ -51,7 +51,7 @@ namespace ProjectIHFFv2.Controllers
                 return View(Model);
 
             else
-                return RedirectToAction("Index", "Home"); 
+                return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -59,12 +59,12 @@ namespace ProjectIHFFv2.Controllers
         {
             model.Reserveringen.Items = HaalCartSessieOp();
             model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items);
-            
+
             if (ModelState.IsValid)
             {
                 // redirect naar betaalpagina
 
-                return View("ExterneBetaalpagina", model); 
+                return View("ExterneBetaalpagina", model);
 
             }
 
@@ -77,12 +77,12 @@ namespace ProjectIHFFv2.Controllers
 
             model.Reserveringen.Items = HaalCartSessieOp();
             model.Reserveringen.TotaalPrijs = rep.GetTotaalPrijs(model.Reserveringen.Items);
-            return View(model); 
+            return View(model);
         }
         [HttpPost]
         public ActionResult ExterneBetaalpagina(CheckoutModel model, int? leeg)
         {
-            
+
 
             return RedirectToAction("Afgerond", model);
         }
@@ -94,24 +94,26 @@ namespace ProjectIHFFv2.Controllers
             //vul checkoutmodel met juiste events
             CartPresentationModel reservingen = presentation.FillPresentationModel(lijst);
             //vul model opnieuw met juiste reserveringen
-            model.Reserveringen = reservingen; 
+            model.Reserveringen = reservingen;
 
             //maak er een afgeronde bestelling van
             AfgerondeBestelling Bestelling = rep.CheckoutToBestelling(model);
 
-            bool bestaat = rep.BestaandeKlant(Bestelling.Klant.emailadres);
+            if (rep.ChangeCapacity(Bestelling))
+            {
+                bool bestaat = rep.BestaandeKlant(Bestelling.Klant.emailadres);
 
-            if (!bestaat)
-            {   //maak nieuwe klant in db
-               
-                rep.AddKlant(Bestelling.Klant);
-                // haal aangemaakte klantid en maak reservering
-                int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
-                rep.AddReservering(klantid);
-                // creeëer koppeling tussen reservering en klant in db
+                if (!bestaat)
+                {   //maak nieuwe klant in db
 
-                if (rep.KoppelKlantReservering(klantid, Bestelling))
-                {
+                    rep.AddKlant(Bestelling.Klant);
+                    // haal aangemaakte klantid en maak reservering
+                    int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
+                    rep.AddReservering(klantid);
+                    // creeëer koppeling tussen reservering en klant in db
+                    rep.KoppelKlantReservering(klantid, Bestelling);
+
+
 
                     //voeg de gegenereerde ophaalcode toe aan de bestelling voor weergave op de view
                     Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
@@ -119,20 +121,25 @@ namespace ProjectIHFFv2.Controllers
                 }
 
                 else
-                    ModelState.AddModelError(string.Empty, "Unfortunately the capacity is exceeded");
-                return View(Bestelling); 
+                { //haal klantid op om nieuwe reservering te maken
+                    int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
+                    rep.AddReservering(klantid);
+                    // creeëer koppeling tussen reservering en klant in db
+                    rep.KoppelKlantReservering(klantid, Bestelling);
+                    Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
+                    return View(Bestelling);
+                }
             }
-
             else
-            {
-                int klantid = rep.GetKlantId(Bestelling.Klant.emailadres);
-                rep.AddReservering(klantid);
-                // creeëer koppeling tussen reservering en klant in db
-                rep.KoppelKlantReservering(klantid, Bestelling);
-                Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
+            { //capaciteit niet beschibkaar
+                ModelState.AddModelError(string.Empty, "Unfortunately the capacity is exceeded, please check the items in your shopping cart and try again");
                 return View(Bestelling);
             }
-             
+
+
+
+            
+
         }
 
         private List<ShoppingCartItem> HaalCartSessieOp()

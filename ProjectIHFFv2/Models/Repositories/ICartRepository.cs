@@ -25,10 +25,12 @@ namespace ProjectIHFFv2.Models.Repositories
 
         void AddReservering(int klantId);
 
-        bool KoppelKlantReservering(int klantId, AfgerondeBestelling Bestelling);
+        void KoppelKlantReservering(int klantId, AfgerondeBestelling Bestelling);
         AfgerondeBestelling CheckoutToBestelling(CheckoutModel checkout);
 
         int GetReserveringId(int klantId);
         string GetOphaalCode(int reserveringId);
+
+        bool ChangeCapacity(AfgerondeBestelling Bestelling); 
     }
 }
