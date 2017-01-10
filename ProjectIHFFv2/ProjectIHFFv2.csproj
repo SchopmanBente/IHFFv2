@@ -354,6 +354,7 @@
     <Content Include="Views\Shared\_WinkelmandStap.cshtml" />
     <Content Include="Views\Cart\ExterneBetaalpagina.cshtml" />
     <Content Include="Views\Cart\Afgerond.cshtml" />
+    <Content Include="Views\Cart\BestellingMislukt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

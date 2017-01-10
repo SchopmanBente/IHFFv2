@@ -99,6 +99,7 @@ namespace ProjectIHFFv2.Controllers
             //maak er een afgeronde bestelling van
             AfgerondeBestelling Bestelling = rep.CheckoutToBestelling(model);
 
+            //kijk of de gewenste capaciteit beschikbaar is
             if (rep.ChangeCapacity(Bestelling))
             {
                 bool bestaat = rep.BestaandeKlant(Bestelling.Klant.emailadres);
@@ -132,13 +133,20 @@ namespace ProjectIHFFv2.Controllers
             }
             else
             { //capaciteit niet beschibkaar
-                ModelState.AddModelError(string.Empty, "Unfortunately the capacity is exceeded, please check the items in your shopping cart and try again");
-                return View(Bestelling);
+                
+                return RedirectToAction("BestellingMislukt");
             }
 
 
 
             
+
+        }
+
+        public ActionResult BestellingMislukt()
+        {
+            ModelState.AddModelError(string.Empty, "Unfortunately the capacity is exceeded, please check the items in your shopping cart and try again");
+            return View();
 
         }
 
