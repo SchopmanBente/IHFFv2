@@ -13,6 +13,6 @@ namespace ProjectIHFFv2.Models.Repositories
         IEnumerable<Cultuuritem> GetMonuments();
         IEnumerable<Cultuuritem> GetMuseums();
         IEnumerable<Cultuuritem> GetMusics();
-        Cultuuritem GetCultuurItem(int id);
+        Cultuuritem GetCultuurItem(int? id);
     }
 }

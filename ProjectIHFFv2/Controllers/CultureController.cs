@@ -26,13 +26,19 @@ namespace ProjectIHFFv2.Controllers
             return View(cultuurRepository.GetMusics());
         }
 
-        public ActionResult ViewDetails(int id)
+        public ActionResult ViewDetails(int? id)
         {
-            Cultuuritem cultuurItem = cultuurRepository.GetCultuurItem(id);
-            IEnumerable<Cultuuritem> randomCultuurItems = cultuurRepository.GetRandomCultuurItems();
-            IEnumerable<Film> randomFilms = cultuurRepository.GetRandomFilms();
-            CulturePresentationModel cultuurPresentatieModel = new CulturePresentationModel(cultuurItem, randomCultuurItems, randomFilms);
-            return View(cultuurPresentatieModel);
+            if (id != null)
+            {
+                Cultuuritem cultuurItem = cultuurRepository.GetCultuurItem(id);
+                IEnumerable<Cultuuritem> randomCultuurItems = cultuurRepository.GetRandomCultuurItems();
+                IEnumerable<Film> randomFilms = cultuurRepository.GetRandomFilms();
+                CulturePresentationModel cultuurPresentatieModel = new CulturePresentationModel(cultuurItem, randomCultuurItems, randomFilms);
+                return View(cultuurPresentatieModel);
+            }
+
+                return RedirectToAction("monument","Culture");
+            
         }
 
         public ActionResult ViewRoute()

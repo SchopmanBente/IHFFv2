@@ -17,7 +17,7 @@ namespace ProjectIHFFv2.Controllers
         {
             List<WishlistItem> sessionItems = HaalWishlistSessieOp();
             List<WishlistItem> alleItems = wishlistRepository.MakeWishlist(sessionItems);
-            if (isToevoegenGelukt == true)
+            if (isToevoegenGelukt == true) //Check of het toevoegen is gelukt :)
             {
                 TempData["isToevoegenGelukt"] = "true";
             }
@@ -37,7 +37,6 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult AddToCart()
         {
-            //DEZE CODE NETJES MAKEN, DIT IS VIES
             List<ShoppingCartItem> cartSession = HaalCartSessieOp();
             List<WishlistItem> wishlistSession = HaalWishlistSessieOp();
             foreach (WishlistItem item in wishlistSession)
