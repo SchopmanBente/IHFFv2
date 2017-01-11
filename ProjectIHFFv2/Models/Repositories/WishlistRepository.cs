@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectIHFFv2.Models;
+using ProjectIHFFv2.Models.Repositories;
 
 namespace ProjectIHFFv2.Models
 {
-    public class WishlistRepository : Controller //:controller zodat de session gebruikt kan worden.
+    public class WishlistRepository : IWishlistRepository
     {
 
         public bool AddToWishlist(Event item, int aantal, List<WishlistItem> items)
@@ -28,8 +29,9 @@ namespace ProjectIHFFv2.Models
                 }
             }
 
-            if (aantalTrue == items.Count)
+            if (aantalTrue == items.Count) //Check of de tijd van alle events niet botsen met de tijd van het toe te voegen event
             {
+                //Zet Event om in WishlistItem en voeg deze toe aan de wishlist
                 WishlistItem wishlistItem = new WishlistItem();
                 wishlistItem.aantal = aantal;
                 wishlistItem.beginTijd = item.begin_datumtijd;
@@ -55,13 +57,12 @@ namespace ProjectIHFFv2.Models
 
         public void RemoveFromWishlist(int id, List<WishlistItem> wishlistSession)
         {
-            WishlistItem teVerwijderen = wishlistSession.Single(i => i.EventId == id);
-            wishlistSession.Remove(teVerwijderen);
+            WishlistItem teVerwijderen = wishlistSession.Single(i => i.EventId == id); //Zoek te verwijderen item op
+            wishlistSession.Remove(teVerwijderen); //Verwijder dit item.
         }
 
         public List<WishlistItem> MakeWishlist(List<WishlistItem> meegekregenWishlist)
         {
-            //HIER OOK NOG CHECKEN OF BEPAALDE ITEMS AL BESTAAN! HIER EEN LIJST MEEGEVEN IS HIER HET NU VAN.
             List<WishlistItem> wishlist = meegekregenWishlist;
             string[,] tijdNavigatieArray = MakeTimeArray();
 
@@ -72,7 +73,8 @@ namespace ProjectIHFFv2.Models
                 string heleDatum = item.beginTijd.ToString("dd'/'MM'/'yyyy HH:mm");
                 string datum = heleDatum.Substring(0, 10);
                 string tijd = heleDatum.Substring(11, 5);
-                if (heleDatum != "Datum is null")
+                //Checken waar de datum hoort in het tabel (geef dit item een x en y coördinaat)
+                if (heleDatum != "Datum is null") 
                 {
                     while (x < 28)
                     {
@@ -91,7 +93,6 @@ namespace ProjectIHFFv2.Models
                         }
                         y++;
                     }
-
                     //colspan berekenen
                     if ((item.yCoordinaat != 0) && (item.xCoordinaat != 0))
                     {
@@ -103,18 +104,16 @@ namespace ProjectIHFFv2.Models
                     }
                 }//einde aan if (heleDatum == "Datum is null")
             }
-
             //Van alle tijden die er zijn is er nu een tijd ingevuld.
-
             return wishlist;
         }
 
         private string[,] MakeTimeArray() //maak array 1x
         {
-            string[,] gemaakteArray = new string[28, 6];
+            string[,] gemaakteArray = new string[28, 6]; //Standaardwaarden voor de tijden die iHff heeft. 27 mogelijke tijden en 5 dagen.
             int x = 0;
             int y = 0;
-            string tijd = "11:00";
+            string tijd = "11:00"; //Eerste tijd waarop het iHff Festival kan beginnen
             int uur = 11;
             bool doorgaan = true;
 
@@ -140,7 +139,6 @@ namespace ProjectIHFFv2.Models
 
                     }
                 } //alle tijden zijn toegevoegd, nu de dagen nog.
-
                 if (x == 27)
                 {
                     gemaakteArray[0, 1] = "11/01/2017";
@@ -153,7 +151,5 @@ namespace ProjectIHFFv2.Models
             }
             return gemaakteArray;
         }
-
-
     }
 }
