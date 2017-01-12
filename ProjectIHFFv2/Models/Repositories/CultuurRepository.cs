@@ -65,24 +65,28 @@ namespace ProjectIHFFv2.Models
 
         public IEnumerable<Cultuuritem> GetMonuments()
         {
+            //Haal alle cultuuritems op waarvan de soort monument is.
             IQueryable<Cultuuritem> monuments = ctx.Cultuuritem.Where(c => c.soort == "Monument");
             return monuments;
         }
 
         public IEnumerable<Cultuuritem> GetMuseums()
         {
+            //Haal alle cultuuritems op waarvan de soort museum is.
             IQueryable<Cultuuritem> museums = ctx.Cultuuritem.Where(c => c.soort == "Museum");
             return museums;
         }
 
         public IEnumerable<Cultuuritem> GetMusics()
         {
+            //Haal alle cultuuritems op waarvan de soort music is.
             IQueryable<Cultuuritem> musics = ctx.Cultuuritem.Where(c => c.soort == "Music");
             return musics;
         }
 
-        public Cultuuritem GetCultuurItem(int? id)
+        public Cultuuritem GetCultuurItem(int? id) //Nullable int voor wanneer de pagina zonder id wordt geopend.
         {
+            //Haal alle cultuuritems op waarvan de id dit nummer is.
             Cultuuritem cultuurItem = ctx.Cultuuritem.FirstOrDefault(x => x.id == id);
             return cultuurItem;
         }

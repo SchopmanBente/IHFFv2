@@ -11,37 +11,37 @@ namespace ProjectIHFFv2.Models
     public class WishlistRepository : IWishlistRepository
     {
 
-        public bool AddToWishlist(Event item, int aantal, List<WishlistItem> items)
+        public bool AddToWishlist(Event toeTeVoegenItem, int aantal, List<WishlistItem> items)
         {
-            int aantalTrue = 0; //houdt bij hoeveel keer er false is teruggegeven op de vraag: Is de datum en tijd al in gebruik?
+            int aantalKeerDatToevoegenKan = 0; //houdt bij hoeveel keer er false is teruggegeven op de vraag: Is de datum en tijd al in gebruik?
             foreach (WishlistItem bestaandItem in items)
             {
-                if (bestaandItem.beginTijd.Day == item.begin_datumtijd.Day) //deze if heeft geen else, ga als false gewoon naar de volgende bestaandItem
+                if (bestaandItem.beginTijd.Day == toeTeVoegenItem.begin_datumtijd.Day) //deze if heeft geen else, ga als false gewoon naar de volgende bestaandItem
                 {
-                    if (item.begin_datumtijd >= bestaandItem.eindTijd || item.eind_datumtijd <= bestaandItem.beginTijd) //check of de tijd al in gebruik is, als dat zo is wordt er false ge returnt.
+                    if (toeTeVoegenItem.begin_datumtijd >= bestaandItem.eindTijd || toeTeVoegenItem.eind_datumtijd <= bestaandItem.beginTijd) //check of de tijd al in gebruik is, als dat zo is wordt er false ge returnt.
                     {
-                        aantalTrue++;
+                        aantalKeerDatToevoegenKan++;
                     }
                 }
                 else
                 {
-                    aantalTrue++; //De tijd kan niet in gebruik zijn wanneer het op een andere dag is...
+                    aantalKeerDatToevoegenKan++; //De tijd kan niet in gebruik zijn wanneer het op een andere dag is...
                 }
             }
 
-            if (aantalTrue == items.Count) //Check of de tijd van alle events niet botsen met de tijd van het toe te voegen event
+            if (aantalKeerDatToevoegenKan == items.Count) //Check of de tijd van alle events niet botsen met de tijd van het toe te voegen event
             {
                 //Zet Event om in WishlistItem en voeg deze toe aan de wishlist
                 WishlistItem wishlistItem = new WishlistItem();
                 wishlistItem.aantal = aantal;
-                wishlistItem.beginTijd = item.begin_datumtijd;
-                wishlistItem.eindTijd = item.eind_datumtijd;
-                wishlistItem.EventId = item.EventId;
-                wishlistItem.locatieId = item.locatie_id;
-                wishlistItem.naam = item.naam;
-                wishlistItem.prijs = item.prijs * aantal;
-                wishlistItem.type = item.type;
-                if (!items.Exists(w => w.EventId == item.EventId))
+                wishlistItem.beginTijd = toeTeVoegenItem.begin_datumtijd;
+                wishlistItem.eindTijd = toeTeVoegenItem.eind_datumtijd;
+                wishlistItem.EventId = toeTeVoegenItem.EventId;
+                wishlistItem.locatieId = toeTeVoegenItem.locatie_id;
+                wishlistItem.naam = toeTeVoegenItem.naam;
+                wishlistItem.prijs = toeTeVoegenItem.prijs * aantal;
+                wishlistItem.type = toeTeVoegenItem.type;
+                if (!items.Exists(w => w.EventId == toeTeVoegenItem.EventId))
                 {
                     items.Add(wishlistItem);
                     return true;
@@ -57,8 +57,8 @@ namespace ProjectIHFFv2.Models
 
         public void RemoveFromWishlist(int id, List<WishlistItem> wishlistSession)
         {
-            WishlistItem teVerwijderen = wishlistSession.Single(i => i.EventId == id); //Zoek te verwijderen item op
-            wishlistSession.Remove(teVerwijderen); //Verwijder dit item.
+            WishlistItem teVerwijderenItem = wishlistSession.Single(i => i.EventId == id); //Zoek te verwijderen item op
+            wishlistSession.Remove(teVerwijderenItem); //Verwijder dit item.
         }
 
         public List<WishlistItem> MakeWishlist(List<WishlistItem> meegekregenWishlist)
@@ -115,9 +115,9 @@ namespace ProjectIHFFv2.Models
             int y = 0;
             string tijd = "11:00"; //Eerste tijd waarop het iHff Festival kan beginnen
             int uur = 11;
-            bool doorgaan = true;
+            bool doorgaanOfStoppen = true;
 
-            while (doorgaan)
+            while (doorgaanOfStoppen)
             {
                 if (tijd != "24:30") //voeg alle tijden toe aan rij 0 van de array.
                 {
@@ -146,7 +146,7 @@ namespace ProjectIHFFv2.Models
                     gemaakteArray[0, 3] = "13/01/2017";
                     gemaakteArray[0, 4] = "14/01/2017";
                     gemaakteArray[0, 5] = "15/01/2017";
-                    doorgaan = false;
+                    doorgaanOfStoppen = false;
                 }
             }
             return gemaakteArray;

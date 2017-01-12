@@ -28,12 +28,13 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult ViewDetails(int? id)
         {
-            if (id != null)
+            if (id != null) //als de int null is (direct naar de pagina zonder een id) wordt de gebruiker naar de detailpagina gelinkt.
             {
-                Cultuuritem cultuurItem = cultuurRepository.GetCultuurItem(id);
+                //Alles in de culturepresentationmodel doen.
+                Cultuuritem ViewDetailsCultuurItem = cultuurRepository.GetCultuurItem(id);
                 IEnumerable<Cultuuritem> randomCultuurItems = cultuurRepository.GetRandomCultuurItems();
                 IEnumerable<Film> randomFilms = cultuurRepository.GetRandomFilms();
-                CulturePresentationModel cultuurPresentatieModel = new CulturePresentationModel(cultuurItem, randomCultuurItems, randomFilms);
+                CulturePresentationModel cultuurPresentatieModel = new CulturePresentationModel(ViewDetailsCultuurItem, randomCultuurItems, randomFilms);
                 return View(cultuurPresentatieModel);
             }
 

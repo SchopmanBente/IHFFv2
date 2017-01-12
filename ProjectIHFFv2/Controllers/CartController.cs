@@ -118,7 +118,7 @@ namespace ProjectIHFFv2.Controllers
 
                     //voeg de gegenereerde ophaalcode toe aan de bestelling voor weergave op de view
                     Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
-                    return View(Bestelling);
+                    
                 }
 
                 else
@@ -128,8 +128,10 @@ namespace ProjectIHFFv2.Controllers
                     // creeëer koppeling tussen reservering en klant in db
                     rep.KoppelKlantReservering(klantid, Bestelling);
                     Bestelling.ophaalcode = rep.GetOphaalCode(rep.GetReserveringId(klantid));
-                    return View(Bestelling);
+                    
                 }
+                Session["cart"] = null;
+                return View(Bestelling);
             }
             else
             { //capaciteit niet beschibkaar

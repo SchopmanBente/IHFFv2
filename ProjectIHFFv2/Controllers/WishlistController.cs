@@ -15,11 +15,10 @@ namespace ProjectIHFFv2.Controllers
 
         public ActionResult Index(bool? isToevoegenGelukt) //bool? omdat deze link ook direct aangeroepen kan worden, deze exception is opgevangen.
         {
-            List<WishlistItem> sessionItems = HaalWishlistSessieOp();
-            List<WishlistItem> alleItems = wishlistRepository.MakeWishlist(sessionItems);
-            if (isToevoegenGelukt == true) //Check of het toevoegen is gelukt :)
+            List<WishlistItem> alleItems = wishlistRepository.MakeWishlist(HaalWishlistSessieOp());
+            if (isToevoegenGelukt == true) //Check of het toevoegen is gelukt 
             {
-                TempData["isToevoegenGelukt"] = "true";
+                TempData["isToevoegenGelukt"] = "true"; //Tempdata is nu en in de methode waarin deze gereturnt wordt nog bruikbaar, in dit geval is dat wishlistView
             }
             else if (isToevoegenGelukt == false)
             {
