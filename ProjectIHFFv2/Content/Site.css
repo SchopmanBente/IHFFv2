@@ -301,10 +301,10 @@ body > div:nth-child(2) > section > section > .film_text > .beschrijving {
 body > div:nth-child(2) > section > section > .film_text > .item-button {
     position: absolute;
     float: right;
-    top: 45px;
-    bottom: 30px;
-    left: 800px;
-    right: 100px;
+       top: 33%;
+    bottom: 5%;
+    left: 95%;
+    right: 5%;
 }
 
 .btn-view {
