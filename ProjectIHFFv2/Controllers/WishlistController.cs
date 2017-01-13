@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectIHFFv2.Models;
+using ProjectIHFFv2.Models.Repositories;
 
 namespace ProjectIHFFv2.Controllers
 {
     public class WishlistController : Controller
     {
-        CartRepository cartRepository = new CartRepository();
-        WishlistRepository wishlistRepository = new WishlistRepository();
+        ICartRepository cartRepository = new CartRepository();
+        IWishlistRepository wishlistRepository = new WishlistRepository();
         iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 
         public ActionResult Index(bool? isToevoegenGelukt) //bool? omdat deze link ook direct aangeroepen kan worden, deze exception is opgevangen.

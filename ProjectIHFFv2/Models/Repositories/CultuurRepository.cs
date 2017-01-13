@@ -6,7 +6,7 @@ using ProjectIHFFv2.Models.Repositories;
 
 namespace ProjectIHFFv2.Models
 {
-    public class CultuurRepository
+    public class CultuurRepository : ICultuurRepository 
     {
         private iHFF1617S_A3Entities1 ctx = new iHFF1617S_A3Entities1();
 

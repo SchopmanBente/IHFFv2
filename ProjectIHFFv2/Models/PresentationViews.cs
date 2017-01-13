@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using ProjectIHFFv2.Models.Repositories; 
 
 namespace ProjectIHFFv2.Models
 {
@@ -10,13 +11,13 @@ namespace ProjectIHFFv2.Models
     {
         //Alle repositories
         private CultuurRepository cultuurRepository = new CultuurRepository();
-        private CartRepository cartRepository = new CartRepository();
+        private ICartRepository cartRepository = new CartRepository();
         private IEventRepository eventRepository = new EventRepository();
         private IFilmRepository filmRepository = new FilmRepository();
         private ISpecialRepository specialRepository = new SpecialRepository();
-        private RestaurantRepository restaurantRepository = new RestaurantRepository();
+        private IRestaurantRepository restaurantRepository = new RestaurantRepository();
         private ILocatieRepository locatieRepository = new LocatieRepository();
-        private WishlistRepository wishlistRepository = new WishlistRepository();
+        private IWishlistRepository wishlistRepository = new WishlistRepository();
 
 
         //Haalt films voor een bepaalde dag op
