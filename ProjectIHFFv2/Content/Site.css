@@ -718,3 +718,8 @@ body > div:nth-child(2) > section > section.map {
         color: #E82830;
         font-weight: bold;
     }
+
+#cartitem-header{
+    text-align:center; 
+    line-height:101%; 
+}

@@ -12,7 +12,7 @@
 @foreach(ShoppingCartItem i in Model.Reserveringen.Items)
 {
 
-    <p style="margin-left:7%;"> @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b> </p>
+    <p style="margin-left:7%;"> @i.Gebeurtenis.begin_datumtijd.ToString("dd MMMM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b> </p>
 }
 
 <h3 style="margin-left:7%;"> Total: @Model.Reserveringen.TotaalPrijs.ToString("C2")</h3>

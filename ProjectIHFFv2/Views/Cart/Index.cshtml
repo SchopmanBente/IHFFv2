@@ -18,7 +18,7 @@ else
 {
     <article class="winkelmandje">
         <a href="@Url.Action("Delete", "Cart", new { id = i.Gebeurtenis.EventId})"> <img class="deleteImageWishlist" height="20" width="20" src="~/Content/Images/delete-icon.png" title="Remove item from cart" /> </a>
-        <h4 style="text-align:center;">@i.Gebeurtenis.naam</h4>
+        <h4 class="cartitem-header">@i.Gebeurtenis.naam</h4>
       <img width="182" height="268" src="@i.Gebeurtenis.afbeelding_url" id="winkelmandjeimg"/>
 
     <!-- Hier moet de ul weer komen als het niet lukt-->
