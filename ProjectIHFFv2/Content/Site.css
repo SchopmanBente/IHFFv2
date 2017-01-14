@@ -59,7 +59,7 @@ footer {
     footer h4 {
         color: white;
         display: inline;
-        margin-left: 12%;
+        margin-left: 8%;
         margin-right: 16%;
         margin-top: 50px;
     }
@@ -72,6 +72,11 @@ footer {
 
     footer li {
         list-style: none;
+    }
+
+    body > div:nth-child(2) > footer > ul 
+    {
+        margin-left: 2%;
     }
 
 /* CSS voor programma samenstellen START*/
@@ -233,6 +238,7 @@ h2 span {
 body > div:nth-child(2) > section.overview {
     margin-top: 181px;
     margin-bottom: 300px;
+    margin-left: 1%;
 }
 
     body > div:nth-child(2) > section.overview > section.itemOverview {
@@ -248,6 +254,11 @@ body > div:nth-child(2) > header {
     float: left;
     width: 100%;
     margin-top: 35px;
+    margin-left: 1%;
+}
+
+body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-header > a > img {
+    margin-left: 8%;
 }
 
     body > div:nth-child(2) > header > .dagselectie {
@@ -330,18 +341,19 @@ body > div:nth-child(2) > section.detail {
     padding-right: 330px;
     overflow: hidden;
     margin-bottom: 300px;
+    margin-left: 1%;
 }
 
 body > div:nth-child(2) > section > section.detail-left {
     float: left;
     width: 87%;
-    margin-left: 105px;
+    margin-left: 11%;
     background-color: #fff;
 }
 
 body > div:nth-child(2) > section > section.detail-right {
     float: right;
-    margin-right: -280px;
+    margin-right: -288px;
     width: 300px;
     background-color: #b3b3b3;
 }
@@ -372,7 +384,7 @@ body > div:nth-child(2) > section > section.detail-right {
             float: left;
             width: 75%;
             /* margin-left: -1px; */
-            padding-left: 41px;
+            padding-left: 7%;
             /* padding: 10px; */
             margin-bottom: 5px;
             height: 300px;
@@ -650,6 +662,7 @@ body > div:nth-child(2) > section > section.map {
     width: 35%;
     height: 44em;
     margin: 10px 0px 0px 0px;
+    margin-left: 2%;
 }
 
 #map {
@@ -723,3 +736,4 @@ body > div:nth-child(2) > section > section.map {
     text-align:center; 
     line-height:101%; 
 }
+
