@@ -35,6 +35,11 @@ namespace ProjectIHFFv2.Models
             {
                 cartItems.Add(item);
             }
+            else
+            {
+                int index = cartItems.FindIndex(i => i.Gebeurtenis.EventId == item.Gebeurtenis.EventId);
+                cartItems[index] = item;
+            }
 
         }
 
