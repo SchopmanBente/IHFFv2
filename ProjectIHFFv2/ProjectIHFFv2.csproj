@@ -262,7 +262,11 @@
     <Content Include="Content\Images\Home3.png" />
     <Content Include="Content\Images\Home4.png" />
     <Content Include="Content\Images\Home5.png" />
+    <Content Include="Content\Images\HomeFilm.jpeg" />
+    <Content Include="Content\Images\homefoto.jpg" />
+    <Content Include="Content\Images\homepagefoto.jpg" />
     <Content Include="Content\Images\Logo.PNG" />
+    <Content Include="Content\Images\WhatsApp Image 2017-01-16 at 13.30.49.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
