@@ -5,7 +5,7 @@
 }
 
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Index", "Home") > @Html.ActionLink("Woensdag", "Film") > @Html.ActionLink(@Model.Naam, "ViewDetails", "Film", new { id = @Model.EventId }, null) </p>
+    <p class="breadcrumb">@Html.ActionLink("Home", "Index", "Home") > @Html.ActionLink("Woensdag", "Film") > @Html.ActionLink(@Model.Naam, "ViewDetails", "Film", new { id = @Model.EventId }, null) </p>
     <h1>@Model.Naam</h1>
 </header>
 <section class="detail">
