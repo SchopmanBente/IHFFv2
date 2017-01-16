@@ -12,7 +12,8 @@ $(document).ready(function () {
 
 
         if ($(this).prop('href') == window.location.href) {
-            $(this).addClass('current');
+            $(this).toggleClass('current');
+            console.log(this)
 
 
         }

@@ -7,7 +7,12 @@
     <p class="breadcrumb">@Html.ActionLink("Index", "Index", "Home")  > @if (Model.Items.Last().Gebeurtenis.type == 0) { @Html.ActionLink("Films > ", "Wednesday", "Film")  @Html.ActionLink(Model.Items.Last().Gebeurtenis.naam + " > ", Model.Items.Last().Gebeurtenis.begin_datumtijd.DayOfWeek.ToString(), "Film")} else if (Model.Items.Last().Gebeurtenis.type == 2) { @Html.ActionLink("Restaurants > ", "Haarlem", "Restaurant")   @Html.ActionLink(Model.Items.Last().Gebeurtenis.naam + " > ", Model.Items.Last().Gebeurtenis.Locatie.plaats, "Restaurant") } else {@Html.ActionLink("Specials > ", "Wednesday", "Special")  @Html.ActionLink(Model.Items.Last().Gebeurtenis.naam + " > ", "Wednesday", "Special") }
 
     <h1>1. Order</h1>
-    @Html.Partial("~\\views\\shared\\_WinkelmandStap.cshtml")
+        <nav class="dagselectie">
+            @Html.ActionLink("1. Order", "Index", "Cart", new { @class = "current" })
+            @Html.ActionLink("2. Payment", "Betaal", "Cart")
+            @Html.ActionLink("3. Confirmation", "Afgerond", "Cart")
+
+        </nav>
 </header>
 }
 

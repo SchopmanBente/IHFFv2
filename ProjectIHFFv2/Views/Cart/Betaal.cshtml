@@ -4,7 +4,12 @@
 <header style="margin-top:2%; float:initial;">
     <p class="breadcrumb">Step 2/3</p>
     <h1 style="margin-top:5px;">2. Payment</h1>
-    @Html.Partial("~\\views\\shared\\_WinkelmandStap.cshtml")
+    <nav class="dagselectie">
+        @Html.ActionLink("1. Order", "Index", "Cart")
+        @Html.ActionLink("2. Payment", "Betaal", "Cart", new { @class = "current" })
+        @Html.ActionLink("3. Confirmation", "Afgerond", "Cart")
+
+    </nav>
 </header>
 
 

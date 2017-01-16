@@ -737,3 +737,24 @@ body > div:nth-child(2) > section > section.map {
     line-height:101%; 
 }
 
+.home-header{
+    color: #E82830;
+    margin-left:6%; 
+}
+
+div .home-banner{
+    background-color:white; 
+    position:relative; 
+    width:100%; 
+}
+
+img .home-logo{
+    height:30%;
+    width:24%; 
+}
+
+img .bannerimg{
+    width: 89%; 
+    display:block;
+    border:0; 
+}
