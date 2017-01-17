@@ -1,41 +1,73 @@
 ﻿
-    
-        <div class="banner">
-            <img src="~/Content/Images/Home1.png" width="500px" height="250px" />
-            <h1> International Haarlem Film Festival</h1>
 
-            <p>
-                Every year the IHFF tries to offer you the best movies considering the desired theme.
-                This years theme is 'Science of Fiction'. This webpage will offer you all avaible restaurants and films in Haarlem.
-                You can also find multiple cultural events, for the real adventurers.
-            </p>
+<div class="banner">
+    <div class="innerbanner">
+        <img src="~/Content/Images/Home1.png" width="500px" height="250px" />
+        <h1> International Haarlem Film Festival</h1>
 
-        </div>
+        <p>
+            Every year the IHFF tries to offer you the best movies considering the desired theme.
+            This years theme is 'Science of Fiction'. This webpage will offer you all avaible restaurants and films in Haarlem.
+            You can also find multiple cultural events, for the real adventurers.
+        </p>
+    </div>
+
+</div>
 <br />
-<article class="articlehome">
+<div class="homeArticles">
+    <article class="articlehome">
 
-    <h3 class="homeart"> Films</h3>
-    <img width="182" height="268" src="~/Content/Images/Home4.png" id="winkelmandjeimg" />
-    <p class="articletekst"> IHFF provides numerous amounts of movies, all with the mentioned 'Science of Fiction' theme. 
-    The films will be displayed in a range of Haarlem's finest theaters. 
-    Make sure to take a look at all available theaters and times, and pick your desired movie!
-    </p>
-    @Html.ActionLink("Show me!", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
+        <h3 class="homeart"> Films</h3>
+        <img width="182" height="268" src="~/Content/Images/Home4.png" id="winkelmandjeimg" />
+        <p class="articletekst">
+            IHFF provides numerous amounts of movies, all with the mentioned 'Science of Fiction' theme.
+            The films will be displayed in a range of Haarlem's finest theaters.
+            Make sure to take a look at all available theaters and times, and pick your desired movie!
+        </p>
+        @Html.ActionLink("Show me!", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
 
-</article>
+    </article>
 
-<article class="articlehome">
+    <article class="articlehome">
 
-    <h3 class="homeart"> Food</h3>
-    <img width="182" height="268" src="~/Content/Images/Home4.png" id="winkelmandjeimg" />
-    <p class="articletekst">
-        IHFF provides numerous amounts of movies, all with the mentioned 'Science of Fiction' theme.
-        The films will be displayed in a range of Haarlem's finest theaters.
-        Make sure to take a look at all available theaters and times, and pick your desired movie!
-    </p>
-    @Html.ActionLink("Show me!", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
+        <h3 class="homeart"> Food</h3>
+        <img width="182" height="268" src="~/Content/Images/Home4.png" id="winkelmandjeimg" />
+        <p class="articletekst">
+            IHFF provides numerous amounts of movies, all with the mentioned 'Science of Fiction' theme.
+            The films will be displayed in a range of Haarlem's finest theaters.
+            Make sure to take a look at all available theaters and times, and pick your desired movie!
+        </p>
+        @Html.ActionLink("Show me!", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
 
-</article>
+    </article>   
+</div>
+<div class="homeArticles">
+    <article class="articlehome">
+
+        <h3 class="homeart"> Specials </h3>
+        <img width="182" height="268" src="~/Content/Images/Home4.png" id="winkelmandjeimg" />
+        <p class="articletekst">
+            IHFF provides numerous amounts of movies, all with the mentioned 'Science of Fiction' theme.
+            The films will be displayed in a range of Haarlem's finest theaters.
+            Make sure to take a look at all available theaters and times, and pick your desired movie!
+        </p>
+        @Html.ActionLink("Show me!", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
+
+    </article>
+    <article class="articlehome">
+
+        <h3 class="homeart"> Specials </h3>
+        <img width="182" height="268" src="~/Content/Images/Home4.png" id="winkelmandjeimg" />
+        <p class="articletekst">
+            IHFF provides numerous amounts of movies, all with the mentioned 'Science of Fiction' theme.
+            The films will be displayed in a range of Haarlem's finest theaters.
+            Make sure to take a look at all available theaters and times, and pick your desired movie!
+        </p>
+        @Html.ActionLink("Show me!", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
+
+    </article>
+</div>
+
 
 
 
