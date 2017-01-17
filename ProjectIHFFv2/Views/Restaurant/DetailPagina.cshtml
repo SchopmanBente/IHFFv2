@@ -15,15 +15,15 @@
                 <img src="@Model.Event.afbeelding_url" height="350" width="250" />
             </div>
             <div class="details">
-                <p style="font-size:26px;">@Model.Event.beschrijving</p>
+                <p><strong>Description: </strong>@Model.Event.beschrijving</p>
                 @if (Model.Event.rating != null)
-                {  <p>rating: @Model.Event.rating.ToString()</p>}
+                {  <p><strong>User rating:</strong> @Model.Event.rating.ToString()</p>}
                
             </div>
         </div>
         <div class="voorstellingen">
             @using (Html.BeginForm("DetailPagina", "Restaurant", FormMethod.Post))
-            { <tekst> Lunch/Diner Date:</tekst>
+            { <tekst style="margin-left:2px;"> Lunch/Diner Date:</tekst>
                 <select name="eventid">
                     @foreach (Event e in Model.Maaltijden)
                     {  

@@ -161,6 +161,8 @@ footer {
 
 th {
     border: 1px solid black;
+    padding-left:5px;
+    padding-right: 2px;
     border-collapse: collapse;
 }
 
@@ -384,7 +386,8 @@ body > div:nth-child(2) > section > section.detail-right {
             float: left;
             width: 75%;
             /* margin-left: -1px; */
-            padding-left: 7%;
+            padding-top:1%;
+            padding-left: 1%;
             /* padding: 10px; */
             margin-bottom: 5px;
             height: 300px;
