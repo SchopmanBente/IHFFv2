@@ -4,7 +4,6 @@
 @{int y = 1;}
 @{bool maxBereikt = false;}
 @{bool laatsteDagNogNietBereikt = true;}
-@{string welkeCSSClass = "";}
 @{
     ViewBag.Title = "Index";
 }
@@ -26,39 +25,51 @@
     }
 </header>
 <table class="TabelCss">
+    <colgroup>
+        <col class="TabelRijCssEven"/><col class="TabelRijCssOneven"/><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" /><col class="TabelRijCssEven" />
+<col class="TabelRijCssOneven" />
+    </colgroup>
+
     <tr class ="TabelRijCssEven">
-        <th> Datum </th><th>11:00</th><th>11:30</th><th>12:00</th><th>12:30</th><th>13:00</th><th>13:30</th><th>14:00</th><th>14:30</th><th>15:00</th><th>15:30</th><th>16:00</th>
-        <th>16:30</th><th>17:00</th><th>17:30</th><th>18:00</th><th>18:30</th><th>19:00</th><th>19:30</th><th>20:00</th><th>20:30</th><th>21:00</th><th>21:30</th><th>22:00</th>
-        <th>22:30</th><th>23:00</th><th>23:30</th><th>00:00</th>
+        <th class="TabelRijCssEven"> Datum </th><th>11:00</th><th class="TabelRijCssEven">11:30</th><th>12:00</th><th class="TabelRijCssEven">12:30</th><th>13:00</th><th class="TabelRijCssEven">13:30</th><th>14:00</th><th class="TabelRijCssEven">14:30</th><th>15:00</th><th class="TabelRijCssEven">15:30</th><th>16:00</th>
+        <th class="TabelRijCssEven">16:30</th><th>17:00</th><th class="TabelRijCssEven">17:30</th><th>18:00</th><th class="TabelRijCssEven">18:30</th><th>19:00</th><th class="TabelRijCssEven">19:30</th><th>20:00</th><th class="TabelRijCssEven">20:30</th><th>21:00</th><th class="TabelRijCssEven">21:30</th><th>22:00</th>
+        <th class="TabelRijCssEven">22:30</th><th>23:00</th><th class="TabelRijCssEven">23:30</th><th>00:00</th>
     </tr>
 
     @while (laatsteDagNogNietBereikt)
     {
-        if (y % 2 == 0) {
-            welkeCSSClass = "TabelRijCssEven";
-        } else {
-            welkeCSSClass = "TabelRijCssOneven";
-        }
         
-        <tr class="@welkeCSSClass">
+        <tr>
         @switch (y)
-        {
-            case 1:
-                <th>Wednesday - 11/01</th>
-                break;
-            case 2:
-                <th>Thursday - 12/01</th>
+{
+    case 1:
+        <th style="height: 75px;">Wednesday - 11/01</th>
+        break;
+    case 2:
+            <th style="height: 75px;">Thursday - 12/01</th>
                 break;
             case 3:
-                <th>Friday - 13/01</th>
+            <th style="height: 75px;">Friday - 13/01</th>
                 break;
             case 4:
-                <th>Saturday - 14/01</th>
+            <th style="height: 75px;">Saturday - 14/01</th>
                 break;
             case 5:
-                <th>Sunday - 15/01</th>
+            <th style="height: 75px;">Sunday - 15/01</th>
                 laatsteDagNogNietBereikt = false;
-                break;   
+                break;
         }
             @while (!maxBereikt)
             {
