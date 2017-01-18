@@ -561,7 +561,7 @@ body > div:nth-child(2) > section > section.detail-right {
 
 
 /*xxx*/
-body > div:nth-child(2) > header > nav > a.current,
+body > div:nth-child(2) > header > nav > a.current, body > div:nth-child(2) > div > div > div.navbar-collapse.collapse > ul > li > a , 
 body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse > ul > li > a.current {
     font-weight: bold;
     color: #E82830;
@@ -716,7 +716,7 @@ body > div:nth-child(2) > section > section.map {
 
 .confirmation-p
 {
-    margin-left:7%; 
+    margin-left:4%; 
 }
 
 .afgerond-section
@@ -946,12 +946,35 @@ body > div:nth-child(2) > .homeArticles> .articlehome > a
 }
 
 /*Shoppingcartitems*/
+/*Empty cart*/
+.emptyCart 
+{
+       margin-left: 8%;
+    overflow: hidden;
+    margin-right: 6%;
+    margin-top: 2%;
+    width: 90%;
+    height: 500px;
+    margin-bottom: 300px;
+}
+
+.emptyCartHeader  , .emptyCartHeader >  .btn-addOtherEvent
+{
+    margin-left: 1%;
+}
+
+body > div:nth-child(2) > div.emptyCart > a
+{
+    margin-left: 1%;
+}
+
 /*Stap 1*/
 .winkelmanditems 
 {
     margin-left: 8%;
     overflow: hidden;
     margin-right: 6%;
+    margin-top: 2%;
     width: 90%;
     height: 500px;
     margin-bottom: 300px;
@@ -979,13 +1002,14 @@ body > div:nth-child(2) > .homeArticles> .articlehome > a
 /*Stap 2*/
 .gegevensInvoer
  {
-    margin-left: 9%;
-    margin-top: 3%;
-    background-color: white;
-    width: 80%;
-    height: 550px;
+    margin-left: 8%;
+    margin-top: 2%;
+    overflow: hidden;
+    margin-right: 6%;
+    width: 70%;
+    height: 500px;
     margin-bottom: 300px;
-    float: left;
+    background-color: white;
 }
 
 .itemsInLijst 
@@ -994,6 +1018,23 @@ body > div:nth-child(2) > .homeArticles> .articlehome > a
     width: 40%;
 }
 
+.header-afrekenproces
+{
+    margin-left: 4%;
+    color: #E28380;
+}
+
+.itemsInLijst > .itemsInL > p.itemsInLijstP
+{
+    margin-left: 4%;
+}
+
+p.totaalprijs
+{
+    font-weight: bold;
+    float: right;
+    margin-right: 5%;
+}
 .gegevensForms 
 {
     float:right;

@@ -17,51 +17,57 @@
 <div class="gegevensInvoer">
     <section class="itemsInLijst">
         <h3 class="header-afrekenproces"> Items:</h3>
-        @foreach (ShoppingCartItem i in Model.Reserveringen.Items)
-        {
+        <div class="itemsInL">
+            @foreach (ShoppingCartItem i in Model.Reserveringen.Items)
+            {
+                <p class="itemsInLijstP"> @i.Gebeurtenis.begin_datumtijd.ToString("dd MMMM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b></p>
+            }
 
-            <p class="itemsInLijstP"> @i.Gebeurtenis.begin_datumtijd.ToString("dd MMMM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b> </p>
-        }
-
+        </div>
+        
         <p class="totaalprijs"> Total: @Model.Reserveringen.TotaalPrijs.ToString("C2")</p>
     </section>
     <section class="gegevensForm">
         <h3 class="header-afrekenproces"> Personal Credentials:</h3>
         @using (Html.BeginForm())
         {
-            <div class="validationsummary">
-                @Html.ValidationSummary()
-            </div>
+         
  
             <fieldset id="checkout">
                 <fieldset id="name">
                     @Html.LabelFor(m => m.VoorNaam)
                     @Html.TextBoxFor(m => m.VoorNaam)
+                    @Html.ValidationMessageFor(m => m.VoorNaam)
 
 
                     <br />
 
                     @Html.LabelFor(m => m.AchterNaam)
                     @Html.TextBoxFor(m => m.AchterNaam)
+                    @Html.ValidationMessageFor(m => m.AchterNaam)
                 </fieldset>
                 <fieldset id="contactgegevens">
                     @Html.LabelFor(m => m.Email)
                     @Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
 
                     <br />
 
                     @Html.LabelFor(m => m.BevestigEmail)
                     @Html.TextBoxFor(m => m.BevestigEmail)
+                    @Html.ValidationMessageFor(m => m.BevestigEmail)
 
                     <br />
 
                     @Html.LabelFor(m => m.TelefoonNummer)
                     @Html.TextBoxFor(m => m.TelefoonNummer)
+                    @Html.ValidationMessageFor(m => m.TelefoonNummer)
                 </fieldset>
                 <fieldset id="ophaalmethode">
                     @Html.LabelFor(m => m.wordtOpgehaald)
                     <label> @Html.RadioButton("Send by e-mail", false) Send by e-mail  </label>
                     <label>@Html.RadioButton("Picked up at the first location", true) Pick up at the first location </label>
+                    @Html.ValidationMessageFor(m => m.wordtOpgehaald)
                 </fieldset>   
          
                 @for (int i = 0; i < Model.Reserveringen.Items.Count; i++)

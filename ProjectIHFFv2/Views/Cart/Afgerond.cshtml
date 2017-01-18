@@ -14,30 +14,34 @@
 
 @if (Model.Events.Count > 0)
 {
-<h1 style="margin-top:10px;"> Dear @Model.Klant.voornaam</h1>
-<h3 class="confirmation-p"> Your reservation is confirmed!</h3>
+ <div class="gegevensInvoer">
+     <section class="itemsInLijst">
+         <h3 class="header-afrekenproces"> Your order </h3>
+         <p class="confirmation-p"> Dear @Model.Klant.voornaam</p>
+         <p class="confirmation-p"> Your reservation is confirmed!</p>
+         <p class="confirmation-p">Your exclusive pickupcode is <b> @Model.ophaalcode </b></p>
 
-<section class="afgerond-section">
-    <p class="confirmation-p">please check if your reservation is correct:</p>
-    <ul style="list-style-type:none;">
-        @foreach (ShoppingCartItem i in Model.Events)
-        {
-        <li>
-            <tekst class="confirmation-p" style="font-style:italic;"> @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b></tekst>
-        </li>
-        }
-    </ul>
+         <p class="confirmation-p">Your order consists of the following items:</p>
+         <div class="itemsInL">
+             @foreach (ShoppingCartItem i in Model.Events)
+             {
+                 <p class="itemsInLijstP"> @i.Gebeurtenis.begin_datumtijd.ToString("dd MMMM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b></p>
+             }
+         </div>
+     </section>
+     <section class="gegevensForm">
+         <h3 class="header-afrekenproces"> Further information :</h3>
 
-    <hr id="scheiding-afgerond"/>
-    <p class="confirmation-p"> Something wrong? Send an email to <u>info@CelluloidSilver.nl</u> to cancel or change your reservation.</p>
+         <p class="confirmation-p">Would you like to discover Haarlem's culture on a unique way? Take a look at our @Html.ActionLink("Discover Haarlem", "ViewRoute", "Culture")  page. Your starting point could be <b> @Model.Events.First().Gebeurtenis.Locatie.naam in @Model.Events.First().Gebeurtenis.Locatie.plaats. </b> </p>
+         <br />
+         <p class="confirmation-p"> Something wrong? Send an email to <u>info@CelluloidSilver.nl</u> to cancel or change your reservation.</p>
 
-    
-    <p class="confirmation-p">Your exclusive pickupcode is <b> @Model.ophaalcode </b>, this code will be your ticket to the festival.</p>
 
-    <p class="confirmation-p">Make sure to take a look at our @Html.ActionLink("Discover Haarlem", "ViewRoute", "Culture")  page. Your starting point could be <b> @Model.Events.First().Gebeurtenis.Locatie.naam in @Model.Events.First().Gebeurtenis.Locatie.plaats. </b> But you're free to create your own journey. </p>
 
-</section>
 
+       
+     </section>
+ </div>
 
 }
 

@@ -20,11 +20,6 @@
         {@Html.ActionLink("Proceed to checkout", "Betaal", "Index", new { @class = "btn btn-cart" })}
     </div>
 </header>
-}
-
-else
-{<h1 style="margin-top:4%; margin-bottom:70%;"> Your (for now) empty Shoppingcart</h1>
-}
 <div class="winkelmanditems">
 @foreach (ShoppingCartItem i in Model.Items)
 {
@@ -56,6 +51,26 @@ else
     </article>
 }    <br />
 </div>
+}
+
+else
+{
+  
+        <header>
+            <p class="breadcrumb">
+                @Html.ActionLink("Index", "Index", "Home")  > @Html.ActionLink("Cart","Index","Cart")
+            </p>
+            <h1>Cart</h1>
+        </header>
+        <div class="emptyCart">
+            <h3 class="emptyCartHeader"> Your shoppingcart is empty</h3>
+            @Html.ActionLink("Continue shopping", "Index", "Home", null, new { @class = "btn btn-addOtherEvent" })
+        </div>
+       
+   
+  
+}
+
 
 
 
