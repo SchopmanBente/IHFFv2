@@ -15,8 +15,9 @@
                 <img src="@Model.AfbeeldingUrl" height="350" width="250" />
             </div>
             <div class="details">
-                <p>@Model.Beschrijving</p>
-                <p>IMDB-rating: @Model.Rating.ToString()</p>
+                <p><strong>Summary:</strong> @Model.Beschrijving</p>
+                <p><strong>IMDB-rating:</strong> @Model.Rating.ToString()</p>
+                <p>Watch the trailer for @Model.Naam</p>
                 <iframe id="trailer" width="300" height="200" src="@Model.TrailerUrl" frameborder="0" allowfullscreen></iframe>
             </div>
             </div>

@@ -34,20 +34,24 @@ else
       <img width="182" height="268" src="@i.Gebeurtenis.afbeelding_url" id="winkelmandjeimg"/>
 
     <!-- Hier moet de ul weer komen als het niet lukt-->
-        <div style="margin-left:4px;">
-            @using (Html.BeginForm("Index", "Cart", FormMethod.Post, new { id = "editform" }))
-            {
-                @Html.LabelFor(m => i.AantalPersonen)
-                @Html.DisplayFor(m => i.AantalPersonen, new { @type = "number", @min = "1", @style = "width:40px" })
-                <br />
-                @Html.LabelFor(m => i.Prijs)
-                @Html.DisplayFor(m => i.Prijs) if (i.Gebeurtenis.type == 0 || i.Gebeurtenis.type == 3)
-                { <text> pp </text> }
+        <div>
+            <div class="winkelmanditemtekst">
+                @using (Html.BeginForm("Index", "Cart", FormMethod.Post, new { id = "editform" }))
+                {
+                    @Html.LabelFor(m => i.AantalPersonen)
+                    @Html.DisplayFor(m => i.AantalPersonen, new { @type = "number", @min = "1", @style = "width:40px" })
+                    <br />
+                    @Html.LabelFor(m => i.Prijs)
+                    @Html.DisplayFor(m => i.Prijs) if (i.Gebeurtenis.type == 0 || i.Gebeurtenis.type == 3)
+                                               { <text> pp </text> }
 
-            }
-            <p><b>Date:</b> @i.Gebeurtenis.begin_datumtijd.DayOfWeek @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm")</p>
+                }
+                <p><b>Date:</b> @i.Gebeurtenis.begin_datumtijd.DayOfWeek @i.Gebeurtenis.begin_datumtijd.ToString("dd-MM HH:mm")</p>
 
-            <p>@i.Gebeurtenis.Locatie.straat @i.Gebeurtenis.Locatie.huisnr @i.Gebeurtenis.Locatie.toevoeging</p>
+                <p><b>Street:</b>@i.Gebeurtenis.Locatie.straat @i.Gebeurtenis.Locatie.huisnr @i.Gebeurtenis.Locatie.toevoeging</p>
+                <p><b>City:</b>@i.Gebeurtenis.Locatie.plaats</p>
+            </div>
+        
         </div>
     </article>
 }    <br />

@@ -5,7 +5,7 @@
 }
 
 <header>
-    <p class="breadcrumb">@Html.ActionLink("Home", "Index", "Home") > @Html.ActionLink("Museum", "museum", "Culture") > @Html.ActionLink(@Model.cultuuritem.naam, "ViewDetails", "Culture", new { id = @Model.cultuuritem.id }, null) </p>
+    <p class="breadcrumb">@Html.ActionLink("Home", "Index", "Home") > @Html.ActionLink("Monument", "monument", "Culture") > @Html.ActionLink(@Model.cultuuritem.naam, "ViewDetails", "Culture", new { id = @Model.cultuuritem.id }, null) </p>
     <h1>@Model.cultuuritem.naam</h1>
 </header>
 <section class="detail">
@@ -16,10 +16,10 @@
             </div>
             <div class="details">
                 <br />
-                <p>@Model.cultuuritem.beschrijving</p>
+                <p><strong>Description: </strong>@Model.cultuuritem.beschrijving</p>
                 <br/>
-                <p>Location: @Model.cultuuritem.straatnaam @Model.cultuuritem.huisnr@Model.cultuuritem.toevoeging, @Model.cultuuritem.locatie</p>
-                <p>Zipcode: @Model.cultuuritem.postcode</p>
+                <p><strong>Location: </strong>@Model.cultuuritem.straatnaam @Model.cultuuritem.huisnr@Model.cultuuritem.toevoeging, @Model.cultuuritem.locatie</p>
+                <p><strong>Zipcode: </strong>@Model.cultuuritem.postcode</p>
             </div>
         </div>
     </section> 

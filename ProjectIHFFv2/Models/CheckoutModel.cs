@@ -43,6 +43,10 @@ namespace ProjectIHFFv2.Models
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string TelefoonNummer { get; set; }
 
+        [Required]
+        [Display(Name = "Delivery method")]
+        public bool wordtOpgehaald { get; set; }
+
 
         public CheckoutModel() { }
         public CheckoutModel(CartPresentationModel model)

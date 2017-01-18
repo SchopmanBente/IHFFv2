@@ -10,59 +10,73 @@
         @Html.ActionLink("3. Confirmation", "Afgerond", "Cart")
 
     </nav>
+    <div class="shoppingcartButtons">
+        @Html.ActionLink("Previous step", "Index", "Cart", null, new { @class = "btn btn-addOtherEvent" })
+    </div>
 </header>
+<div class="gegevensInvoer">
+    <section class="itemsInLijst">
+        <h3 class="header-afrekenproces"> Items:</h3>
+        @foreach (ShoppingCartItem i in Model.Reserveringen.Items)
+        {
+
+            <p class="itemsInLijstP"> @i.Gebeurtenis.begin_datumtijd.ToString("dd MMMM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b> </p>
+        }
+
+        <p class="totaalprijs"> Total: @Model.Reserveringen.TotaalPrijs.ToString("C2")</p>
+    </section>
+    <section class="gegevensForm">
+        <h3 class="header-afrekenproces"> Personal Credentials:</h3>
+        @using (Html.BeginForm())
+        {
+            <div class="validationsummary">
+                @Html.ValidationSummary()
+            </div>
+ 
+            <fieldset id="checkout">
+                <fieldset id="name">
+                    @Html.LabelFor(m => m.VoorNaam)
+                    @Html.TextBoxFor(m => m.VoorNaam)
 
 
-<h2 style="margin-left:7%;"> Items:</h2>
-@foreach(ShoppingCartItem i in Model.Reserveringen.Items)
-{
+                    <br />
 
-    <p style="margin-left:7%;"> @i.Gebeurtenis.begin_datumtijd.ToString("dd MMMM HH:mm"), @i.Gebeurtenis.naam <b>x @i.AantalPersonen</b> </p>
-}
+                    @Html.LabelFor(m => m.AchterNaam)
+                    @Html.TextBoxFor(m => m.AchterNaam)
+                </fieldset>
+                <fieldset id="contactgegevens">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
 
-<h3 style="margin-left:7%;"> Total: @Model.Reserveringen.TotaalPrijs.ToString("C2")</h3>
+                    <br />
 
-<section style="margin-bottom:300px;">
-    
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary()
-        <fieldset id="checkout">
-            @Html.LabelFor(m => m.VoorNaam)
-            @Html.TextBoxFor(m => m.VoorNaam)
-           
+                    @Html.LabelFor(m => m.BevestigEmail)
+                    @Html.TextBoxFor(m => m.BevestigEmail)
 
-            <br />
+                    <br />
 
-            @Html.LabelFor(m => m.AchterNaam)
-            @Html.TextBoxFor(m => m.AchterNaam)
+                    @Html.LabelFor(m => m.TelefoonNummer)
+                    @Html.TextBoxFor(m => m.TelefoonNummer)
+                </fieldset>
+                <fieldset id="ophaalmethode">
+                    @Html.LabelFor(m => m.wordtOpgehaald)
+                    <label> @Html.RadioButton("Send by e-mail", false) Send by e-mail  </label>
+                    <label>@Html.RadioButton("Picked up at the first location", true) Pick up at the first location </label>
+                </fieldset>   
+         
+                @for (int i = 0; i < Model.Reserveringen.Items.Count; i++)
+                {
+                    @Html.HiddenFor(m => m.Reserveringen.Items[i].AantalPersonen)
+                    @Html.HiddenFor(m => m.Reserveringen.Items[i].Gebeurtenis.EventId)
+                    @Html.HiddenFor(m => m.Reserveringen.Items[i].Prijs)
 
-            <br />
+                }
 
-            @Html.LabelFor(m => m.Email)
-            @Html.TextBoxFor(m => m.Email)
+                <br />
 
-            <br />
+                <input type="submit" value="Confirm order" id="customconfirmation" class="btn btn-view" />
+            </fieldset>
+        }
+    </section>
+</div>
 
-            @Html.LabelFor(m => m.BevestigEmail)
-            @Html.TextBoxFor(m => m.BevestigEmail)
-
-            <br />
-
-            @Html.LabelFor(m => m.TelefoonNummer)
-            @Html.TextBoxFor(m => m.TelefoonNummer)
-
-            @for (int i = 0; i < Model.Reserveringen.Items.Count; i++)
-            {
-                @Html.HiddenFor(m => m.Reserveringen.Items[i].AantalPersonen)
-                @Html.HiddenFor(m => m.Reserveringen.Items[i].Gebeurtenis.EventId)
-                @Html.HiddenFor(m => m.Reserveringen.Items[i].Prijs)
-
-            }
-
-            <br />
-
-            <input type="submit" value="Confirm" class="btn btn-view" />
-        </fieldset>
-    }
-</section>
