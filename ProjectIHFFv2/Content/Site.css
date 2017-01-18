@@ -948,6 +948,7 @@ body > div:nth-child(2) > .homeArticles> .articlehome > a
 
 /*Shoppingcartitems*/
 /*Empty cart*/
+/* ga het ff doen ofzo kutvisualstudio*/
 .emptyCart 
 {
        margin-left: 8%;
@@ -962,6 +963,7 @@ body > div:nth-child(2) > .homeArticles> .articlehome > a
 .emptyCartHeader  , .emptyCartHeader >  .btn-addOtherEvent
 {
     margin-left: 1%;
+    
 }
 
 body > div:nth-child(2) > div.emptyCart > a
