@@ -1,7 +1,9 @@
 ﻿@using ProjectIHFFv2.Models;
 
 @model RestaurantDetailPresentationModel
-
+@{
+    ViewBag.Title = "Food";
+}
 <header>
     <p class="breadcrumb">@Html.ActionLink("Home", "Index", "Home") > @Html.ActionLink("Restaurants " + Model.Event.Locatie.plaats, Model.Event.Locatie.plaats, "Restaurant") > @Html.ActionLink(Model.Event.naam, "DetailPagina", "Restaurant", new { id = @Model.Event.EventId }, null) </p>
     <h1>@Model.Event.naam</h1>

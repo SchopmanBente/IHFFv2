@@ -399,13 +399,14 @@ body > div:nth-child(2) > section > section.detail-right {
 
         body > div:nth-child(2) > section > section.detail-left > div > div.details {
             float: left;
-            width: 75%;
+            width: 70%;
             /* margin-left: -1px; */
             padding-top:1%;
             padding-left: 1%;
             /* padding: 10px; */
             margin-bottom: 5px;
             height: 300px;
+            margin-left:3%;
         }
 
 

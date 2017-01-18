@@ -14,8 +14,14 @@ $(document).ready(function () {
         var isSpecial = window.location.href.indexOf("Special") >= 0;
 
         if ($(this).prop('href') == window.location.href) {
+
             $(this).toggleClass('current');
             console.log(this)
+
+            $(this).addClass('current');
+            console.log($(this).attr('href'));
+
+
         }
 
        

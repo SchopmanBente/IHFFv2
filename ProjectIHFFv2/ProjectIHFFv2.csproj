@@ -254,6 +254,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\BannerHeader.png" />
     <Content Include="Content\Images\Cart.png" />
     <Content Include="Content\Images\delete-icon-inverted.png" />
     <Content Include="Content\Images\delete-icon.png" />
@@ -266,6 +267,7 @@
     <Content Include="Content\Images\homefoto.jpg" />
     <Content Include="Content\Images\homepagefoto.jpg" />
     <Content Include="Content\Images\Logo.PNG" />
+    <Content Include="Content\Images\nieuwe-bavo1-klein.jpeg" />
     <Content Include="Content\Images\WhatsApp Image 2017-01-16 at 13.30.49.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
