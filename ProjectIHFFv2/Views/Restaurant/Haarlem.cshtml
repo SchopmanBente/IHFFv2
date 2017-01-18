@@ -1,7 +1,9 @@
 ﻿@using ProjectIHFFv2.Models;
 
 @model IEnumerable<RestaurantOverviewPresentationModel>
-
+@{
+    ViewBag.Title = "Food";
+}
 
 <header>
     <p class="breadcrumb">@Html.ActionLink("Home", "Index", "Home") > @Html.ActionLink("Restaurants Haarlem", "Haarlem", "Restaurant") </p>
