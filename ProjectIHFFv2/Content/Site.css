@@ -260,7 +260,7 @@ body > div:nth-child(2) > header {
 }
 
 body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-header > a > img {
-    margin-left: 8%;
+    margin-left: -9%;
 }
 
     body > div:nth-child(2) > header > .dagselectie {
@@ -364,7 +364,7 @@ body > div:nth-child(2) > section.detail {
 body > div:nth-child(2) > section > section.detail-left {
     float: left;
     width: 87%;
-    margin-left: 11%;
+    margin-left: 10%;
     background-color: #fff;
 }
 
