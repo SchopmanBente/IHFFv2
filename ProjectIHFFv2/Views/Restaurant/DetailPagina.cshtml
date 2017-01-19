@@ -20,7 +20,9 @@
                 <p><strong>Description: </strong>@Model.Event.beschrijving</p>
                 @if (Model.Event.rating != null)
                 {  <p><strong>User rating:</strong> @Model.Event.rating.ToString()</p>}
-               
+               <p><strong>Location:</strong> @Model.Event.Locatie.straat @Model.Event.Locatie.huisnr, @Model.Event.Locatie.plaats</p>
+                <p><strong>Zipcode: @Model.Event.Locatie.postcode</strong></p>
+                <p>5 euro for each reservation.</p>
             </div>
         </div>
         <div class="voorstellingen">

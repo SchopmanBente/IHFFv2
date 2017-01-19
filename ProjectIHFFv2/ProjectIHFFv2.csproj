@@ -268,6 +268,8 @@
     <Content Include="Content\Images\homepagefoto.jpg" />
     <Content Include="Content\Images\Logo.PNG" />
     <Content Include="Content\Images\nieuwe-bavo1-klein.jpeg" />
+    <Content Include="Content\Images\Walle.jpg" />
+    <Content Include="Content\Images\wallepoging2.jpg" />
     <Content Include="Content\Images\WhatsApp Image 2017-01-16 at 13.30.49.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
